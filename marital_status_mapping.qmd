@@ -1,0 +1,17 @@
+---
+title: "Marital Status Mapping"
+execute:
+  echo: false
+---
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('marital_status_mapping.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```

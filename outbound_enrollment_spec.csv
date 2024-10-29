@@ -1,0 +1,20 @@
+Field Name,Data Type,Description,Format,Example,Required
+enrollment.external_contract_id,str,The policy ID issued by vendor,Vendor-specific,Vendor-specific,N
+enrollment.application_id,str,The application ID issued by vendor,Vendor-specific,Vendor-specific,N
+enrollment.total_premium,str,The total monthly premium for the contract,Valid decimal value,999.99,Y
+enrollee.issuer_id,str,The member ID issued by issuer,OSC#########-0#,OSC123456789-01,Y
+enrollee.external_member_id,str,The member ID issued by vendor,Vendor-specific,Vendor-specific,N
+enrollee.first_name,str,Member's first name,FIRST,JOE,Y
+enrollee.last_name,str,Member's last name,LAST,DOE,Y
+enrollee.dob,str,Member's date of birth,YYYY-MM-DD,1990-01-01,Y
+enrollee.email,str,Member's email address,Valid Email Format,joe.doe@gmail.com,Y
+enrollee.coverage_start_date,date,Member's policy coverage start date,YYYY-MM-DD,2024-01-01,Y
+enrollee.coverage_end_date,date,Member's policy coverage end date,YYYY-MM-DD,2024-11-01,N
+status,enum,"The current status of member.
+Available statuses:
+EFFECTUATED
+CANCELLED
+TERMINATED
+REINSTATED",STATUS,TERMINATED,Y
+additional_maintenance_reason,str,Reason for change to eligibility status,REASON,NOT_PAID,N
+oscar_internal_uuid,str,UUID for Oscar internal use only.,,4a94a4f321484b71a2e2e7bafd2e4273,N

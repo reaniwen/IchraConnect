@@ -1,0 +1,64 @@
+/* css styles */
+table {
+    border-collapse: collapse;
+    border: 1px solid #727272;
+}
+
+table th {
+    border: 1px solid #727272;
+}
+
+table td {
+    border: 1px solid #727272;
+}
+
+body {
+    font-family: Lettera, Open Sans, sans-serif;
+}
+
+.navbar-container {
+    padding-left: 3px;
+}
+
+.sidebar-navigation {
+    padding-left: 20px;
+}
+
+.sidebar-section {
+    padding-left: 0;
+}
+
+.sidebar-item {
+    margin-top: 10px;
+}
+
+.column-body {
+    margin-left: 10px;
+}
+
+.margin-sidebar {
+    padding-top: 120px !important;
+}
+
+.nav-footer-left {
+    display: none;
+}
+
+.nav-footer-center {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-footer-right {
+    display: none;
+}
+
+.active {
+    font-weight: bold;
+}
+
+/* Leaving this commented out so we know how to easily turn this back on. */
+/* Current thinking is this looks bad on this site. */
+/* .title {
+    font-family: Heldane Display, Times New Roman, serif;
+} */

@@ -1,0 +1,25 @@
+---
+title: "Ethnicity Code Mapping"
+execute:
+  echo: false
+---
+|CDC Value|Description                      |
+|---------|---------------------------------|
+|2135-2   |HISPANIC_LATINO_OR_SPANISH_ORIGIN|
+|1002-5   |AMERICAN_INDIAN_OR_ALASKA_NATIVE |
+|2029-7   |ASIAN_INDIAN                     |
+|2056-0   |BLACK_OR_AFRICAN_AMERICAN        |
+|2034-7   |CHINESE                          |
+|2036-2   |FILIPINO                         |
+|2086-7   |GUAMANIAN_OR_CHAMORRO            |
+|2039-6   |JAPANESE                         |
+|2040-4   |KOREAN                           |
+|2079-2   |NATIVE_HAWAIIAN                  |
+|2080-0   |SAMOAN                           |
+|2047-9   |VIETNAMESE                       |
+|2106-3   |WHITE                            |
+|2028-9   |ASIAN_RACE_NOT_LISTED            |
+|2500-7   |PACIFIC_ISLANDER_RACE_NOT_LISTED |
+|2131-1   |NOT_LISTED                       |
+|         |NULL                             |
+: {.striped}

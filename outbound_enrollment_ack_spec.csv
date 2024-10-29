@@ -1,0 +1,7 @@
+Field Name,DataType,Description,Example,Required
+row_num,int,The corresping line number in the inbound file,11,Y
+external_contract_id,String,"The policy level ID(contract/enrollment) for that line number
+Leave blank if vendor doesn't have policy ID/enrollment ID",22567,N
+application_id,String,The application ID for that line number,22567-ubt-1ba,N
+result,"ENUM(A,R)","The result of parsing this line; A for accepted, R for rejected",R,Y
+error,String,The description of parsing error. Blank if accepted.,"Keyerror on ""application_ID""",N

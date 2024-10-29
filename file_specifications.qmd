@@ -1,0 +1,18 @@
+---
+title: "File Specifications"
+execute:
+  echo: false
+---
+
+|                  |                                             |
+|------------------|---------------------------------------------|
+|Format            |CSV                                          |
+|Max File Size     |10000 rows                                   |
+|Inbound File Name |FROM_VENDOR_NAME.EMT.YYYYMMDDThhmmss.P.csv   |
+|Ack File Name     |TO_VENDOR_NAME.ACK.YYYYMMDDThhmmss.P.csv     |
+|Outbound File Name|FROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv         |
+|Recon File Name   |FROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv|
+|Delivery Location |TBD                                          |
+|Delivery Schedule |TBD                                          |
+|Notes             |Please include header as the first line      |
+: {.striped}
