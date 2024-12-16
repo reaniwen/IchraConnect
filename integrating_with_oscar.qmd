@@ -42,7 +42,7 @@ For off-exchange ICHRA enrollments, Oscar currently supports two main methods of
         * TA1/999 Acknowledgement & Error response  
         * CSV Reconciliation  
     * Payment: Batch 820 EDI for payment remittance with ACH direct deposit  
-  For both the [enrollment 834 EDI](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"} and [820 EDI implementation](edi_implementation_guide.qmd), we use the CMS implementation standards, with a modification to the 834 EDI standard to include employer information in the 2100D employer loop.   
+  For both the enrollment 834 EDI and [820 EDI implementation](edi_implementation_guide.qmd), we use the CMS implementation standards, with a modification to the 834 EDI standard to include employer information in the 2100D employer loop.   
     
 1. Combined File CSV Integration  
     * Single combined enrollment & payment CSV file \- daily batch (Oscar Inbound)  
