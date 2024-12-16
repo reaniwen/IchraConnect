@@ -44,7 +44,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 #### Inbound Enrollment 834 EDI {#inbound-enrollment-834-edi}
 
 - File type: 834 EDI  
-- File spec: Please reach out to [ichra@hioscar.com](mailto:ichra@hioscar.com) for the CMS X12 834 Companion Guide.
+- File spec: [CMS X12 834 Companion Guide v7.2](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"}
 - Cadence: Daily batch  
 - 834 naming convention: FROM\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi  
 - TA1/999 naming convention:  
@@ -55,7 +55,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 #### Outbound Enrollment 834 EDI
 
 - File type: 834 EDI  
-- File spec: Please reach out to [ichra@hioscar.com](mailto:ichra@hioscar.com) for the CMS X12 834 Companion Guide.
+- File spec: [CMS X12 834 Companion Guide v7.2](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"}
 - Cadence: Daily batch  
 - 834 naming convention:  TO\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi  
 - TA1/999 naming convention:  
