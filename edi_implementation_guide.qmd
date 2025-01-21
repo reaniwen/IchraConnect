@@ -8,9 +8,9 @@ ICHRA Connect's 834 and 820 EDI implementation follows CMS’ FFM standards and 
 
 The integration between carrier and an administrator includes three EDI pipelines and one CSV reconciliation file. All file directions are in relation to carrier:
 
-- Carrier Outbound enrollment: 834 EDI with TA1/999  
-- Carrier Inbound enrollment: 834 EDI with TA1/999  
-- Carrier Inbound payment: Direct ACH wire transfer with 820 EDI remittance and TA1/999  
+- Carrier Outbound enrollment: 834 EDI with TA1/999
+- Carrier Inbound enrollment: 834 EDI with TA1/999
+- Carrier Inbound payment: Direct ACH wire transfer with 820 EDI remittance and TA1/999
 - Outbound Reconciliation: Billing & Eligibility reconciliation
 
 ![](ICHRA_EDI_Integration_Flow.png)
@@ -25,7 +25,7 @@ As a modification to the FFM standard, administrators should include a 2100D emp
 ### ICHRA Platform Disenrollments (“Soft terms”)
 If an employer decides to switch ICHRA administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier's ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.
 
-To let carrier know when a member is no longer enrolled through the administrator but has not terminated their coverage, the administrator will send an update type enrollment transaction with additional maintenance reason code (AMRC) LEAVE\_PLATFROM on an inbound enrollment transaction in the AMRC field of the 2750 Loop.
+To let carrier know when a member is no longer enrolled through the administrator but has not terminated their coverage, the administrator will send an update type enrollment transaction with additional maintenance reason code (AMRC) LEAVE\_PLATFORM on an inbound enrollment transaction in the AMRC field of the 2750 Loop.
 
 ## Payment Spec
 We follow the FFM CMS standard for payment remittance transactions. Administrators will send ACH wire transfers directly to carrier's bank accounts based on the state in which members are enrolled. Administrators will send 820 EDI files with member payment records, specifying which individual owes which premium and/or binder payment amounts, in order for carrier to allocate collections to the appropriate charges.
@@ -43,41 +43,41 @@ Each enrolled member will have one record per month enrolled with the correspond
 
 #### Inbound Enrollment 834 EDI {#inbound-enrollment-834-edi}
 
-- File type: 834 EDI  
+- File type: 834 EDI
 - File spec: [CMS X12 834 Companion Guide v7.2](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"}
-- Cadence: Daily batch  
-- 834 naming convention: FROM\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi  
-- TA1/999 naming convention:  
-  - TA1: TO\_ADMIN.TA1.DYYYYMMDD.Thhmmss.P.edi  
+- Cadence: Daily batch
+- 834 naming convention: FROM\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi
+- TA1/999 naming convention:
+  - TA1: TO\_ADMIN.TA1.DYYYYMMDD.Thhmmss.P.edi
   - 999: TO\_ADMIN.999.DYYYYMMDD.Thhmmss.P.edi
 - Sample file: [here](sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi){target="_blank"}
 
 #### Outbound Enrollment 834 EDI
 
-- File type: 834 EDI  
+- File type: 834 EDI
 - File spec: [CMS X12 834 Companion Guide v7.2](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"}
-- Cadence: Daily batch  
-- 834 naming convention:  TO\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi  
-- TA1/999 naming convention:  
-  - TA1: FROM\_ADMIN.TA1.DYYYYMMDD.Thhmmss.P.edi  
+- Cadence: Daily batch
+- 834 naming convention:  TO\_ADMIN.I834.DYYYYMMDD.Thhmmss.P.edi
+- TA1/999 naming convention:
+  - TA1: FROM\_ADMIN.TA1.DYYYYMMDD.Thhmmss.P.edi
   - 999: FROM\_ADMIN.999.DYYYYMMDD.Thhmmss.P.edi
 - Sample file: [here](sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi){target="_blank"}
 
 #### Inbound Payment 820 EDI {#inbound-payment-820-edi}
 
-- File type: 820 EDI  
-- File spec: [FT HIX 820 Companion Guide v4](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/hix%20820%20and%20ppr%20companion%20guide_219.pdf)  
+- File type: 820 EDI
+- File spec: [FT HIX 820 Companion Guide v4](https://www.hhs.gov/guidance/sites/default/files/hhs-guidance-documents/hix%20820%20and%20ppr%20companion%20guide_219.pdf)
 - Cadence: Batched monthly with ad hoc files as needed
-- Payment memo: Include administrator name in the memo description  
-- 820 Naming convention: EDI.I820.DYYYYMMDD.Thhmmss.P.edi  
+- Payment memo: Include administrator name in the memo description
+- 820 Naming convention: EDI.I820.DYYYYMMDD.Thhmmss.P.edi
 - TA1/999 Naming convention:
-- Sample file: [here](sample_files/EDI.820.D20241114.T082645.P.edi){target="_blank"} 
+- Sample file: [here](sample_files/EDI.820.D20241114.T082645.P.edi){target="_blank"}
 
 #### Outbound Reconciliation CSV {#outbound-reconciliation-csv}
 
-- File type: CSV  
+- File type: CSV
 - File spec: [Outbound Reconciliation Spec](outbound_reconcilliation_spec.qmd)
-- Cadence: Weekly  
-- Full or Delta: Full snapshot of plan year, with 3 month look back to previous year  
+- Cadence: Weekly
+- Full or Delta: Full snapshot of plan year, with 3 month look back to previous year
 - Naming Convention: FROM\_CARRIER\_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv
 - Sample file: [here](sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv){target="_blank"}
