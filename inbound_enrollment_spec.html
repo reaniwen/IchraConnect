@@ -398,7 +398,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <td>N</td>
 </tr>
 <tr class="even">
-<td>broker.prefix(d)</td>
+<td>broker.prefix</td>
 <td>String</td>
 <td>Broker Prefix</td>
 <td></td>
@@ -407,7 +407,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <td>N</td>
 </tr>
 <tr class="odd">
-<td>broker.suffix(d)</td>
+<td>broker.suffix</td>
 <td>String</td>
 <td>Broker Suffix</td>
 <td></td>
@@ -533,7 +533,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <td>N</td>
 </tr>
 <tr class="odd">
-<td>enrollment.external_subscriber_id(d)</td>
+<td>enrollment.external_subscriber_id</td>
 <td>String</td>
 <td>Required if PlanChange/Cancel enrollment<br> Same as subscriber’s external_member_id</td>
 <td></td>
@@ -542,7 +542,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <td>N</td>
 </tr>
 <tr class="even">
-<td>enrollment.cancel_overlapping_eligibility(d)</td>
+<td>enrollment.cancel_overlapping_eligibility</td>
 <td>Boolean</td>
 <td>Term or cancel existing eligibility if it overlaps and prefer new one</td>
 <td>Valid Boolean String</td>
@@ -724,8 +724,8 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <tr class="even">
 <td>enrollee.ethnicity</td>
 <td>Enum</td>
-<td>Enrollee Ethnicity</td>
-<td>Valid enum value (See Ethnicity Code mapping)</td>
+<td>Enrollee Ethnicity (See <a href="./ethnicity_code_mapping.html">Ethnicity Code mapping</a>)</td>
+<td>Valid enum value</td>
 <td>2135-2</td>
 <td></td>
 <td>N</td>
@@ -742,14 +742,14 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <tr class="even">
 <td>enrollee.relationship_to_policy_holder</td>
 <td>Enum</td>
-<td>Specifies enrollee’s relationship to policy holder</td>
-<td>Valid enum value (See Relationship Code Mapping)</td>
+<td>Enrollee’s relationship to policy holder(See <a href="relationship_code_mapping.csv">Relationship Code Mapping</a>)</td>
+<td>Valid enum value</td>
 <td>15</td>
 <td></td>
 <td>Y</td>
 </tr>
 <tr class="odd">
-<td>enrollee.is_requesting_coverage(d)</td>
+<td>enrollee.is_requesting_coverage</td>
 <td>Boolean</td>
 <td>Specifies if enrollee is requesting coverage</td>
 <td>Valid Boolen String</td>
@@ -888,9 +888,9 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <td>String</td>
 <td><a href="./supported_additional_maintenance_reasons.html">Additional maintenance reason code</a> for the policy status change.</td>
 <td></td>
-<td><a href="./supported_additional_maintenance_reasons.html">e.g.&nbsp;LEAVE_PLATFORM</a></td>
+<td>e.g.&nbsp;LEAVE_PLATFORM</td>
 <td></td>
-<td></td>
+<td>N</td>
 </tr>
 </tbody>
 </table>
