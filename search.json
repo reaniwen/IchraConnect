@@ -1,77 +1,27 @@
 [
   {
-    "objectID": "ethnicity_code_mapping.html",
-    "href": "ethnicity_code_mapping.html",
-    "title": "Ethnicity Code Mapping",
+    "objectID": "language_mapping.html",
+    "href": "language_mapping.html",
+    "title": "Language Mapping",
     "section": "",
-    "text": "CDC Value\nDescription\n\n\n\n\n2135-2\nHISPANIC_LATINO_OR_SPANISH_ORIGIN\n\n\n1002-5\nAMERICAN_INDIAN_OR_ALASKA_NATIVE\n\n\n2029-7\nASIAN_INDIAN\n\n\n2056-0\nBLACK_OR_AFRICAN_AMERICAN\n\n\n2034-7\nCHINESE\n\n\n2036-2\nFILIPINO\n\n\n2086-7\nGUAMANIAN_OR_CHAMORRO\n\n\n2039-6\nJAPANESE\n\n\n2040-4\nKOREAN\n\n\n2079-2\nNATIVE_HAWAIIAN\n\n\n2080-0\nSAMOAN\n\n\n2047-9\nVIETNAMESE\n\n\n2106-3\nWHITE\n\n\n2028-9\nASIAN_RACE_NOT_LISTED\n\n\n2500-7\nPACIFIC_ISLANDER_RACE_NOT_LISTED\n\n\n2131-1\nNOT_LISTED\n\n\n\nNULL",
+    "text": "ISO 639 Value\nDescription\n\n\n\n\neng\nEnglish\n\n\nspa\nSpanish\n\n\nara\nArabic\n\n\nchi\nchinese\n\n\nfre\nFrench\n\n\ncpf\nFrench Creole\n\n\ndeu\nGerman\n\n\nguj\nGujarati\n\n\nhin\nHindi\n\n\nkor\nKorean\n\n\npol\nPolish\n\n\npor\nPortuguese\n\n\nrus\nRussian\n\n\ntgl\nTagalog\n\n\nurd\nUrdu\n\n\nvie\nVietnamese\n\n\neng\nOther",
     "crumbs": [
       "Oscar",
       "**CSV**",
       "**Other Specs**",
-      "Ethnicity Code Mapping"
+      "Language Mapping"
     ]
   },
   {
-    "objectID": "csv_implementation_guide.html",
-    "href": "csv_implementation_guide.html",
-    "title": "CSV Implementation Guide",
+    "objectID": "outbound_enrollment_spec.html",
+    "href": "outbound_enrollment_spec.html",
+    "title": "Outbound Enrollment Spec",
     "section": "",
-    "text": "ICHRA Connect also supports a CSV file-based data integrations in addition to the EDI file-based data integration.",
+    "text": "Field Name\nData Type\nDescription\nFormat\nExample\nRequired\n\n\n\n\nenrollment.external_contract_id\nstr\nThe policy ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollment.application_id\nstr\nThe application ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollment.total_premium\nstr\nThe total monthly premium for the contract\nValid decimal value\n999.99\nY\n\n\nenrollee.issuer_id\nstr\nThe member ID issued by issuer\nOSC#########-0#\nOSC123456789-01\nY\n\n\nenrollee.external_member_id\nstr\nThe member ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollee.first_name\nstr\nMember's first name\nFIRST\nJOE\nY\n\n\nenrollee.last_name\nstr\nMember's last name\nLAST\nDOE\nY\n\n\nenrollee.dob\nstr\nMember's date of birth\nYYYY-MM-DD\n1990-01-01\nY\n\n\nenrollee.email\nstr\nMember's email address\nValid Email Format\njoe.doe@gmail.com\nY\n\n\nenrollee.coverage_start_date\ndate\nMember's policy coverage start date\nYYYY-MM-DD\n2024-01-01\nY\n\n\nenrollee.coverage_end_date\ndate\nMember's policy coverage end date\nYYYY-MM-DD\n2024-11-01\nN\n\n\nstatus\nenum\nThe current status of member.\nAvailable statuses:\nEFFECTUATED\nCANCELLED\nTERMINATED\nREINSTATED\nSTATUS\nTERMINATED\nY\n\n\nadditional_maintenance_reason\nstr\nReason for change to eligibility status\nREASON\nNOT_PAID\nN\n\n\noscar_internal_uuid\nstr\nUUID for Oscar internal use only.\n\n4a94a4f321484b71a2e2e7bafd2e4273\nN",
     "crumbs": [
       "Oscar",
       "**CSV**",
-      "CSV Implementation Guide"
-    ]
-  },
-  {
-    "objectID": "csv_implementation_guide.html#integration-file-summary",
-    "href": "csv_implementation_guide.html#integration-file-summary",
-    "title": "CSV Implementation Guide",
-    "section": "Integration Summary",
-    "text": "Integration Summary\nThe integration between a carrier and the administrator includes four CSV data files. All file directions are in relation to carrier:\n\nInbound Enrollment File: Combined Payment & Enrollment\nOutbound Ack File: Enrollment file parsing acknowledgment\nOutbound Enrollment File: Enrollment confirmation\nOutbound Reconciliation: Billing & Eligibility reconciliation",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "CSV Implementation Guide"
-    ]
-  },
-  {
-    "objectID": "csv_implementation_guide.html#combined-enrollment-payment-spec",
-    "href": "csv_implementation_guide.html#combined-enrollment-payment-spec",
-    "title": "CSV Implementation Guide",
-    "section": "Combined Enrollment & Payment Spec",
-    "text": "Combined Enrollment & Payment Spec\nThe ICHRA Platform administrator sends the carrier member enrollment information and payment information in a single combined enrollment & payment CSV file (Inbound Enrollment File). Carrier ingests and enrolls members from this file as they would with a standard enrollment integration.\nPayment information sent in this file includes one Automated Clearing House (ACH) account number per member (payment instrument). We do not accept credit card or debit card numbers as payment instruments.\nAt the time of enrollment, carrier enables Autopay for each enrolled member, withdraws members’ initial binder payments, and effectuates them. Members must affirmatively confirm that the employer will be making payments on their behalf as part of the administrator enrollment flow.\nAfter autopay is enabled, carrier will automatically draft:\n\nBinder payments: before state regulatory deadlines, which may be as early as the enrollment date.\nFull outstanding balance: members may be drafted one or more times per month to ensure balance is paid by the premium due date. Exact auto-draft dates will be selected by carrier and the administrator.\n\n\nICHRA Group / Employer Information\nAdministrator will pass Employer Name and Employer TIN on the inbound enrollment files.\n\n\nICHRA Administrator Disenrollments (“Soft terms”)\nIf an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier’s ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.\nTo let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE_PLATFORM on an inbound enrollment transaction.\n\n\nRefunds\nEligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.\n\n\nReconciliation\nWe use a weekly reconciliation file to ensure eligibility and billing data is aligned between carrier and the administrator in order to avoid disruptions to member coverage or experiences; for example, a mid-month increase to members’ premiums that could result in declined transactions at time of auto-pay.\nThe reconciliation file is a full change file that contains a snapshot of all plan year YTD membership, including cancelled and termed members, plus a 3 month prior-year lookback.\nEach enrolled member will have one record per month enrolled with the corresponding monthly premium amount for that month.\n\n\n\nFile Details\n\nInbound Enrollment File\n\nDirection: Carrier inbound/administrator outbound\nFile type: CSV\nFile spec: Inbound Enrollment Spec\nCadence: Daily\nNaming convention: FROM_ADMIN_NAME.EMT.YYYYMMDDThhmmss.P.csv\nDelta file or full file: Delta\nFile transfer type: SFTP\nSample file: here\n\n\n\nOutbound Enrollment Ack File\n\nDirection: Carrier outbound/administrator inbound\nFile type: CSV\nFile spec: Outbound Enrollment Ack File Spec\nCadence: Daily\nNaming convention: TO_ADMIN_NAME.ACK.YYYYMMDDThhmmss.P.csv\nSample file: here\n\n\n\nOutbound Enrollment File\n\nFile type: CSV\nFile spec: Outbound Enrollment File\nCadence: Daily\nNaming convention: FROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv\nDelta file or full file: Delta\nSample file: here\n\n\n\nOutbound Reconciliation File\n\nFile type: CSV\nFile spec: Outbound Reconciliation File\nCadence: Weekly\nFull or Delta: Full snapshot of plan year, with 3 month look back to previous year\nNaming Convention: FROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv\nSample file: here",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "CSV Implementation Guide"
-    ]
-  },
-  {
-    "objectID": "relationship_code_mapping.html",
-    "href": "relationship_code_mapping.html",
-    "title": "Relationship Code Mapping",
-    "section": "",
-    "text": "ASC X12 Value\nDescription\n\n\n\n\n01\nSpouse\n\n\n03\nParent\n\n\n04\nGrandparent\n\n\n05\nGrandchild\n\n\n06\nAunt/Uncle\n\n\n07\nNephew/Niece\n\n\n08\nFirst Cousin\n\n\n09\nAdopted Child\n\n\n10\nFoster Child\n\n\n11\nDaughter-in-law/Son-in-law\n\n\n12\nBrother-in-law/Sister-in-law\n\n\n13\nMother-in-law/Father-in-law\n\n\n14\nSibling\n\n\n15\nWard\n\n\n16\nStep-parent\n\n\n17\nStepson/Stepdaughter\n\n\n18\nSelf\n\n\n19\nSon/Daughter\n\n\n19\nChild of Domestic Partner\n\n\n23\nSponsored Dependent\n\n\n24\nDependent of a Minor\nDependent\n\n\n25\nFormer Spouse\n\n\n26\nGuardian\n\n\n31\nCourt-Appointed Guardian\n\n\n38\nCollateral Dependent\n\n\n53\nDomestic Partner\n\n\n60\nAnnuitant\n\n\nD2\nTrustee\n\n\nG8\nUnrelated\n\n\nG8\nParent's Domestic Partner\n\n\nG8\nTax Filer\n\n\nG8\nTax Dependent\n\n\nG8\nOther\n\n\nG9\nOther Relative",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "**Other Specs**",
-      "Relationship Code Mapping"
-    ]
-  },
-  {
-    "objectID": "file_specifications.html",
-    "href": "file_specifications.html",
-    "title": "File Specifications",
-    "section": "",
-    "text": "Format\nCSV\n\n\nMax File Size\n10000 rows\n\n\nInbound File Name\nFROM_VENDOR_NAME.EMT.YYYYMMDDThhmmss.P.csv\n\n\nAck File Name\nTO_VENDOR_NAME.ACK.YYYYMMDDThhmmss.P.csv\n\n\nOutbound File Name\nFROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv\n\n\nRecon File Name\nFROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv\n\n\nDelivery Location\nTBD\n\n\nDelivery Schedule\nTBD\n\n\nNotes\nPlease include header as the first line",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "**Other Specs**",
-      "File Specifications"
+      "Outbound Enrollment Spec"
     ]
   },
   {
@@ -88,69 +38,6 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to ICHRA Connect",
-    "section": "",
-    "text": "ICHRA at Oscar\nAt Oscar, our mission is to make a healthier life accessible and affordable for all. We believe that a larger individual market is the best solution for Americans and view ICHRA (Individual Coverage Health Reimbursement Arrangement) as the future of health benefits. Just like the 401k revolutionized retirement planning, ICHRA is poised to transform health benefits by putting the individual in control, while also giving employers reduced and predictable healthcare costs. Demand and awareness are growing, and Oscar is paving the way for the future of ICHRA.\n\n\nWhy ICHRA?\nICHRA is a great option for both employers and employees, providing:\n\nFlexibility: Employers can tailor contributions to different classes of employees, providing a customizable approach to health benefits.\nAffordability: Employers have predictable costs by setting defined contribution amounts, avoiding the unpredictability of traditional group health insurance premiums.\nChoice: Employees can choose individual health plans that best meet their schedules, locations, and health needs, enhancing satisfaction and coverage suitability.\nPortability: Employees can keep their plan design, mid-year accumulations towards deductibles, and provider network, if and when they leave their employer.\n\n\n\n\nWhat is ICHRA Connect?\nICHRA Connect is an open source, universal, company-agnostic integration specification designed to reduce friction, encourage faster growth of the ICHRA market, and allow ICHRA administrators to integrate seamlessly with carriers. Oscar’s goal is to prove the viability of administrator-to-carrier interoperability and set a standard for a functioning ICHRA marketplace.\nICHRA Connect will streamline shopping, enrollment, billing, and other operational workflows to offer an ICHRA experience that rivals or surpasses traditional group plans. ICHRA Connect will standardize data reconciliation and eligibility updates, bringing ICHRA on par with group and on-exchange ACA experiences. Additionally, Oscar intends to establish shared data integration standards to enhance collaboration among ICHRA stakeholders and foster a more efficient market.\n\n\nOur Singular Focus\nWith ICHRA Connect, Oscar aims to create a shared technical infrastructure that enables carriers and administrators to work together to scale the ICHRA market.\n\n\nHow We’re Doing It\nOscar is developing an open integration specification to streamline ICHRA workflows, including:\n\nShopping & Enrollment\n\nEligibility\n\nBilling & Payment\n\nOther operational workflows necessary to offer an ICHRA experience that is on par or better than the group plan experience\n\nOscar understands that the landscape of health benefits, especially ICHRA, is constantly evolving. To stay ahead of these changes:\n\nOscar is developing specifications in collaboration with ICHRA administrators and other carriers through working groups.\nOscar’s standards will explicitly ensure that member data is easily reconcilable and that member eligibility status is as accurate as possible between vendors and carriers.\n\nOscar’s integration standards will continuously evolve to meet new challenges and opportunities.\n\nOscar plans to develop a RESTful API standard that will further streamline integrations, enhance interoperability, and provide a more seamless experience for all stakeholders involved in the ICHRA ecosystem.\n\n\n\nOpen Source\nThe ICHRA Connect integration specification is open source and licensed under a commercially permissive Apache 2.0 License. We welcome you to use the ICHRA Connect specification to power your data integration. You can also contribute bugs, feature, and improvements by joining our working group or filing an Issue in our Github repo. The source code for this website and the specifications can be found at github.com/oscarhealth/IchraConnect\n\n\nHow to Integrate with Oscar\nIf you’re interested in setting up an ICHRA integration with Oscar, please reach out to ichra@hioscar.com for more information or see our high-level overview and technical specifications for ICHRA integrations.\n\n\n\nAdopt the ICHRA Connect Specification\n\n\nIf you are a carrier interested in modifying or adopting the ICHRA Connect integration specifications, please reach out to join our working groups.\n\nContact Us",
-    "crumbs": [
-      "Oscar",
-      "**Getting Started**",
-      "Welcome to ICHRA Connect"
-    ]
-  },
-  {
-    "objectID": "inbound_enrollment_spec.html",
-    "href": "inbound_enrollment_spec.html",
-    "title": "Inbound Enrollment Spec",
-    "section": "",
-    "text": "Field Name\nDataType\nDescription\nFormat\nExample\nLength\nRequired\n\n\n\n\nbroker.first_name\nString\nBroker First Name\n\n\n50\nN\n\n\nbroker.middle_name\nString\nBroker Middle Name\n\n\n50\nN\n\n\nbroker.last_name\nString\nBroker Last Name\n\n\n50\nN\n\n\nbroker.prefix(d)\nString\nBroker Prefix\n\n\n4\nN\n\n\nbroker.suffix(d)\nString\nBroker Suffix\n\n\n4\nN\n\n\nbroker.phone_number\nString\nBroker’s phone number\nValid 10-digit Phone Number (No delimiters)\n5109027836\n15\nN\n\n\nbroker.email\nString\nBroker’s email address\nValid Email Format (No delimiters)\njohn@test.com\n50\nN\n\n\nbroker.npn\nString\nBroker’s National Producer Number - required for enrollee attribution\nValid 9-digit NPN (No delimiters)\n123530000\n25\nN\n\n\nplan.year\nString\nPlan Year\nValid plan year\n2025\n4\nY\n\n\nplan.hios_id\nString\nHIOS id\n14 digit HIOS id code including variant\n50221NJ0040001-02\n15\nY\n\n\nplan.monthly_premium\nString\nPlan Monthly Premium\nValid decimal value\n999.99\n20\nY\n\n\npayment.routing_number\nDigit\n\n\n021000021\n\nN\n\n\npayment.account_number\nDigit\n\n\n\n\nN\n\n\npayment.payer_name\nString\nThe name of payer\n\n\n\nN\n\n\npayment.account_type\nEnum\nThe account type of ACH\n\nCHECKING\n\nN\n\n\npayment.is_new_payment_instrument\nBoolean\nTrue if this is new or updated payment instrument\n\n\n\nY\n\n\nenrollment.renewal_type\nEnum (ACTIVE/PASSIVE)\nRenewal Type\nValid enum value (See DataType column)\nINITIATION\n\nN\n\n\nenrollment.external_policy_id\nString\nUnique identifier for the policy (coming from the partner)(important)\n\n\n\nN\n\n\nenrollment.external_subscriber_id(d)\nString\nRequired if PlanChange/Cancel enrollment Same as subscriber’s external_member_id\n\n\n\nN\n\n\nenrollment.cancel_overlapping_eligibility(d)\nBoolean\nTerm or cancel existing eligibility if it overlaps and prefer new one\nValid Boolean String\nFalse\n\nN\n\n\nenrollment.date_signed\nString\nTime when broker or consumer submitted their enrollment\nISO Format\n2011-11-04 00:05:23.283+00:00\n\nY\n\n\nenrollment.qualifying_event\nEnum\nEnrollment Qualifying Event\n\n\n\nN\n\n\nenrollment.qualifying_event_date\nString\nEnrollment Qualifying Event Date\nYYYY-MM-DD\n1996-01-01\n\nN\n\n\nenrollment.application_id\nString\nThe ID of the application\n\n\n\nN\n\n\nemployer.employer_name\nString\nThe name of employer\n\n\n\n\n\n\nemployer.employer_tin\nString\nThe tax number of employer\n\n\n\n\n\n\nenrollee.external_member_id\nString\nmember ID defined by vendor\n\n\n\nY\n\n\nenrollee.issuer_member_id\nString\nmember ID defined by issuer\n\n\n\n\n\n\nenrollee.first_name\nString\nEnrollee First Name\n\n\n\nY\n\n\nenrollee.middle_name\nString\nEnrollee Middle Name\n\n\n\nN\n\n\nenrollee.last_name\nString\nEnrollee Last Name\n\n\n\nY\n\n\nenrollee.prefix\nString\nEnrollee Prefix\n\n\n\nN\n\n\nenrollee.suffix\nString\nEnrollee Suffix\n\n\n\nN\n\n\nenrollee.phone\nString\nEnrollee Phone Number\nValid 10-digit Phone Number (No delimiters)\n5109027836\n\nN\n\n\nenrollee.email\nString\nEnrollee Email\nValid Email Format\njohn@test.com\n\nN\n\n\nenrollee.ssn\nString\nEnrollee Social Security Number\nValid 9-digit SSN (No delimiters)\n123456789\n\nN\n\n\nenrollee.marital_status\nEnum\nEnrollee Marital Status\nValid enum value (See Marital Status Mapping)\nM\n\nN\n\n\nenrollee.sex\nEnum (MALE/FEMALE)\nEnrollee Sex\nValid enum value (See DataType column)\nFEMALE\n\nY\n\n\nenrollee.date_of_birth\nString\nEnrollee Date of Birth\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.ethnicity\nEnum\nEnrollee Ethnicity\nValid enum value (See Ethnicity Code mapping)\n2135-2\n\nN\n\n\nenrollee.is_tobacco_user\nBoolean\nSpecifies is enrollee is a tobacco user\nValid Boolen String\nTRUE\n\nY\n\n\nenrollee.relationship_to_policy_holder\nEnum\nSpecifies enrollee’s relationship to policy holder\nValid enum value (See Relationship Code Mapping)\n15\n\nY\n\n\nenrollee.is_requesting_coverage(d)\nBoolean\nSpecifies if enrollee is requesting coverage\nValid Boolen String\nTRUE\n\nY\n\n\nenrollee.coverage_start_date\nString\nCoverage Start Date for enrollee\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.coverage_end_date\nString\nCoverage End Date for enrollee\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.language_preference\nEnum\nEnrollee Language Preference\nValid enum value (See Language Code mapping)\nspa\n\nN\n\n\nenrollee.mailing_address.address_line_1\nString\nEnrollee Mailing Address Line 1\n\n\n\nN\n\n\nenrollee.mailing_address.address_line_2\nString\nEnrollee Mailing Address Line 2\n\n\n\nN\n\n\nenrollee.mailing_address.city\nString\nEnrollee Mailing Address City\n\n\n\nN\n\n\nenrollee.mailing_address.state\nString\nEnrollee Mailing Address State\n\n\n\nN\n\n\nenrollee.mailing_address.zipcode\nString\nEnrollee Mailing Address Zipcode\n\n\n\nN\n\n\nenrollee.residential_address.address_line_1\nString\nEnrollee Residential Address Line 1\n\n\n\nY\n\n\nenrollee.residential_address.address_line_2\nString\nEnrollee Residential Address Line 2\n\n\n\nN\n\n\nenrollee.residential_address.city\nString\nEnrollee Residential Address City\n\n\n\nY\n\n\nenrollee.residential_address.state\nString\nEnrollee Residential Address State\n\n\n\nY\n\n\nenrollee.residential_address.zipcode\nString\nEnrollee Residential Address Zipcode\n\n\n\nY\n\n\nenrollee.change_type\nEnum\nType of modification made to the enrollee’s policy status\n\nCHANGE, ADDITION, CANCELLATION, TERMINATION, REINSTATEMENT\n\nY\n\n\nenrollee.additional_maintenance_reason\nString\nAdditional maintenance reason code for the policy status change.\n\ne.g. LEAVE_PLATFORM",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "Inbound Enrollment Spec"
-    ]
-  },
-  {
-    "objectID": "supported_qle_codes.html",
-    "href": "supported_qle_codes.html",
-    "title": "Supported QLE Codes",
-    "section": "",
-    "text": "Supported QLE Codes\nDescription\n\n\n\n\nACTIVE_MILITARY_DUTY\nI experienced a loss of coverage due to returning from active military duty\n\n\nADOPTION\nMy family adopted a child\n\n\n\nBECOMING_LAWFULLY_PRESENT\nI have become lawfully present\n\n\nBIRTH\nMy family had a baby\n\n\nC1\nMy previous health plan substantially violated a material provision of its contract and I can demonstrate it\n\n\n\nCOFR\nEffective Jan 16th, I have been impacted by the Boulder fires or the COVID-19 Omicron variant. I would like to utilize CO's special enrollment period to enroll in coverage.\n\n\nCOURT_ORDERED_CHILD_COVERAGE\nI was mandated by a court order to provide health insurance for a child\n\n\nCOVID_19\nCOVID-19: COVID-19 Public Health Emergency SEP.\n\n\nDEATH_OF_CHILD\nMy child passed away\n\n\nDOMESTIC_VIOLENCE\nI was a victim of domestic abuse or spousal abandonment\n\n\n\nE1\nMy enrollment or non-enrollment (or the enrollment of my spouse or child dependent) in another plan was unintentional, inadvertent or erroneous and was the result of the error, misrepresentation, or inaction of an officer, employee, or agent of a health plan\n\n\nEMPLOYER_INSURANCE_NO_LONGER_AFFORDABLE\nInsurance through my employer is no longer affordable\n\n\nEMPLOYER_INSURANCE_NO_LONGER_MEC\nInsurance through my employer no longer meets the standards of minimum essential coverage\n\n\nEMPLOYER_OPEN_ENROLLMENT\nI opted out of employer coverage during my employer’s open enrollment\n\n\nEX\nMisinformation, misrepresentation, misconduct, or inaction of someone working in an official capacity to help you enroll kept you from enrolling in a plan, enrolling in the right plan, or getting the premium tax credit or cost-sharing reduction you were eligible for\n\n\nFOSTER_CHILD\nI gained a dependent through foster care\n\n\nGAIN_A_DEPENDENT_THROUGH_COURT_ORDER\nI gained a dependent because of a court order\n\n\nGAIN_A_DEPENDENT_THROUGH_MARRIAGE\nI gained a dependent through marriage or domestic partnership\n\n\nGAIN_STATUS_AS_INDIAN\nI have gained status as an American Indian\n\n\nHRAS\nI (or my spouse or child dependent) have been offered premium assistance by an employer in the form of an Individual Coverage Health Reimbursement Arrangement (ICHRA) or Qualified Small Employer HRA (QSEHRA).\n\n\nL1\nMy employer stopped offering health insurance\n\n\nL2\nMy health insurance coverage ended because I, or a family member, left a job that was providing health insurance\n\n\nL3\nMy plan is being discontinued by my issuer\n\n\nL5\nMy contract holder aged out of my current plan\n\n\nL6\nI aged out of my current plan\n\n\nL7\nMy COBRA coverage was terminated\n\n\nM1\nI moved into oscar's service area from within the US.\n\n\nM2\nI moved into oscar's service area from outside the US.\n\n\nNATURAL_DISASTER\nI live or lived in an area impacted by a natural disaster and/or state of emergency\n\n\nNO_LONGER_ELIGIBLE_FOR_MEDICAID\nI became ineligible for Medicaid or Child Health Plus\n\n\nNO_LONGER_ELIGIBLE_FOR_MEDI_CAL\nI became ineligible for Medi-Cal\n\n\nPARTNER_CHANGES_EMPLOYMENT\nMy spouse or partner changed employment that resulted in a loss of eligibility under their employer’s plan\n\n\nPARTNER_DROPS_COVERAGE\nMy spouse or partner dropped coverage from their employer’s health plan during an open enrollment period that differs from oscar's open enrollment.\n\n\nPREGNANCY\nI became pregnant and previously did not have health insurance\n\n\nPROV_NO_LONGER_COVERED\nI was receiving services from a contracting provider under another health benefit plan and that provider ceased to participate in that plan\n\n\nRELEASE_FROM_INCARCERATION\nI was released from incarceration\n\n\nS1\nI (or my spouse or child dependent (for Child Health Plus)) am newly eligible or ineligible for a government tax subsidy or I (or my spouse or child dependent) have had a change in eligibility for cost-sharing reductions\n\n\nSEPARATION\nI was divorced or had an annulment, legal separation or end of domestic partnership\n\n\nSPOUSE_DEATH\nMy spouse died\n\n\nSTUDENT_HEALTH_COVERAGE\nI experienced a loss of coverage because I became ineligible for student health coverage\n\n\nPERM_MOVE\n\n\n\n\nPREGNANCY_COVERAGE\n\n\n\nMEDICARE_ENTITLEMENT\n\n\n\nLOSS_OF_COVERAGE\n\n\n\nGAIN_DEPENDENT\n\n\n\nDEATH\nDeath in the family",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "**Other Specs**",
-      "Supported QLE Codes"
-    ]
-  },
-  {
-    "objectID": "language_mapping.html",
-    "href": "language_mapping.html",
-    "title": "Language Mapping",
-    "section": "",
-    "text": "ISO 639 Value\nDescription\n\n\n\n\neng\nEnglish\n\n\nspa\nSpanish\n\n\nara\nArabic\n\n\nchi\nchinese\n\n\nfre\nFrench\n\n\ncpf\nFrench Creole\n\n\ndeu\nGerman\n\n\nguj\nGujarati\n\n\nhin\nHindi\n\n\nkor\nKorean\n\n\npol\nPolish\n\n\npor\nPortuguese\n\n\nrus\nRussian\n\n\ntgl\nTagalog\n\n\nurd\nUrdu\n\n\nvie\nVietnamese\n\n\neng\nOther",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "**Other Specs**",
-      "Language Mapping"
-    ]
-  },
-  {
-    "objectID": "marital_status_mapping.html",
-    "href": "marital_status_mapping.html",
-    "title": "Marital Status Mapping",
-    "section": "",
-    "text": "ASC X12 Value\nDescription\n\n\n\n\nB\nREGISTERED_DOMESTIC_PARTNER\n\n\nD\nDIVORCED\n\n\nI\nSINGLE\n\n\nM\nMARRIED\n\n\nR\nUNKNOWN_MARITAL_STATUS\n\n\nS\nLEGALLY_SEPARATED\n\n\nU\nUNMARRIED\n\n\nW\nWIDOWED\n\n\nX\nLEGALLY_SEPARATED",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "**Other Specs**",
-      "Marital Status Mapping"
-    ]
-  },
-  {
     "objectID": "rest_api.html",
     "href": "rest_api.html",
     "title": "REST API: Coming Soon",
@@ -159,18 +46,6 @@
     "crumbs": [
       "Oscar",
       "**Coming Soon: REST API**"
-    ]
-  },
-  {
-    "objectID": "outbound_reconcilliation_spec.html",
-    "href": "outbound_reconcilliation_spec.html",
-    "title": "Outbound Reconciliation Spec",
-    "section": "",
-    "text": "Field Name\nDataType\nDescription\nFormat\nExample\nLength\nRequired\n\n\n\n\noscar_member_id\nstring\n14-character Oscar ID\n14-character Oscar ID\nOSC12345678-01\n14\ny\n\n\nplatform_member_id\nstring\nPlatform-specified member ID\nvendor-specific\nvendor-specific\n\nn\n\n\nname_first\nstring\nMember's first name\nFirst\nJoe\n\ny\n\n\nname_last\nstring\nMembr's last name\nLast\nSchmoe\n\ny\n\n\nssn\nstring\n9-character member tax id\n9-character member tax id\n123456789\n9\nn\n\n\ncontract_id\nstring\nOscar internal contract_id UUID\nUUID\n\n\ny\n\n\ncoverage_start\nstring\nFirst day of coverage\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\ncoverage_end\nstring\nLast day of coverage\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\nexchange_status\nenum (on/off)\nIndicates if a member is enrolled on-exchange or off-exchange\nON, OFF\nOFF\n\ny\n\n\nplan_state\nstring\nUS state in which member is enrolled.\n2 digit state abbv.\nNY\n2\ny\n\n\neffectuated\nbool\nBoolean indicating if a member has paid their binder payment and is therefore effectuated (TRUE) or uneffectuated (FALSE).\nTRUE, FALSE\nTRUE\n\ny\n\n\neffectuation_date\nstring\nDate eligibility status became \"EFFECTUATED\"\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\npolicy_status\nenum\nIndicates the eligibility state of the member's health insurance policy.\nEFFECTUATED, UNEFFECTUATED, PRECOVERAGE_EFFECTUATED, GRACE_PERIOD, TERMINATED, CANCELLED, DELINQUENCY, POST_COVERAGE\nEFFECTUATED\n\ny\n\n\npolicy_status_reason\nstring\nStatus reason\nSee Supported Policy Status Reasons\nPaid\n\ny\n\n\nmonth\nstring\nThe month that premium and eligibility status applies to\nYYYY-MM-01\n2024-01-01\n10\ny\n\n\ntotal_premium\nstring\nTotal monthly premium for policy (member + aptc)\nValid decimal value\n999.99\n\ny\n\n\nmember_responsible\nstring\nMember's monthly premium owed\nValid decimal value\n999.99\n\ny\n\n\naptc\nstring\nAptc applied to policy, if applicable\nValid decimal value\n999.99\n\ny\n\n\nbalance\nstring\nMember's outstanding balance at time of file generation, including future 'UNPAID' charges\nValid decimal value\n999.99\n\ny\n\n\noldest_unpaid_due_date\nstring\nOldest unpaid due date\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\npast_due_balance\nstring\nSum of unpaid charges with a due date in the past\nValid decimal value\n999.99\n\ny\n\n\nemail\nstring\nMember's primary email\nemail@email.com\njoe.schmoe@gmail.com\n\nn\n\n\naddress\nstring\nMember's residential address\n\n123 Main St, Apt 3\n\ny\n\n\ncity\nstring\nMember's residential city\n\nAnytown\n\ny\n\n\nstate\nstring\nMember's residential state, 2 letter code\nXX\nNY\n2\ny\n\n\nzip\nstring\nMember's residential 5-digit zip code\n00000\n12345\n5\ny\n\n\npolicy_relation\nenum\nMember's policy relation\nSubscriber, Spouse, Child, Dependent, Unknown\nSubscriber\n\ny",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "Outbound Reconciliation Spec"
     ]
   },
   {
@@ -246,6 +121,162 @@
     ]
   },
   {
+    "objectID": "supported_qle_codes.html",
+    "href": "supported_qle_codes.html",
+    "title": "Supported QLE Codes",
+    "section": "",
+    "text": "Supported QLE Codes\nDescription\n\n\n\n\nACTIVE_MILITARY_DUTY\nI experienced a loss of coverage due to returning from active military duty\n\n\nADOPTION\nMy family adopted a child\n\n\n\nBECOMING_LAWFULLY_PRESENT\nI have become lawfully present\n\n\nBIRTH\nMy family had a baby\n\n\nC1\nMy previous health plan substantially violated a material provision of its contract and I can demonstrate it\n\n\n\nCOFR\nEffective Jan 16th, I have been impacted by the Boulder fires or the COVID-19 Omicron variant. I would like to utilize CO's special enrollment period to enroll in coverage.\n\n\nCOURT_ORDERED_CHILD_COVERAGE\nI was mandated by a court order to provide health insurance for a child\n\n\nCOVID_19\nCOVID-19: COVID-19 Public Health Emergency SEP.\n\n\nDEATH_OF_CHILD\nMy child passed away\n\n\nDOMESTIC_VIOLENCE\nI was a victim of domestic abuse or spousal abandonment\n\n\n\nE1\nMy enrollment or non-enrollment (or the enrollment of my spouse or child dependent) in another plan was unintentional, inadvertent or erroneous and was the result of the error, misrepresentation, or inaction of an officer, employee, or agent of a health plan\n\n\nEMPLOYER_INSURANCE_NO_LONGER_AFFORDABLE\nInsurance through my employer is no longer affordable\n\n\nEMPLOYER_INSURANCE_NO_LONGER_MEC\nInsurance through my employer no longer meets the standards of minimum essential coverage\n\n\nEMPLOYER_OPEN_ENROLLMENT\nI opted out of employer coverage during my employer’s open enrollment\n\n\nEX\nMisinformation, misrepresentation, misconduct, or inaction of someone working in an official capacity to help you enroll kept you from enrolling in a plan, enrolling in the right plan, or getting the premium tax credit or cost-sharing reduction you were eligible for\n\n\nFOSTER_CHILD\nI gained a dependent through foster care\n\n\nGAIN_A_DEPENDENT_THROUGH_COURT_ORDER\nI gained a dependent because of a court order\n\n\nGAIN_A_DEPENDENT_THROUGH_MARRIAGE\nI gained a dependent through marriage or domestic partnership\n\n\nGAIN_STATUS_AS_INDIAN\nI have gained status as an American Indian\n\n\nHRAS\nI (or my spouse or child dependent) have been offered premium assistance by an employer in the form of an Individual Coverage Health Reimbursement Arrangement (ICHRA) or Qualified Small Employer HRA (QSEHRA).\n\n\nL1\nMy employer stopped offering health insurance\n\n\nL2\nMy health insurance coverage ended because I, or a family member, left a job that was providing health insurance\n\n\nL3\nMy plan is being discontinued by my issuer\n\n\nL5\nMy contract holder aged out of my current plan\n\n\nL6\nI aged out of my current plan\n\n\nL7\nMy COBRA coverage was terminated\n\n\nM1\nI moved into oscar's service area from within the US.\n\n\nM2\nI moved into oscar's service area from outside the US.\n\n\nNATURAL_DISASTER\nI live or lived in an area impacted by a natural disaster and/or state of emergency\n\n\nNO_LONGER_ELIGIBLE_FOR_MEDICAID\nI became ineligible for Medicaid or Child Health Plus\n\n\nNO_LONGER_ELIGIBLE_FOR_MEDI_CAL\nI became ineligible for Medi-Cal\n\n\nPARTNER_CHANGES_EMPLOYMENT\nMy spouse or partner changed employment that resulted in a loss of eligibility under their employer’s plan\n\n\nPARTNER_DROPS_COVERAGE\nMy spouse or partner dropped coverage from their employer’s health plan during an open enrollment period that differs from oscar's open enrollment.\n\n\nPREGNANCY\nI became pregnant and previously did not have health insurance\n\n\nPROV_NO_LONGER_COVERED\nI was receiving services from a contracting provider under another health benefit plan and that provider ceased to participate in that plan\n\n\nRELEASE_FROM_INCARCERATION\nI was released from incarceration\n\n\nS1\nI (or my spouse or child dependent (for Child Health Plus)) am newly eligible or ineligible for a government tax subsidy or I (or my spouse or child dependent) have had a change in eligibility for cost-sharing reductions\n\n\nSEPARATION\nI was divorced or had an annulment, legal separation or end of domestic partnership\n\n\nSPOUSE_DEATH\nMy spouse died\n\n\nSTUDENT_HEALTH_COVERAGE\nI experienced a loss of coverage because I became ineligible for student health coverage\n\n\nPERM_MOVE\n\n\n\n\nPREGNANCY_COVERAGE\n\n\n\nMEDICARE_ENTITLEMENT\n\n\n\nLOSS_OF_COVERAGE\n\n\n\nGAIN_DEPENDENT\n\n\n\nDEATH\nDeath in the family",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "**Other Specs**",
+      "Supported QLE Codes"
+    ]
+  },
+  {
+    "objectID": "inbound_enrollment_spec.html",
+    "href": "inbound_enrollment_spec.html",
+    "title": "Inbound Enrollment Spec",
+    "section": "",
+    "text": "Field Name\nDataType\nDescription\nFormat\nExample\nLength\nRequired\n\n\n\n\nbroker.first_name\nString\nBroker First Name\n\n\n50\nN\n\n\nbroker.middle_name\nString\nBroker Middle Name\n\n\n50\nN\n\n\nbroker.last_name\nString\nBroker Last Name\n\n\n50\nN\n\n\nbroker.prefix\nString\nBroker Prefix\n\n\n4\nN\n\n\nbroker.suffix\nString\nBroker Suffix\n\n\n4\nN\n\n\nbroker.phone_number\nString\nBroker’s phone number\nValid 10-digit Phone Number (No delimiters)\n5109027836\n15\nN\n\n\nbroker.email\nString\nBroker’s email address\nValid Email Format (No delimiters)\njohn@test.com\n50\nN\n\n\nbroker.npn\nString\nBroker’s National Producer Number - required for enrollee attribution\nValid 9-digit NPN (No delimiters)\n123530000\n25\nN\n\n\nplan.year\nString\nPlan Year\nValid plan year\n2025\n4\nY\n\n\nplan.hios_id\nString\nHIOS id\n14 digit HIOS id code including variant\n50221NJ0040001-02\n15\nY\n\n\nplan.monthly_premium\nString\nPlan Monthly Premium\nValid decimal value\n999.99\n20\nY\n\n\npayment.routing_number\nDigit\n\n\n021000021\n\nN\n\n\npayment.account_number\nDigit\n\n\n\n\nN\n\n\npayment.payer_name\nString\nThe name of payer\n\n\n\nN\n\n\npayment.account_type\nEnum\nThe account type of ACH\n\nCHECKING\n\nN\n\n\npayment.is_new_payment_instrument\nBoolean\nTrue if this is new or updated payment instrument\n\n\n\nY\n\n\nenrollment.renewal_type\nEnum (ACTIVE/PASSIVE)\nRenewal Type\nValid enum value (See DataType column)\nINITIATION\n\nN\n\n\nenrollment.external_policy_id\nString\nUnique identifier for the policy (coming from the partner)(important)\n\n\n\nN\n\n\nenrollment.external_subscriber_id\nString\nRequired if PlanChange/Cancel enrollment Same as subscriber’s external_member_id\n\n\n\nN\n\n\nenrollment.cancel_overlapping_eligibility\nBoolean\nTerm or cancel existing eligibility if it overlaps and prefer new one\nValid Boolean String\nFalse\n\nN\n\n\nenrollment.date_signed\nString\nTime when broker or consumer submitted their enrollment\nISO Format\n2011-11-04 00:05:23.283+00:00\n\nY\n\n\nenrollment.qualifying_event\nEnum\nEnrollment Qualifying Event\n\n\n\nN\n\n\nenrollment.qualifying_event_date\nString\nEnrollment Qualifying Event Date\nYYYY-MM-DD\n1996-01-01\n\nN\n\n\nenrollment.application_id\nString\nThe ID of the application\n\n\n\nN\n\n\nemployer.employer_name\nString\nThe name of employer\n\n\n\n\n\n\nemployer.employer_tin\nString\nThe tax number of employer\n\n\n\n\n\n\nenrollee.external_member_id\nString\nmember ID defined by vendor\n\n\n\nY\n\n\nenrollee.issuer_member_id\nString\nmember ID defined by issuer\n\n\n\n\n\n\nenrollee.first_name\nString\nEnrollee First Name\n\n\n\nY\n\n\nenrollee.middle_name\nString\nEnrollee Middle Name\n\n\n\nN\n\n\nenrollee.last_name\nString\nEnrollee Last Name\n\n\n\nY\n\n\nenrollee.prefix\nString\nEnrollee Prefix\n\n\n\nN\n\n\nenrollee.suffix\nString\nEnrollee Suffix\n\n\n\nN\n\n\nenrollee.phone\nString\nEnrollee Phone Number\nValid 10-digit Phone Number (No delimiters)\n5109027836\n\nN\n\n\nenrollee.email\nString\nEnrollee Email\nValid Email Format\njohn@test.com\n\nN\n\n\nenrollee.ssn\nString\nEnrollee Social Security Number\nValid 9-digit SSN (No delimiters)\n123456789\n\nN\n\n\nenrollee.marital_status\nEnum\nEnrollee Marital Status\nValid enum value (See Marital Status Mapping)\nM\n\nN\n\n\nenrollee.sex\nEnum (MALE/FEMALE)\nEnrollee Sex\nValid enum value (See DataType column)\nFEMALE\n\nY\n\n\nenrollee.date_of_birth\nString\nEnrollee Date of Birth\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.ethnicity\nEnum\nEnrollee Ethnicity (See Ethnicity Code mapping)\nValid enum value\n2135-2\n\nN\n\n\nenrollee.is_tobacco_user\nBoolean\nSpecifies is enrollee is a tobacco user\nValid Boolen String\nTRUE\n\nY\n\n\nenrollee.relationship_to_policy_holder\nEnum\nEnrollee’s relationship to policy holder(See Relationship Code Mapping)\nValid enum value\n15\n\nY\n\n\nenrollee.is_requesting_coverage\nBoolean\nSpecifies if enrollee is requesting coverage\nValid Boolen String\nTRUE\n\nY\n\n\nenrollee.coverage_start_date\nString\nCoverage Start Date for enrollee\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.coverage_end_date\nString\nCoverage End Date for enrollee\nYYYY-MM-DD\n1996-01-01\n\nY\n\n\nenrollee.language_preference\nEnum\nEnrollee Language Preference\nValid enum value (See Language Code mapping)\nspa\n\nN\n\n\nenrollee.mailing_address.address_line_1\nString\nEnrollee Mailing Address Line 1\n\n\n\nN\n\n\nenrollee.mailing_address.address_line_2\nString\nEnrollee Mailing Address Line 2\n\n\n\nN\n\n\nenrollee.mailing_address.city\nString\nEnrollee Mailing Address City\n\n\n\nN\n\n\nenrollee.mailing_address.state\nString\nEnrollee Mailing Address State\n\n\n\nN\n\n\nenrollee.mailing_address.zipcode\nString\nEnrollee Mailing Address Zipcode\n\n\n\nN\n\n\nenrollee.residential_address.address_line_1\nString\nEnrollee Residential Address Line 1\n\n\n\nY\n\n\nenrollee.residential_address.address_line_2\nString\nEnrollee Residential Address Line 2\n\n\n\nN\n\n\nenrollee.residential_address.city\nString\nEnrollee Residential Address City\n\n\n\nY\n\n\nenrollee.residential_address.state\nString\nEnrollee Residential Address State\n\n\n\nY\n\n\nenrollee.residential_address.zipcode\nString\nEnrollee Residential Address Zipcode\n\n\n\nY\n\n\nenrollee.change_type\nEnum\nType of modification made to the enrollee’s policy status\n\nCHANGE, ADDITION, CANCELLATION, TERMINATION, REINSTATEMENT\n\nY\n\n\nenrollee.additional_maintenance_reason\nString\nAdditional maintenance reason code for the policy status change.\n\ne.g. LEAVE_PLATFORM\n\nN",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "Inbound Enrollment Spec"
+    ]
+  },
+  {
+    "objectID": "outbound_reconcilliation_spec.html",
+    "href": "outbound_reconcilliation_spec.html",
+    "title": "Outbound Reconciliation Spec",
+    "section": "",
+    "text": "Field Name\nDataType\nDescription\nFormat\nExample\nLength\nRequired\n\n\n\n\noscar_member_id\nstring\n14-character Oscar ID\n14-character Oscar ID\nOSC12345678-01\n14\ny\n\n\nplatform_member_id\nstring\nPlatform-specified member ID\nvendor-specific\nvendor-specific\n\nn\n\n\nname_first\nstring\nMember's first name\nFirst\nJoe\n\ny\n\n\nname_last\nstring\nMembr's last name\nLast\nSchmoe\n\ny\n\n\nssn\nstring\n9-character member tax id\n9-character member tax id\n123456789\n9\nn\n\n\ncontract_id\nstring\nOscar internal contract_id UUID\nUUID\n\n\ny\n\n\ncoverage_start\nstring\nFirst day of coverage\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\ncoverage_end\nstring\nLast day of coverage\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\nexchange_status\nenum (on/off)\nIndicates if a member is enrolled on-exchange or off-exchange\nON, OFF\nOFF\n\ny\n\n\nplan_state\nstring\nUS state in which member is enrolled.\n2 digit state abbv.\nNY\n2\ny\n\n\neffectuated\nbool\nBoolean indicating if a member has paid their binder payment and is therefore effectuated (TRUE) or uneffectuated (FALSE).\nTRUE, FALSE\nTRUE\n\ny\n\n\neffectuation_date\nstring\nDate eligibility status became \"EFFECTUATED\"\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\npolicy_status\nenum\nIndicates the eligibility state of the member's health insurance policy.\nEFFECTUATED, UNEFFECTUATED, PRECOVERAGE_EFFECTUATED, GRACE_PERIOD, TERMINATED, CANCELLED, DELINQUENCY, POST_COVERAGE\nEFFECTUATED\n\ny\n\n\npolicy_status_reason\nstring\nStatus reason\nSee Supported Policy Status Reasons\nPaid\n\ny\n\n\nmonth\nstring\nThe month that premium and eligibility status applies to\nYYYY-MM-01\n2024-01-01\n10\ny\n\n\ntotal_premium\nstring\nTotal monthly premium for policy (member + aptc)\nValid decimal value\n999.99\n\ny\n\n\nmember_responsible\nstring\nMember's monthly premium owed\nValid decimal value\n999.99\n\ny\n\n\naptc\nstring\nAptc applied to policy, if applicable\nValid decimal value\n999.99\n\ny\n\n\nbalance\nstring\nMember's outstanding balance at time of file generation, including future 'UNPAID' charges\nValid decimal value\n999.99\n\ny\n\n\noldest_unpaid_due_date\nstring\nOldest unpaid due date\nYYYY-MM-DD\n2024-01-01\n10\ny\n\n\npast_due_balance\nstring\nSum of unpaid charges with a due date in the past\nValid decimal value\n999.99\n\ny\n\n\nemail\nstring\nMember's primary email\nemail@email.com\njoe.schmoe@gmail.com\n\nn\n\n\naddress\nstring\nMember's residential address\n\n123 Main St, Apt 3\n\ny\n\n\ncity\nstring\nMember's residential city\n\nAnytown\n\ny\n\n\nstate\nstring\nMember's residential state, 2 letter code\nXX\nNY\n2\ny\n\n\nzip\nstring\nMember's residential 5-digit zip code\n00000\n12345\n5\ny\n\n\npolicy_relation\nenum\nMember's policy relation\nSubscriber, Spouse, Child, Dependent, Unknown\nSubscriber\n\ny",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "Outbound Reconciliation Spec"
+    ]
+  },
+  {
+    "objectID": "ethnicity_code_mapping.html",
+    "href": "ethnicity_code_mapping.html",
+    "title": "Ethnicity Code Mapping",
+    "section": "",
+    "text": "CDC Value\nDescription\n\n\n\n\n2135-2\nHISPANIC_LATINO_OR_SPANISH_ORIGIN\n\n\n1002-5\nAMERICAN_INDIAN_OR_ALASKA_NATIVE\n\n\n2029-7\nASIAN_INDIAN\n\n\n2056-0\nBLACK_OR_AFRICAN_AMERICAN\n\n\n2034-7\nCHINESE\n\n\n2036-2\nFILIPINO\n\n\n2086-7\nGUAMANIAN_OR_CHAMORRO\n\n\n2039-6\nJAPANESE\n\n\n2040-4\nKOREAN\n\n\n2079-2\nNATIVE_HAWAIIAN\n\n\n2080-0\nSAMOAN\n\n\n2047-9\nVIETNAMESE\n\n\n2106-3\nWHITE\n\n\n2028-9\nASIAN_RACE_NOT_LISTED\n\n\n2500-7\nPACIFIC_ISLANDER_RACE_NOT_LISTED\n\n\n2131-1\nNOT_LISTED\n\n\n\nNULL",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "**Other Specs**",
+      "Ethnicity Code Mapping"
+    ]
+  },
+  {
+    "objectID": "csv_implementation_guide.html",
+    "href": "csv_implementation_guide.html",
+    "title": "CSV Implementation Guide",
+    "section": "",
+    "text": "ICHRA Connect also supports a CSV file-based data integrations in addition to the EDI file-based data integration.",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "CSV Implementation Guide"
+    ]
+  },
+  {
+    "objectID": "csv_implementation_guide.html#integration-file-summary",
+    "href": "csv_implementation_guide.html#integration-file-summary",
+    "title": "CSV Implementation Guide",
+    "section": "Integration Summary",
+    "text": "Integration Summary\nThe integration between a carrier and the administrator includes four CSV data files. All file directions are in relation to carrier:\n\nInbound Enrollment File: Combined Payment & Enrollment\nOutbound Ack File: Enrollment file parsing acknowledgment\nOutbound Enrollment File: Enrollment confirmation\nOutbound Reconciliation: Billing & Eligibility reconciliation",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "CSV Implementation Guide"
+    ]
+  },
+  {
+    "objectID": "csv_implementation_guide.html#combined-enrollment-payment-spec",
+    "href": "csv_implementation_guide.html#combined-enrollment-payment-spec",
+    "title": "CSV Implementation Guide",
+    "section": "Combined Enrollment & Payment Spec",
+    "text": "Combined Enrollment & Payment Spec\nThe ICHRA Platform administrator sends the carrier member enrollment information and payment information in a single combined enrollment & payment CSV file (Inbound Enrollment File). Carrier ingests and enrolls members from this file as they would with a standard enrollment integration.\nPayment information sent in this file includes one Automated Clearing House (ACH) account number per member (payment instrument). We do not accept credit card or debit card numbers as payment instruments.\nAt the time of enrollment, carrier enables Autopay for each enrolled member, withdraws members’ initial binder payments, and effectuates them. Members must affirmatively confirm that the employer will be making payments on their behalf as part of the administrator enrollment flow.\nAfter autopay is enabled, carrier will automatically draft:\n\nBinder payments: before state regulatory deadlines, which may be as early as the enrollment date.\nFull outstanding balance: members may be drafted one or more times per month to ensure balance is paid by the premium due date. Exact auto-draft dates will be selected by carrier and the administrator.\n\n\nICHRA Group / Employer Information\nAdministrator will pass Employer Name and Employer TIN on the inbound enrollment files.\n\n\nICHRA Administrator Disenrollments (“Soft terms”)\nIf an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier’s ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.\nTo let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE_PLATFORM on an inbound enrollment transaction.\n\n\nRefunds\nEligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.\n\n\nReconciliation\nWe use a weekly reconciliation file to ensure eligibility and billing data is aligned between carrier and the administrator in order to avoid disruptions to member coverage or experiences; for example, a mid-month increase to members’ premiums that could result in declined transactions at time of auto-pay.\nThe reconciliation file is a full change file that contains a snapshot of all plan year YTD membership, including cancelled and termed members, plus a 3 month prior-year lookback.\nEach enrolled member will have one record per month enrolled with the corresponding monthly premium amount for that month.\n\n\n\nFile Details\n\nInbound Enrollment File\n\nDirection: Carrier inbound/administrator outbound\nFile type: CSV\nFile spec: Inbound Enrollment Spec\nCadence: Daily\nNaming convention: FROM_ADMIN_NAME.EMT.YYYYMMDDThhmmss.P.csv\nDelta file or full file: Delta\nFile transfer type: SFTP\nSample file: here\n\n\n\nOutbound Enrollment Ack File\n\nDirection: Carrier outbound/administrator inbound\nFile type: CSV\nFile spec: Outbound Enrollment Ack File Spec\nCadence: Daily\nNaming convention: TO_ADMIN_NAME.ACK.YYYYMMDDThhmmss.P.csv\nSample file: here\n\n\n\nOutbound Enrollment File\n\nFile type: CSV\nFile spec: Outbound Enrollment File\nCadence: Daily\nNaming convention: FROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv\nDelta file or full file: Delta\nSample file: here\n\n\n\nOutbound Reconciliation File\n\nFile type: CSV\nFile spec: Outbound Reconciliation File\nCadence: Weekly\nFull or Delta: Full snapshot of plan year, with 3 month look back to previous year\nNaming Convention: FROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv\nSample file: here",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "CSV Implementation Guide"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to ICHRA Connect",
+    "section": "",
+    "text": "ICHRA at Oscar\nAt Oscar, our mission is to make a healthier life accessible and affordable for all. We believe that a larger individual market is the best solution for Americans and view ICHRA (Individual Coverage Health Reimbursement Arrangement) as the future of health benefits. Just like the 401k revolutionized retirement planning, ICHRA is poised to transform health benefits by putting the individual in control, while also giving employers reduced and predictable healthcare costs. Demand and awareness are growing, and Oscar is paving the way for the future of ICHRA.\n\n\nWhy ICHRA?\nICHRA is a great option for both employers and employees, providing:\n\nFlexibility: Employers can tailor contributions to different classes of employees, providing a customizable approach to health benefits.\nAffordability: Employers have predictable costs by setting defined contribution amounts, avoiding the unpredictability of traditional group health insurance premiums.\nChoice: Employees can choose individual health plans that best meet their schedules, locations, and health needs, enhancing satisfaction and coverage suitability.\nPortability: Employees can keep their plan design, mid-year accumulations towards deductibles, and provider network, if and when they leave their employer.\n\n\n\n\nWhat is ICHRA Connect?\nICHRA Connect is an open source, universal, company-agnostic integration specification designed to reduce friction, encourage faster growth of the ICHRA market, and allow ICHRA administrators to integrate seamlessly with carriers. Oscar’s goal is to prove the viability of administrator-to-carrier interoperability and set a standard for a functioning ICHRA marketplace.\nICHRA Connect will streamline shopping, enrollment, billing, and other operational workflows to offer an ICHRA experience that rivals or surpasses traditional group plans. ICHRA Connect will standardize data reconciliation and eligibility updates, bringing ICHRA on par with group and on-exchange ACA experiences. Additionally, Oscar intends to establish shared data integration standards to enhance collaboration among ICHRA stakeholders and foster a more efficient market.\n\n\nOur Singular Focus\nWith ICHRA Connect, Oscar aims to create a shared technical infrastructure that enables carriers and administrators to work together to scale the ICHRA market.\n\n\nHow We’re Doing It\nOscar is developing an open integration specification to streamline ICHRA workflows, including:\n\nShopping & Enrollment\n\nEligibility\n\nBilling & Payment\n\nOther operational workflows necessary to offer an ICHRA experience that is on par or better than the group plan experience\n\nOscar understands that the landscape of health benefits, especially ICHRA, is constantly evolving. To stay ahead of these changes:\n\nOscar is developing specifications in collaboration with ICHRA administrators and other carriers through working groups.\nOscar’s standards will explicitly ensure that member data is easily reconcilable and that member eligibility status is as accurate as possible between vendors and carriers.\n\nOscar’s integration standards will continuously evolve to meet new challenges and opportunities.\n\nOscar plans to develop a RESTful API standard that will further streamline integrations, enhance interoperability, and provide a more seamless experience for all stakeholders involved in the ICHRA ecosystem.\n\n\n\nOpen Source\nThe ICHRA Connect integration specification is open source and licensed under a commercially permissive Apache 2.0 License. We welcome you to use the ICHRA Connect specification to power your data integration. You can also contribute bugs, feature, and improvements by joining our working group or filing an Issue in our Github repo. The source code for this website and the specifications can be found at github.com/oscarhealth/IchraConnect\n\n\nHow to Integrate with Oscar\nIf you’re interested in setting up an ICHRA integration with Oscar, please reach out to ichra@hioscar.com for more information or see our high-level overview and technical specifications for ICHRA integrations.\n\n\n\nAdopt the ICHRA Connect Specification\n\n\nIf you are a carrier interested in modifying or adopting the ICHRA Connect integration specifications, please reach out to join our working groups.\n\nContact Us",
+    "crumbs": [
+      "Oscar",
+      "**Getting Started**",
+      "Welcome to ICHRA Connect"
+    ]
+  },
+  {
+    "objectID": "outbound_enrollment_ack_spec.html",
+    "href": "outbound_enrollment_ack_spec.html",
+    "title": "Outbound Enrollment Ack Spec",
+    "section": "",
+    "text": "Field Name\nDataType\nDescription\nExample\nRequired\n\n\n\n\nrow_num\nint\nThe corresping line number in the inbound file\n11\nY\n\n\nexternal_contract_id\nString\nThe policy level ID(contract/enrollment) for that line number\nLeave blank if vendor doesn't have policy ID/enrollment ID\n22567\nN\n\n\napplication_id\nString\nThe application ID for that line number\n22567-ubt-1ba\nN\n\n\nresult\nENUM(A,R)\nThe result of parsing this line; A for accepted, R for rejected\nR\nY\n\n\nerror\nString\nThe description of parsing error. Blank if accepted.\nKeyerror on \"application_ID\"\nN",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "Outbound Enrollment Ack Spec"
+    ]
+  },
+  {
+    "objectID": "license.html",
+    "href": "license.html",
+    "title": "ICHRA Connect",
+    "section": "",
+    "text": "Copyright 2024 Oscar Management Corporation\nLicensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
+  },
+  {
+    "objectID": "relationship_code_mapping.html",
+    "href": "relationship_code_mapping.html",
+    "title": "Relationship Code Mapping",
+    "section": "",
+    "text": "ASC X12 Value\nDescription\n\n\n\n\n01\nSpouse\n\n\n03\nParent\n\n\n04\nGrandparent\n\n\n05\nGrandchild\n\n\n06\nAunt/Uncle\n\n\n07\nNephew/Niece\n\n\n08\nFirst Cousin\n\n\n09\nAdopted Child\n\n\n10\nFoster Child\n\n\n11\nDaughter-in-law/Son-in-law\n\n\n12\nBrother-in-law/Sister-in-law\n\n\n13\nMother-in-law/Father-in-law\n\n\n14\nSibling\n\n\n15\nWard\n\n\n16\nStep-parent\n\n\n17\nStepson/Stepdaughter\n\n\n18\nSelf\n\n\n19\nSon/Daughter\n\n\n19\nChild of Domestic Partner\n\n\n23\nSponsored Dependent\n\n\n24\nDependent of a Minor\nDependent\n\n\n25\nFormer Spouse\n\n\n26\nGuardian\n\n\n31\nCourt-Appointed Guardian\n\n\n38\nCollateral Dependent\n\n\n53\nDomestic Partner\n\n\n60\nAnnuitant\n\n\nD2\nTrustee\n\n\nG8\nUnrelated\n\n\nG8\nParent's Domestic Partner\n\n\nG8\nTax Filer\n\n\nG8\nTax Dependent\n\n\nG8\nOther\n\n\nG9\nOther Relative",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "**Other Specs**",
+      "Relationship Code Mapping"
+    ]
+  },
+  {
+    "objectID": "marital_status_mapping.html",
+    "href": "marital_status_mapping.html",
+    "title": "Marital Status Mapping",
+    "section": "",
+    "text": "ASC X12 Value\nDescription\n\n\n\n\nB\nREGISTERED_DOMESTIC_PARTNER\n\n\nD\nDIVORCED\n\n\nI\nSINGLE\n\n\nM\nMARRIED\n\n\nR\nUNKNOWN_MARITAL_STATUS\n\n\nS\nLEGALLY_SEPARATED\n\n\nU\nUNMARRIED\n\n\nW\nWIDOWED\n\n\nX\nLEGALLY_SEPARATED",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "**Other Specs**",
+      "Marital Status Mapping"
+    ]
+  },
+  {
+    "objectID": "file_specifications.html",
+    "href": "file_specifications.html",
+    "title": "File Specifications",
+    "section": "",
+    "text": "Format\nCSV\n\n\nMax File Size\n10000 rows\n\n\nInbound File Name\nFROM_VENDOR_NAME.EMT.YYYYMMDDThhmmss.P.csv\n\n\nAck File Name\nTO_VENDOR_NAME.ACK.YYYYMMDDThhmmss.P.csv\n\n\nOutbound File Name\nFROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv\n\n\nRecon File Name\nFROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv\n\n\nDelivery Location\nTBD\n\n\nDelivery Schedule\nTBD\n\n\nNotes\nPlease include header as the first line",
+    "crumbs": [
+      "Oscar",
+      "**CSV**",
+      "**Other Specs**",
+      "File Specifications"
+    ]
+  },
+  {
     "objectID": "integrating_with_oscar.html",
     "href": "integrating_with_oscar.html",
     "title": "Integrating with Oscar",
@@ -291,37 +322,6 @@
       "Oscar",
       "**Getting Started**",
       "Integrating with Oscar"
-    ]
-  },
-  {
-    "objectID": "outbound_enrollment_ack_spec.html",
-    "href": "outbound_enrollment_ack_spec.html",
-    "title": "Outbound Enrollment Ack Spec",
-    "section": "",
-    "text": "Field Name\nDataType\nDescription\nExample\nRequired\n\n\n\n\nrow_num\nint\nThe corresping line number in the inbound file\n11\nY\n\n\nexternal_contract_id\nString\nThe policy level ID(contract/enrollment) for that line number\nLeave blank if vendor doesn't have policy ID/enrollment ID\n22567\nN\n\n\napplication_id\nString\nThe application ID for that line number\n22567-ubt-1ba\nN\n\n\nresult\nENUM(A,R)\nThe result of parsing this line; A for accepted, R for rejected\nR\nY\n\n\nerror\nString\nThe description of parsing error. Blank if accepted.\nKeyerror on \"application_ID\"\nN",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "Outbound Enrollment Ack Spec"
-    ]
-  },
-  {
-    "objectID": "license.html",
-    "href": "license.html",
-    "title": "ICHRA Connect",
-    "section": "",
-    "text": "Copyright 2024 Oscar Management Corporation\nLicensed under the Apache License, Version 2.0 (the “License”); you may not use this file except in compliance with the License. You may obtain a copy of the License at\n\nhttp://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software distributed under the License is distributed on an “AS IS” BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License."
-  },
-  {
-    "objectID": "outbound_enrollment_spec.html",
-    "href": "outbound_enrollment_spec.html",
-    "title": "Outbound Enrollment Spec",
-    "section": "",
-    "text": "Field Name\nData Type\nDescription\nFormat\nExample\nRequired\n\n\n\n\nenrollment.external_contract_id\nstr\nThe policy ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollment.application_id\nstr\nThe application ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollment.total_premium\nstr\nThe total monthly premium for the contract\nValid decimal value\n999.99\nY\n\n\nenrollee.issuer_id\nstr\nThe member ID issued by issuer\nOSC#########-0#\nOSC123456789-01\nY\n\n\nenrollee.external_member_id\nstr\nThe member ID issued by vendor\nVendor-specific\nVendor-specific\nN\n\n\nenrollee.first_name\nstr\nMember's first name\nFIRST\nJOE\nY\n\n\nenrollee.last_name\nstr\nMember's last name\nLAST\nDOE\nY\n\n\nenrollee.dob\nstr\nMember's date of birth\nYYYY-MM-DD\n1990-01-01\nY\n\n\nenrollee.email\nstr\nMember's email address\nValid Email Format\njoe.doe@gmail.com\nY\n\n\nenrollee.coverage_start_date\ndate\nMember's policy coverage start date\nYYYY-MM-DD\n2024-01-01\nY\n\n\nenrollee.coverage_end_date\ndate\nMember's policy coverage end date\nYYYY-MM-DD\n2024-11-01\nN\n\n\nstatus\nenum\nThe current status of member.\nAvailable statuses:\nEFFECTUATED\nCANCELLED\nTERMINATED\nREINSTATED\nSTATUS\nTERMINATED\nY\n\n\nadditional_maintenance_reason\nstr\nReason for change to eligibility status\nREASON\nNOT_PAID\nN\n\n\noscar_internal_uuid\nstr\nUUID for Oscar internal use only.\n\n4a94a4f321484b71a2e2e7bafd2e4273\nN",
-    "crumbs": [
-      "Oscar",
-      "**CSV**",
-      "Outbound Enrollment Spec"
     ]
   }
 ]
