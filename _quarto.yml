@@ -67,8 +67,12 @@ website:
           - text: Reconcilation CSV
             href: sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv
             target: _blank
+      - section: "**File Validators**"
+        contents:
+          - csv_validator.qmd
       - text: "**Coming Soon: REST API**"
         href: rest_api.qmd
+
   page-footer:
     center:
       - text: © 2024 Oscar Management Corporation, Licensed under the Apache License, version 2.0
