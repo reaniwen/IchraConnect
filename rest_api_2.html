@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Language Mapping – ICHRA Connect</title>
+<title>rest_api_2 – ICHRA Connect</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_specifications.html"><strong>Other Specs</strong></a></li><li class="breadcrumb-item"><a href="./language_mapping.html">Language Mapping</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./rest_api.html"><strong>REST API(dev)</strong></a></li><li class="breadcrumb-item"><a href="./rest_api_2.html">rest api 2</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -215,13 +215,13 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>Other Specs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./file_specifications.html" class="sidebar-item-text sidebar-link">
@@ -242,7 +242,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./language_mapping.html" class="sidebar-item-text sidebar-link active">
+  <a href="./language_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Language Mapping</span></a>
   </div>
 </li>
@@ -355,7 +355,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rest_api_2.html" class="sidebar-item-text sidebar-link">
+  <a href="./rest_api_2.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">rest api 2</span></a>
   </div>
 </li>
@@ -372,103 +372,42 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_specifications.html"><strong>Other Specs</strong></a></li><li class="breadcrumb-item"><a href="./language_mapping.html">Language Mapping</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Language Mapping</h1>
+
+
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    /* margin: 20px; */
+  }
+
+  textarea {
+    width: 60%;
+    height: 150px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div class="container">
+<redoc spec-url="test_api.json" theme="{
+      &quot;sidebar&quot;: {
+          &quot;width&quot;: &quot;0px&quot;
+      }
+    }" disable-search="true" hide-download-button="true"></redoc>
+<script src="https://cdn.redoc.ly/redoc/latest/bundles/redoc.standalone.js"> </script>
 </div>
-
-
-
-<div class="quarto-title-meta column-page-right">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<table class="table-striped caption-top table">
-<thead>
-<tr class="header">
-<th>ISO 639 Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>eng</td>
-<td>English</td>
-</tr>
-<tr class="even">
-<td>spa</td>
-<td>Spanish</td>
-</tr>
-<tr class="odd">
-<td>ara</td>
-<td>Arabic</td>
-</tr>
-<tr class="even">
-<td>chi</td>
-<td>chinese</td>
-</tr>
-<tr class="odd">
-<td>fre</td>
-<td>French</td>
-</tr>
-<tr class="even">
-<td>cpf</td>
-<td>French Creole</td>
-</tr>
-<tr class="odd">
-<td>deu</td>
-<td>German</td>
-</tr>
-<tr class="even">
-<td>guj</td>
-<td>Gujarati</td>
-</tr>
-<tr class="odd">
-<td>hin</td>
-<td>Hindi</td>
-</tr>
-<tr class="even">
-<td>kor</td>
-<td>Korean</td>
-</tr>
-<tr class="odd">
-<td>pol</td>
-<td>Polish</td>
-</tr>
-<tr class="even">
-<td>por</td>
-<td>Portuguese</td>
-</tr>
-<tr class="odd">
-<td>rus</td>
-<td>Russian</td>
-</tr>
-<tr class="even">
-<td>tgl</td>
-<td>Tagalog</td>
-</tr>
-<tr class="odd">
-<td>urd</td>
-<td>Urdu</td>
-</tr>
-<tr class="even">
-<td>vie</td>
-<td>Vietnamese</td>
-</tr>
-<tr class="odd">
-<td>eng</td>
-<td>Other</td>
-</tr>
-</tbody>
-</table>
 
 
 
