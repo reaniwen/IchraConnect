@@ -1,0 +1,168 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "title": "OscarIchraApi",
+      "description": "oscar ichra api",
+      "termsOfService": "http://some.oscar.url",
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "version": "1.0.7"
+    },
+    "tags": [
+      {
+        "name": "membership",
+        "description": "a members coverage and demographic information"
+      }
+    ],
+    "paths": {
+      "/ichra-api/v1/memberships/get": {
+        "post": {
+          "tags": [
+            "membership"
+          ],
+          "requestBody": {
+            "description": "get a family's membership",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member_info": {
+                      "type": "object",
+                      "properties": {
+                        "oscar_id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "oscar_id"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/MembershipResponse"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "failure",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Membership": {
+          "type": "object",
+          "properties": {
+            "member_info": {
+              "type": "object",
+              "properties": {
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "date_of_birth": {
+                  "type": "string",
+                  "format": "date",
+                  "description": "The date of birth of the member (YYYY-MM-DD)"
+                },
+                "oscar_id": {
+                  "type": "string"
+                },
+                "family_role": {
+                  "type": "string",
+                  "enum": [
+                    "POLICY_HOLDER",
+                    "SPOUSE",
+                    "CHILD",
+                    "WARD"
+                  ]
+                }
+              }
+            },
+            "eligibility_info": {
+              "type": "object",
+              "properties": {
+                "effectuation_status": {
+                  "type": "string",
+                  "enum": [
+                    "UNKNOWN",
+                    "EFFECTUATED",
+                    "CANCELLED",
+                    "TERMINATED",
+                    "REINSTATED",
+                    "UNEFFECTUATED"
+                  ]
+                },
+                "coverage_start": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "coverage_end": {
+                  "type": "string",
+                  "format": "date"
+                },
+                "payment_status": {
+                  "type": "string",
+                  "enum": [
+                    "UNKNOWN",
+                    "NONE",
+                    "PAID",
+                    "UNPAID"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "MembershipResponse": {
+          "type": "object",
+          "properties": {
+            "members": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Membership"
+              }
+            }
+          }
+        },
+        "ErrorResponse": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            },
+            "code": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
