@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Supported QLE Codes – ICHRA Connect</title>
+<title>CSV Validator – ICHRA Connect</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -76,9 +76,6 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -119,7 +116,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_specifications.html"><strong>Other Specs</strong></a></li><li class="breadcrumb-item"><a href="./supported_qle_codes.html">Supported QLE Codes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_validator.html"><strong>File Validators</strong></a></li><li class="breadcrumb-item"><a href="./csv_validator.html">CSV Validator</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -218,13 +215,13 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text"><strong>Other Specs</strong></span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./file_specifications.html" class="sidebar-item-text sidebar-link">
@@ -257,7 +254,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supported_qle_codes.html" class="sidebar-item-text sidebar-link active">
+  <a href="./supported_qle_codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Supported QLE Codes</span></a>
   </div>
 </li>
@@ -335,7 +332,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./csv_validator.html" class="sidebar-item-text sidebar-link">
+  <a href="./csv_validator.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">CSV Validator</span></a>
   </div>
 </li>
@@ -358,9 +355,9 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_specifications.html"><strong>Other Specs</strong></a></li><li class="breadcrumb-item"><a href="./supported_qle_codes.html">Supported QLE Codes</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_validator.html"><strong>File Validators</strong></a></li><li class="breadcrumb-item"><a href="./csv_validator.html">CSV Validator</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Supported QLE Codes</h1>
+<h1 class="title">CSV Validator</h1>
 </div>
 
 
@@ -377,212 +374,670 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </header>
 
 
-<div id="448d8b0c" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Supported QLE Codes</th>
-<th data-quarto-table-cell-role="th">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>ACTIVE_MILITARY_DUTY</td>
-<td>I experienced a loss of coverage due to returning from active military duty</td>
-</tr>
-<tr class="even">
-<td>ADOPTION</td>
-<td>My family adopted a child</td>
-</tr>
-<tr class="odd">
-<td><br>
-BECOMING_LAWFULLY_PRESENT</td>
-<td>I have become lawfully present</td>
-</tr>
-<tr class="even">
-<td>BIRTH</td>
-<td>My family had a baby</td>
-</tr>
-<tr class="odd">
-<td>C1</td>
-<td>My previous health plan substantially violated a material provision of its contract and I can demonstrate it</td>
-</tr>
-<tr class="even">
-<td><br>
-COFR</td>
-<td>Effective Jan 16th, I have been impacted by the Boulder fires or the COVID-19 Omicron variant. I would like to utilize CO's special enrollment period to enroll in coverage.</td>
-</tr>
-<tr class="odd">
-<td>COURT_ORDERED_CHILD_COVERAGE</td>
-<td>I was mandated by a court order to provide health insurance for a child</td>
-</tr>
-<tr class="even">
-<td>COVID_19</td>
-<td>COVID-19: COVID-19 Public Health Emergency SEP.</td>
-</tr>
-<tr class="odd">
-<td>DEATH_OF_CHILD</td>
-<td>My child passed away</td>
-</tr>
-<tr class="even">
-<td>DOMESTIC_VIOLENCE</td>
-<td>I was a victim of domestic abuse or spousal abandonment</td>
-</tr>
-<tr class="odd">
-<td><br>
-E1</td>
-<td>My enrollment or non-enrollment (or the enrollment of my spouse or child dependent) in another plan was unintentional, inadvertent or erroneous and was the result of the error, misrepresentation, or inaction of an officer, employee, or agent of a health plan</td>
-</tr>
-<tr class="even">
-<td>EMPLOYER_INSURANCE_NO_LONGER_AFFORDABLE</td>
-<td>Insurance through my employer is no longer affordable</td>
-</tr>
-<tr class="odd">
-<td>EMPLOYER_INSURANCE_NO_LONGER_MEC</td>
-<td>Insurance through my employer no longer meets the standards of minimum essential coverage</td>
-</tr>
-<tr class="even">
-<td>EMPLOYER_OPEN_ENROLLMENT</td>
-<td>I opted out of employer coverage during my employer’s open enrollment</td>
-</tr>
-<tr class="odd">
-<td>EX</td>
-<td>Misinformation, misrepresentation, misconduct, or inaction of someone working in an official capacity to help you enroll kept you from enrolling in a plan, enrolling in the right plan, or getting the premium tax credit or cost-sharing reduction you were eligible for</td>
-</tr>
-<tr class="even">
-<td>FOSTER_CHILD</td>
-<td>I gained a dependent through foster care</td>
-</tr>
-<tr class="odd">
-<td>GAIN_A_DEPENDENT_THROUGH_COURT_ORDER</td>
-<td>I gained a dependent because of a court order</td>
-</tr>
-<tr class="even">
-<td>GAIN_A_DEPENDENT_THROUGH_MARRIAGE</td>
-<td>I gained a dependent through marriage or domestic partnership</td>
-</tr>
-<tr class="odd">
-<td>GAIN_STATUS_AS_INDIAN</td>
-<td>I have gained status as an American Indian</td>
-</tr>
-<tr class="even">
-<td>HRAS</td>
-<td>I (or my spouse or child dependent) have been offered premium assistance by an employer in the form of an Individual Coverage Health Reimbursement Arrangement (ICHRA) or Qualified Small Employer HRA (QSEHRA).</td>
-</tr>
-<tr class="odd">
-<td>L1</td>
-<td>My employer stopped offering health insurance</td>
-</tr>
-<tr class="even">
-<td>L2</td>
-<td>My health insurance coverage ended because I, or a family member, left a job that was providing health insurance</td>
-</tr>
-<tr class="odd">
-<td>L3</td>
-<td>My plan is being discontinued by my issuer</td>
-</tr>
-<tr class="even">
-<td>L5</td>
-<td>My contract holder aged out of my current plan</td>
-</tr>
-<tr class="odd">
-<td>L6</td>
-<td>I aged out of my current plan</td>
-</tr>
-<tr class="even">
-<td>L7</td>
-<td>My COBRA coverage was terminated</td>
-</tr>
-<tr class="odd">
-<td>M1</td>
-<td>I moved into oscar's service area from within the US.</td>
-</tr>
-<tr class="even">
-<td>M2</td>
-<td>I moved into oscar's service area from outside the US.</td>
-</tr>
-<tr class="odd">
-<td>NATURAL_DISASTER</td>
-<td>I live or lived in an area impacted by a natural disaster and/or state of emergency</td>
-</tr>
-<tr class="even">
-<td>NO_LONGER_ELIGIBLE_FOR_MEDICAID</td>
-<td>I became ineligible for Medicaid or Child Health Plus</td>
-</tr>
-<tr class="odd">
-<td>NO_LONGER_ELIGIBLE_FOR_MEDI_CAL</td>
-<td>I became ineligible for Medi-Cal</td>
-</tr>
-<tr class="even">
-<td>PARTNER_CHANGES_EMPLOYMENT</td>
-<td>My spouse or partner changed employment that resulted in a loss of eligibility under their employer’s plan</td>
-</tr>
-<tr class="odd">
-<td>PARTNER_DROPS_COVERAGE</td>
-<td>My spouse or partner dropped coverage from their employer’s health plan during an open enrollment period that differs from oscar's open enrollment.</td>
-</tr>
-<tr class="even">
-<td>PREGNANCY</td>
-<td>I became pregnant and previously did not have health insurance</td>
-</tr>
-<tr class="odd">
-<td>PROV_NO_LONGER_COVERED</td>
-<td>I was receiving services from a contracting provider under another health benefit plan and that provider ceased to participate in that plan</td>
-</tr>
-<tr class="even">
-<td>RELEASE_FROM_INCARCERATION</td>
-<td>I was released from incarceration</td>
-</tr>
-<tr class="odd">
-<td>S1</td>
-<td>I (or my spouse or child dependent (for Child Health Plus)) am newly eligible or ineligible for a government tax subsidy or I (or my spouse or child dependent) have had a change in eligibility for cost-sharing reductions</td>
-</tr>
-<tr class="even">
-<td>SEPARATION</td>
-<td>I was divorced or had an annulment, legal separation or end of domestic partnership</td>
-</tr>
-<tr class="odd">
-<td>SPOUSE_DEATH</td>
-<td>My spouse died</td>
-</tr>
-<tr class="even">
-<td>STUDENT_HEALTH_COVERAGE</td>
-<td>I experienced a loss of coverage because I became ineligible for student health coverage</td>
-</tr>
-<tr class="odd">
-<td>PERM_MOVE<br>
-</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>PREGNANCY_COVERAGE</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>MEDICARE_ENTITLEMENT</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>LOSS_OF_COVERAGE</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>GAIN_DEPENDENT</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>DEATH</td>
-<td>Death in the family</td>
-</tr>
-</tbody>
-</table>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    /* margin: 20px; */
+  }
+
+  textarea {
+    width: 60%;
+    height: 150px;
+    margin-top: 10px;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div class="container">
+<p>
+Upload a CSV file
+</p>
+<p><input type="file" id="csvFileInput" accept=".csv"></p>
+<p>
+Or Paste CSV Content
+</p>
+<textarea id="csvTextarea" placeholder="Paste CSV content here..."></textarea>
+<p><br></p>
+<p><button id="validateButton">Validate CSV</button></p>
+<div id="output" class="output">
+
 </div>
 </div>
+<!-- PapaParse Library for CSV Validation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+<script>
+
+  const FIELDS = {
+    BROKER_FIRST_NAME: 'broker.first_name',
+    BROKER_MIDDLE_NAME: 'broker.middle_name',
+    BROKER_LAST_NAME: 'broker.last_name',
+    BROKER_PREFIX: 'broker.prefix',
+    BROKER_SUFFIX: 'broker.suffix',
+    BROKER_PHONE_NUMBER: 'broker.phone_number',
+    BROKER_EMAIL: 'broker.email',
+    BROKER_NPN: 'broker.npn',
+    PLAN_YEAR: 'plan.year',
+    PLAN_HIOS_ID: 'plan.hios_id',
+    PLAN_MONTHLY_PREMIUM: 'plan.monthly_premium',
+    PAYMENT_ROUTING_NUMBER: 'payment.routing_number',
+    PAYMENT_ACCOUNT_NUMBER: 'payment.account_number',
+    PAYMENT_PAYER_NAME: 'payment.payer_name',
+    PAYMENT_ACCOUNT_TYPE: 'payment.account_type',
+    PAYMENT_IS_NEW_PAYMENT_INSTRUMENT: 'payment.is_new_payment_instrument',
+    ENROLLMENT_RENEWAL_TYPE: 'enrollment.renewal_type',
+    ENROLLMENT_EXTERNAL_POLICY_ID: 'enrollment.external_policy_id',
+    ENROLLMENT_EXTERNAL_SUBSCRIBER_ID: 'enrollment.external_subscriber_id',
+    ENROLLMENT_CANCEL_OVERLAPPING_ELIGIBILITY: 'enrollment.cancel_overlapping_eligibility',
+    ENROLLMENT_DATE_SIGNED: 'enrollment.date_signed',
+    ENROLLMENT_QUALIFYING_EVENT: 'enrollment.qualifying_event',
+    ENROLLMENT_QUALIFYING_EVENT_DATE: 'enrollment.qualifying_event_date',
+    ENROLLMENT_APPLICATION_ID: 'enrollment.application_id',
+    EMPLOYER_EMPLOYER_NAME: 'employer.employer_name',
+    EMPLOYER_EMPLOYER_TIN: 'employer.employer_tin',
+    ENROLLEE_EXTERNAL_MEMBER_ID: 'enrollee.external_member_id',
+    ENROLLEE_ISSUER_MEMBER_ID: 'enrollee.issuer_member_id',
+    ENROLLEE_FIRST_NAME: 'enrollee.first_name',
+    ENROLLEE_MIDDLE_NAME: 'enrollee.middle_name',
+    ENROLLEE_LAST_NAME: 'enrollee.last_name',
+    ENROLLEE_PREFIX: 'enrollee.prefix',
+    ENROLLEE_SUFFIX: 'enrollee.suffix',
+    ENROLLEE_PHONE: 'enrollee.phone',
+    ENROLLEE_EMAIL: 'enrollee.email',
+    ENROLLEE_SSN: 'enrollee.ssn',
+    ENROLLEE_MARITAL_STATUS: 'enrollee.marital_status',
+    ENROLLEE_SEX: 'enrollee.sex',
+    ENROLLEE_DATE_OF_BIRTH: 'enrollee.date_of_birth',
+    ENROLLEE_ETHNICITY: 'enrollee.ethnicity',
+    ENROLLEE_IS_TOBACCO_USER: 'enrollee.is_tobacco_user',
+    ENROLLEE_RELATIONSHIP_TO_POLICY_HOLDER: 'enrollee.relationship_to_policy_holder',
+    ENROLLEE_IS_REQUESTING_COVERAGE: 'enrollee.is_requesting_coverage',
+    ENROLLEE_COVERAGE_START_DATE: 'enrollee.coverage_start_date',
+    ENROLLEE_COVERAGE_END_DATE: 'enrollee.coverage_end_date',
+    ENROLLEE_LANGUAGE_PREFERENCE: 'enrollee.language_preference',
+    ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_1: 'enrollee.mailing_address.address_line_1',
+    ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_2: 'enrollee.mailing_address.address_line_2',
+    ENROLLEE_MAILING_ADDRESS_CITY: 'enrollee.mailing_address.city',
+    ENROLLEE_MAILING_ADDRESS_STATE: 'enrollee.mailing_address.state',
+    ENROLLEE_MAILING_ADDRESS_ZIPCODE: 'enrollee.mailing_address.zipcode',
+    ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_1: 'enrollee.residential_address.address_line_1',
+    ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_2: 'enrollee.residential_address.address_line_2',
+    ENROLLEE_RESIDENTIAL_ADDRESS_CITY: 'enrollee.residential_address.city',
+    ENROLLEE_RESIDENTIAL_ADDRESS_STATE: 'enrollee.residential_address.state',
+    ENROLLEE_RESIDENTIAL_ADDRESS_ZIPCODE: 'enrollee.residential_address.zipcode',
+    ENROLLEE_CHANGE_TYPE: 'enrollee.change_type',
+    ENROLLEE_ADDITIONAL_MAINTENANCE_REASON: 'enrollee.additional_maintenance_reason',
+    ENROLLEE_CHANGE_EFFECTIVE_DATE: 'enrollee.change_effective_date',
+  };
+
+  function validateBrokerFirstName(row) {
+    const fieldName = FIELDS.BROKER_FIRST_NAME;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 50))
+    return errors;
+  }
+  function validateBrokerMiddleName(row) {
+    const fieldName = FIELDS.BROKER_MIDDLE_NAME;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 50))
+    return errors;
+  }
+  function validateBrokerLastName(row) {
+    const fieldName = FIELDS.BROKER_LAST_NAME;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 50))
+    return errors;
+  }
+  function validateBrokerPrefix(row) {
+    const fieldName = 'broker.prefix';
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 4))
+    return errors;
+  }
+  function validateBrokerSuffix(row) {
+    const fieldName = FIELDS.BROKER_SUFFIX;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 4))
+    return errors;
+  }
+  function validateBrokerPhoneNumber(row) {
+    const fieldName = FIELDS.BROKER_PHONE_NUMBER;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 15))
+    return errors;
+  }
+  function validateBrokerEmail(row) {
+    const fieldName = FIELDS.BROKER_EMAIL;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 50))
+    return errors;
+  }
+  function validateBrokerNpn(row) {
+    const fieldName = FIELDS.BROKER_NPN;
+    const errors = [];
+    errors.push(...characterLimit(fieldName, row, 25))
+    return errors;
+  }
+  function validatePlanYear(row) {
+    const fieldName = FIELDS.PLAN_YEAR;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...characterLimit(fieldName, row, 4))
+    return errors;
+  }
+  function validatePlanHiosId(row) {
+    const fieldName = FIELDS.PLAN_HIOS_ID;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...characterLimit(fieldName, row, 17))
+    return errors;
+  }
+  function validatePlanMonthlyPremium(row) {
+    const fieldName = FIELDS.PLAN_MONTHLY_PREMIUM;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...characterLimit(fieldName, row, 20))
+    return errors;
+  }
+  function validatePaymentRoutingNumber(row) {
+    const fieldName = FIELDS.PAYMENT_ROUTING_NUMBER;
+    const errors = [];
+    return errors;
+  }
+  function validatePaymentAccountNumber(row) {
+    const fieldName = FIELDS.PAYMENT_ACCOUNT_NUMBER;
+    const errors = [];
+    return errors;
+  }
+  function validatePaymentPayerName(row) {
+    const fieldName = FIELDS.PAYMENT_PAYER_NAME;
+    const errors = [];
+    return errors;
+  }
+  function validatePaymentAccountType(row) {
+    const fieldName = FIELDS.PAYMENT_ACCOUNT_TYPE;
+    const errors = [];
+    return errors;
+  }
+  function validatePaymentIsNewPaymentInstrument(row) {
+    const fieldName = FIELDS.PAYMENT_IS_NEW_PAYMENT_INSTRUMENT;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrollmentRenewalType(row) {
+    const fieldName = FIELDS.ENROLLMENT_RENEWAL_TYPE;
+    const errors = [];
+    if (isPresent(fieldName, row)) {
+      errors.push(...checkEnum(fieldName, row, [
+        'PASSIVE',
+        'ACTIVE',
+        'INITIATION',
+      ]));
+    }
+    return errors;
+  }
+  function validateEnrollmentExternalPolicyId(row) {
+    const fieldName = FIELDS.ENROLLMENT_EXTERNAL_POLICY_ID;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrollmentExternalSubscriberId(row) {
+    const fieldName = FIELDS.ENROLLMENT_EXTERNAL_SUBSCRIBER_ID;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrollmentCancelOverlappingEligibility(row) {
+    const fieldName = FIELDS.ENROLLMENT_CANCEL_OVERLAPPING_ELIGIBILITY;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrollmentDateSigned(row) {
+    const fieldName = FIELDS.ENROLLMENT_DATE_SIGNED;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrollmentQualifyingEvent(row) {
+    const fieldName = FIELDS.ENROLLMENT_QUALIFYING_EVENT;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrollmentQualifyingEventDate(row) {
+    const fieldName = FIELDS.ENROLLMENT_QUALIFYING_EVENT_DATE;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrollmentApplicationId(row) {
+    const fieldName = FIELDS.ENROLLMENT_APPLICATION_ID;
+    const errors = [];
+    return errors;
+  }
+  function validateEmployerEmployerName(row) {
+    const fieldName = FIELDS.EMPLOYER_EMPLOYER_NAME;
+    const errors = [];
+    return errors;
+  }
+  function validateEmployerEmployerTin(row) {
+    const fieldName = FIELDS.EMPLOYER_EMPLOYER_TIN;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeExternalMemberId(row) {
+    const fieldName = FIELDS.ENROLLEE_EXTERNAL_MEMBER_ID;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeIssuerMemberId(row) {
+    const fieldName = FIELDS.ENROLLEE_ISSUER_MEMBER_ID;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeFirstName(row) {
+    const fieldName = FIELDS.ENROLLEE_FIRST_NAME;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeMiddleName(row) {
+    const fieldName = FIELDS.ENROLLEE_MIDDLE_NAME;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeLastName(row) {
+    const fieldName = FIELDS.ENROLLEE_LAST_NAME;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleePrefix(row) {
+    const fieldName = FIELDS.ENROLLEE_PREFIX;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeSuffix(row) {
+    const fieldName = FIELDS.ENROLLEE_SUFFIX;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleePhone(row) {
+    const fieldName = FIELDS.ENROLLEE_PHONE;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeEmail(row) {
+    const fieldName = FIELDS.ENROLLEE_EMAIL;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeSsn(row) {
+    const fieldName = FIELDS.ENROLLEE_SSN;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeMaritalStatus(row) {
+    const fieldName = FIELDS.ENROLLEE_MARITAL_STATUS;
+    const errors = [];
+    errors.push(...checkEnum(fieldName, row, [
+      'B',
+      'D',
+      'I',
+      'M',
+      'R',
+      'S',
+      'U',
+      'W',
+      'X',
+    ]));
+    return errors;
+  }
+  function validateEnrolleeSex(row) {
+    const fieldName = FIELDS.ENROLLEE_SEX;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...checkEnum(fieldName, row, [
+      'MALE',
+      'FEMALE',
+    ]));
+    return errors;
+  }
+  function validateEnrolleeDateOfBirth(row) {
+    const fieldName = FIELDS.ENROLLEE_DATE_OF_BIRTH;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeEthnicity(row) {
+    const fieldName = FIELDS.ENROLLEE_ETHNICITY;
+    const errors = [];
+    errors.push(...checkEnum(fieldName, row, [
+      '2135-2',
+      '1002-5',
+      '2029-7',
+      '2056-0',
+      '2034-7',
+      '2036-2',
+      '2086-7',
+      '2039-6',
+      '2040-4',
+      '2079-2',
+      '2080-0',
+      '2047-9',
+      '2106-3',
+      '2028-9',
+      '2500-7',
+      '2131-1',
+      '',
+    ]));
+    return errors;
+  }
+  function validateEnrolleeIsTobaccoUser(row) {
+    const fieldName = FIELDS.ENROLLEE_IS_TOBACCO_USER;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeRelationshipToPolicyHolder(row) {
+    const fieldName = FIELDS.ENROLLEE_RELATIONSHIP_TO_POLICY_HOLDER;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...checkEnum(fieldName, row, [
+      '01', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+      '19', '23', '24', '25', '26', '31', '38', '53', '60', 'D2', 'G8', 'G8', 'G8', 'G8', 'G8', 'G9',
+    ]));
+    return errors;
+  }
+  function validateEnrolleeIsRequestingCoverage(row) {
+    const fieldName = FIELDS.ENROLLEE_IS_REQUESTING_COVERAGE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeCoverageStartDate(row) {
+    const fieldName = FIELDS.ENROLLEE_COVERAGE_START_DATE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeCoverageEndDate(row) {
+    const fieldName = FIELDS.ENROLLEE_COVERAGE_END_DATE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeLanguagePreference(row) {
+    const fieldName = FIELDS.ENROLLEE_LANGUAGE_PREFERENCE;
+    const errors = [];
+    if (isPresent(fieldName, row)) {
+      errors.push(...checkEnum(fieldName, row, ["spa", "eng"]))
+    }
+    return errors;
+  }
+  function validateEnrolleeMailingAddressAddressLine1(row) {
+    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_1;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeMailingAddressAddressLine2(row) {
+    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_2;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeMailingAddressCity(row) {
+    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_CITY;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeMailingAddressState(row) {
+    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_STATE;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeMailingAddressZipcode(row) {
+    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ZIPCODE;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeResidentialAddressAddressLine1(row) {
+    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_1;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeResidentialAddressAddressLine2(row) {
+    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_2;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeResidentialAddressCity(row) {
+    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_CITY;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeResidentialAddressState(row) {
+    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_STATE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeResidentialAddressZipcode(row) {
+    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ZIPCODE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+  function validateEnrolleeChangeType(row) {
+    const fieldName = FIELDS.ENROLLEE_CHANGE_TYPE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    errors.push(...checkEnum(fieldName, row, ['CHANGE', 'ADDITION', 'CANCELLATION', 'TERMINATION', 'REINSTATEMENT']));
+    return errors;
+  }
+  function validateEnrolleeAdditionalMaintenanceReason(row) {
+    const fieldName = FIELDS.ENROLLEE_ADDITIONAL_MAINTENANCE_REASON;
+    const errors = [];
+    return errors;
+  }
+  function validateEnrolleeChangeEffectiveDate(row) {
+    const fieldName = FIELDS.ENROLLEE_CHANGE_EFFECTIVE_DATE;
+    const errors = [];
+    errors.push(...requiredField(fieldName, row));
+    return errors;
+  }
+
+  function requiredField(fieldName, row) {
+    const errors = [];
+
+    if (!row.hasOwnProperty(fieldName) || !row[fieldName]) {
+      errors.push(`Missing or empty required field "${fieldName}"`);
+    }
+    return errors;
+  }
+
+  function characterLimit(fieldName, row, characterLimit) {
+    const errors = [];
+    if (isPresent(fieldName, row)) {
+      if (row[fieldName].length > characterLimit) {
+      errors.push(`Field ${fieldName} exceeds character limit of ${characterLimit}. Value: "${row[fieldName]}"`);
+      }
+    }
+    return errors;
+  }
+
+  function checkEnum(fieldName, row, allowedValues) {
+    const errors = [];
+    if (isPresent(fieldName, row)) {
+      if (!allowedValues.includes(row[fieldName])) {
+      errors.push(`Field ${fieldName} has an invalid value "${row[fieldName]}". Allowed values are: ${allowedValues.join(", ")}`);
+      }
+    }
+    return errors;
+  }
+
+  function isPresent(fieldName, row) {
+    return row.hasOwnProperty(fieldName) && row[fieldName] !== '';
+  }
+
+
+  const validators = [
+    validateBrokerFirstName,
+    validateBrokerMiddleName,
+    validateBrokerLastName,
+    validateBrokerPrefix,
+    validateBrokerSuffix,
+    validateBrokerPhoneNumber,
+    validateBrokerEmail,
+    validateBrokerNpn,
+    validatePlanYear,
+    validatePlanHiosId,
+    validatePlanMonthlyPremium,
+    validatePaymentRoutingNumber,
+    validatePaymentAccountNumber,
+    validatePaymentPayerName,
+    validatePaymentAccountType,
+    validatePaymentIsNewPaymentInstrument,
+    validateEnrollmentRenewalType,
+    validateEnrollmentExternalPolicyId,
+    validateEnrollmentExternalSubscriberId,
+    validateEnrollmentCancelOverlappingEligibility,
+    validateEnrollmentDateSigned,
+    validateEnrollmentQualifyingEvent,
+    validateEnrollmentQualifyingEventDate,
+    validateEnrollmentApplicationId,
+    validateEmployerEmployerName,
+    validateEmployerEmployerTin,
+    validateEnrolleeExternalMemberId,
+    validateEnrolleeIssuerMemberId,
+    validateEnrolleeFirstName,
+    validateEnrolleeMiddleName,
+    validateEnrolleeLastName,
+    validateEnrolleePrefix,
+    validateEnrolleeSuffix,
+    validateEnrolleePhone,
+    validateEnrolleeEmail,
+    validateEnrolleeSsn,
+    validateEnrolleeMaritalStatus,
+    validateEnrolleeSex,
+    validateEnrolleeDateOfBirth,
+    validateEnrolleeEthnicity,
+    validateEnrolleeIsTobaccoUser,
+    validateEnrolleeRelationshipToPolicyHolder,
+    validateEnrolleeIsRequestingCoverage,
+    validateEnrolleeCoverageStartDate,
+    validateEnrolleeCoverageEndDate,
+    validateEnrolleeLanguagePreference,
+    validateEnrolleeMailingAddressAddressLine1,
+    validateEnrolleeMailingAddressAddressLine2,
+    validateEnrolleeMailingAddressCity,
+    validateEnrolleeMailingAddressState,
+    validateEnrolleeMailingAddressZipcode,
+    validateEnrolleeResidentialAddressAddressLine1,
+    validateEnrolleeResidentialAddressAddressLine2,
+    validateEnrolleeResidentialAddressCity,
+    validateEnrolleeResidentialAddressState,
+    validateEnrolleeResidentialAddressZipcode,
+    validateEnrolleeChangeType,
+    validateEnrolleeAdditionalMaintenanceReason,
+    validateEnrolleeChangeEffectiveDate,
+  ]
+
+
+  function validateCSV(content, type) {
+      const errors = [];
+
+      const parsed = Papa.parse(content, {
+        header: true,
+        skipEmptyLines: true
+      });
+
+      if (parsed.errors.length > 0) {
+        parsed.errors.forEach(error => {
+          errors.push(`Parsing error: ${error.message}`);
+        });
+        return errors;
+      }
+
+      const rows = parsed.data;
+  
+      // Validate headers
+      const headers = parsed.meta.fields;
+      const fieldValues = Object.values(FIELDS);
+      const missingHeaders = fieldValues.filter(field => !headers.includes(field));
+      if (missingHeaders.length > 0) {
+        errors.push(`Missing headers: ${missingHeaders.join(", ")}`);
+      }
+
+      headers.forEach(header => {
+        if (!fieldValues.includes(header)) {
+          errors.push(`Unexpected header "${header}".`);
+        }
+      });
+  
+      const csvRows = rows.map(row => {
+        return headers.reduce((obj, header) => {
+          obj[header] = row[header];
+          return obj;
+        }, {});
+      });
+
+      csvRows.forEach((row, index) => {
+        const rowErrors = [];
+        validators.forEach(validator => {
+          rowErrors.push(...validator(row));
+        });
+        if (rowErrors.length > 0) {
+          errors.push(`Row ${index + 1}:<ul>${rowErrors.map(err => `<li>${err}</li>`).join("")}</ul>`);
+        }
+      });
+  
+      return errors;
+    }
+
+  // File input event listener
+  document.getElementById("csvFileInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const content = e.target.result;
+        const errors = validateCSV(content);
+        displayResults(errors);
+      };
+      reader.readAsText(file);
+    }
+  });
+
+  // Button click event listener for pasted content
+  document.getElementById("validateButton").addEventListener("click", function () {
+    const content = document.getElementById("csvTextarea").value;
+    const errors = validateCSV(content);
+    displayResults(errors);
+  });
+
+  // Display validation results
+  function displayResults(errors) {
+    const outputDiv = document.getElementById("output");
+    if (errors.length > 0) {
+      outputDiv.innerHTML = `<strong>Validation Errors:</strong><ul>${errors.map(err => `<li>${err}</li>`).join("")}</ul>`;
+      outputDiv.style.borderColor = "red";
+    } else {
+      outputDiv.innerHTML = "<strong>CSV is valid!</strong>";
+      outputDiv.style.borderColor = "green";
+    }
+  }
+</script>
 
 
 
