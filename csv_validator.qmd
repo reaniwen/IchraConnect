@@ -602,7 +602,7 @@ execute:
       }
 
       const rows = parsed.data;
-  
+
       // Validate headers
       const headers = parsed.meta.fields;
       const fieldValues = Object.values(FIELDS);
@@ -616,7 +616,7 @@ execute:
           errors.push(`Unexpected header "${header}".`);
         }
       });
-  
+
       const csvRows = rows.map(row => {
         return headers.reduce((obj, header) => {
           obj[header] = row[header];
@@ -633,7 +633,7 @@ execute:
           errors.push(`Row ${index + 1}:<ul>${rowErrors.map(err => `<li>${err}</li>`).join("")}</ul>`);
         }
       });
-  
+
       return errors;
     }
 

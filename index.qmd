@@ -23,7 +23,7 @@ ICHRA Connect is an open source, universal, company-agnostic integration specifi
 
 ICHRA Connect will streamline shopping, enrollment, billing, and other operational workflows to offer an ICHRA experience that rivals or surpasses traditional group plans. ICHRA Connect will standardize data reconciliation and eligibility updates, bringing ICHRA on par with group and on-exchange ACA experiences. Additionally, Oscar intends to establish shared data integration standards to enhance collaboration among ICHRA stakeholders and foster a more efficient market.
 
-### Our Singular Focus  
+### Our Singular Focus
 
 With ICHRA Connect, Oscar aims to create a shared technical infrastructure that enables carriers and administrators to work together to scale the ICHRA market.
 
@@ -31,22 +31,22 @@ With ICHRA Connect, Oscar aims to create a shared technical infrastructure that 
 
 Oscar is developing an open integration specification to streamline ICHRA workflows, including:
 
-* Shopping & Enrollment  
-* Eligibility  
-* Billing & Payment  
+* Shopping & Enrollment
+* Eligibility
+* Billing & Payment
 * Other operational workflows necessary to offer an ICHRA experience that is on par or better than the group plan experience
 
 Oscar understands that the landscape of health benefits, especially ICHRA, is constantly evolving. To stay ahead of these changes:
 
 * Oscar is developing specifications in collaboration with ICHRA administrators and other carriers through working groups.
-* Oscar’s standards will explicitly ensure that member data is easily reconcilable and that member eligibility status is as accurate as possible between vendors and carriers.  
-* Oscar’s integration standards will continuously evolve to meet new challenges and opportunities.  
+* Oscar’s standards will explicitly ensure that member data is easily reconcilable and that member eligibility status is as accurate as possible between vendors and carriers.
+* Oscar’s integration standards will continuously evolve to meet new challenges and opportunities.
 * Oscar plans to develop a RESTful API standard that will further streamline integrations, enhance interoperability, and provide a more seamless experience for all stakeholders involved in the ICHRA ecosystem.
 
 ### Open Source
 The ICHRA Connect integration specification is open source and licensed under a commercially permissive [Apache 2.0 License](LICENSE). We welcome you to use the ICHRA Connect specification to power your data integration. You can also contribute bugs, feature, and improvements by joining our working group or filing an Issue in our Github repo. The source code for this website and the specifications can be found at [github.com/oscarhealth/IchraConnect](https://github.com/oscarhealth/IchraConnect)
 
-### How to Integrate with Oscar  
+### How to Integrate with Oscar
 
 If you're interested in setting up an ICHRA integration with Oscar, please reach out to [ichra@hioscar.com](mailto:ichra@hioscar.com) for more information or [see our high-level overview and technical specifications](integrating_with_oscar.qmd) for ICHRA integrations.
 
