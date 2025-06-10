@@ -44,7 +44,7 @@ website:
               - language_mapping.qmd
               - marital_status_mapping.qmd
               - supported_qle_codes.qmd
-              - supported_additional_maintenance_reasons.qmd
+              - additional_maintenance_reasons.qmd
       - section: "**Sample File Downloads**"
         contents:
           - text: Inbound 834 EDI

@@ -7,7 +7,7 @@ execute:
 import pandas as pd
 from io import StringIO
 from IPython.display import display, HTML
-with open('supported_additional_maintenance_reasons.csv', 'r') as file:
+with open('additional_maintenance_reasons.csv', 'r') as file:
     csv_data = file.read()
 # Read the CSV data
 pd.set_option('display.max_colwidth', None)
