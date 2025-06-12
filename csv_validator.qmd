@@ -59,6 +59,14 @@ execute:
     BROKER_PHONE_NUMBER: 'broker.phone_number',
     BROKER_EMAIL: 'broker.email',
     BROKER_NPN: 'broker.npn',
+    SERVICING_AGENT_FIRST_NAME: 'servicing_agent.first_name',
+    SERVICING_AGENT_MIDDLE_NAME: 'servicing_agent.middle_name',
+    SERVICING_AGENT_LAST_NAME: 'servicing_agent.last_name',
+    SERVICING_AGENT_PREFIX: 'servicing_agent.prefix',
+    SERVICING_AGENT_SUFFIX: 'servicing_agent.suffix',
+    SERVICING_AGENT_PHONE_NUMBER: 'servicing_agent.phone_number',
+    SERVICING_AGENT_EMAIL: 'servicing_agent.email',
+    SERVICING_AGENT_NPN: 'servicing_agent.npn',
     PLAN_YEAR: 'plan.year',
     PLAN_HIOS_ID: 'plan.hios_id',
     PLAN_MONTHLY_PREMIUM: 'plan.monthly_premium',
@@ -112,561 +120,198 @@ execute:
     ENROLLEE_CHANGE_EFFECTIVE_DATE: 'enrollee.change_effective_date',
   };
 
-  function validateBrokerFirstName(row) {
-    const fieldName = FIELDS.BROKER_FIRST_NAME;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 50))
-    return errors;
-  }
-  function validateBrokerMiddleName(row) {
-    const fieldName = FIELDS.BROKER_MIDDLE_NAME;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 50))
-    return errors;
-  }
-  function validateBrokerLastName(row) {
-    const fieldName = FIELDS.BROKER_LAST_NAME;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 50))
-    return errors;
-  }
-  function validateBrokerPrefix(row) {
-    const fieldName = 'broker.prefix';
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 4))
-    return errors;
-  }
-  function validateBrokerSuffix(row) {
-    const fieldName = FIELDS.BROKER_SUFFIX;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 4))
-    return errors;
-  }
-  function validateBrokerPhoneNumber(row) {
-    const fieldName = FIELDS.BROKER_PHONE_NUMBER;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 15))
-    return errors;
-  }
-  function validateBrokerEmail(row) {
-    const fieldName = FIELDS.BROKER_EMAIL;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 50))
-    return errors;
-  }
-  function validateBrokerNpn(row) {
-    const fieldName = FIELDS.BROKER_NPN;
-    const errors = [];
-    errors.push(...characterLimit(fieldName, row, 25))
-    return errors;
-  }
-  function validatePlanYear(row) {
-    const fieldName = FIELDS.PLAN_YEAR;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...characterLimit(fieldName, row, 4))
-    return errors;
-  }
-  function validatePlanHiosId(row) {
-    const fieldName = FIELDS.PLAN_HIOS_ID;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...characterLimit(fieldName, row, 17))
-    return errors;
-  }
-  function validatePlanMonthlyPremium(row) {
-    const fieldName = FIELDS.PLAN_MONTHLY_PREMIUM;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...characterLimit(fieldName, row, 20))
-    return errors;
-  }
-  function validatePaymentRoutingNumber(row) {
-    const fieldName = FIELDS.PAYMENT_ROUTING_NUMBER;
-    const errors = [];
-    return errors;
-  }
-  function validatePaymentAccountNumber(row) {
-    const fieldName = FIELDS.PAYMENT_ACCOUNT_NUMBER;
-    const errors = [];
-    return errors;
-  }
-  function validatePaymentPayerName(row) {
-    const fieldName = FIELDS.PAYMENT_PAYER_NAME;
-    const errors = [];
-    return errors;
-  }
-  function validatePaymentAccountType(row) {
-    const fieldName = FIELDS.PAYMENT_ACCOUNT_TYPE;
-    const errors = [];
-    return errors;
-  }
-  function validatePaymentIsNewPaymentInstrument(row) {
-    const fieldName = FIELDS.PAYMENT_IS_NEW_PAYMENT_INSTRUMENT;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrollmentRenewalType(row) {
-    const fieldName = FIELDS.ENROLLMENT_RENEWAL_TYPE;
-    const errors = [];
-    if (isPresent(fieldName, row)) {
-      errors.push(...checkEnum(fieldName, row, [
-        'PASSIVE',
-        'ACTIVE',
-        'INITIATION',
-      ]));
-    }
-    return errors;
-  }
-  function validateEnrollmentExternalPolicyId(row) {
-    const fieldName = FIELDS.ENROLLMENT_EXTERNAL_POLICY_ID;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrollmentExternalSubscriberId(row) {
-    const fieldName = FIELDS.ENROLLMENT_EXTERNAL_SUBSCRIBER_ID;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrollmentCancelOverlappingEligibility(row) {
-    const fieldName = FIELDS.ENROLLMENT_CANCEL_OVERLAPPING_ELIGIBILITY;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrollmentDateSigned(row) {
-    const fieldName = FIELDS.ENROLLMENT_DATE_SIGNED;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrollmentQualifyingEvent(row) {
-    const fieldName = FIELDS.ENROLLMENT_QUALIFYING_EVENT;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrollmentQualifyingEventDate(row) {
-    const fieldName = FIELDS.ENROLLMENT_QUALIFYING_EVENT_DATE;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrollmentApplicationId(row) {
-    const fieldName = FIELDS.ENROLLMENT_APPLICATION_ID;
-    const errors = [];
-    return errors;
-  }
-  function validateEmployerEmployerName(row) {
-    const fieldName = FIELDS.EMPLOYER_EMPLOYER_NAME;
-    const errors = [];
-    return errors;
-  }
-  function validateEmployerEmployerTin(row) {
-    const fieldName = FIELDS.EMPLOYER_EMPLOYER_TIN;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeExternalMemberId(row) {
-    const fieldName = FIELDS.ENROLLEE_EXTERNAL_MEMBER_ID;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeIssuerMemberId(row) {
-    const fieldName = FIELDS.ENROLLEE_ISSUER_MEMBER_ID;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeFirstName(row) {
-    const fieldName = FIELDS.ENROLLEE_FIRST_NAME;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeMiddleName(row) {
-    const fieldName = FIELDS.ENROLLEE_MIDDLE_NAME;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeLastName(row) {
-    const fieldName = FIELDS.ENROLLEE_LAST_NAME;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleePrefix(row) {
-    const fieldName = FIELDS.ENROLLEE_PREFIX;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeSuffix(row) {
-    const fieldName = FIELDS.ENROLLEE_SUFFIX;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleePhone(row) {
-    const fieldName = FIELDS.ENROLLEE_PHONE;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeEmail(row) {
-    const fieldName = FIELDS.ENROLLEE_EMAIL;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeSsn(row) {
-    const fieldName = FIELDS.ENROLLEE_SSN;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeMaritalStatus(row) {
-    const fieldName = FIELDS.ENROLLEE_MARITAL_STATUS;
-    const errors = [];
-    errors.push(...checkEnum(fieldName, row, [
-      'B',
-      'D',
-      'I',
-      'M',
-      'R',
-      'S',
-      'U',
-      'W',
-      'X',
-    ]));
-    return errors;
-  }
-  function validateEnrolleeSex(row) {
-    const fieldName = FIELDS.ENROLLEE_SEX;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...checkEnum(fieldName, row, [
-      'MALE',
-      'FEMALE',
-    ]));
-    return errors;
-  }
-  function validateEnrolleeDateOfBirth(row) {
-    const fieldName = FIELDS.ENROLLEE_DATE_OF_BIRTH;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeEthnicity(row) {
-    const fieldName = FIELDS.ENROLLEE_ETHNICITY;
-    const errors = [];
-    errors.push(...checkEnum(fieldName, row, [
-      '2135-2',
-      '1002-5',
-      '2029-7',
-      '2056-0',
-      '2034-7',
-      '2036-2',
-      '2086-7',
-      '2039-6',
-      '2040-4',
-      '2079-2',
-      '2080-0',
-      '2047-9',
-      '2106-3',
-      '2028-9',
-      '2500-7',
-      '2131-1',
-      '',
-    ]));
-    return errors;
-  }
-  function validateEnrolleeIsTobaccoUser(row) {
-    const fieldName = FIELDS.ENROLLEE_IS_TOBACCO_USER;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeRelationshipToPolicyHolder(row) {
-    const fieldName = FIELDS.ENROLLEE_RELATIONSHIP_TO_POLICY_HOLDER;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...checkEnum(fieldName, row, [
-      '01', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
-      '19', '23', '24', '25', '26', '31', '38', '53', '60', 'D2', 'G8', 'G8', 'G8', 'G8', 'G8', 'G9',
-    ]));
-    return errors;
-  }
-  function validateEnrolleeIsRequestingCoverage(row) {
-    const fieldName = FIELDS.ENROLLEE_IS_REQUESTING_COVERAGE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeCoverageStartDate(row) {
-    const fieldName = FIELDS.ENROLLEE_COVERAGE_START_DATE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeCoverageEndDate(row) {
-    const fieldName = FIELDS.ENROLLEE_COVERAGE_END_DATE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeLanguagePreference(row) {
-    const fieldName = FIELDS.ENROLLEE_LANGUAGE_PREFERENCE;
-    const errors = [];
-    if (isPresent(fieldName, row)) {
-      errors.push(...checkEnum(fieldName, row, ["spa", "eng"]))
-    }
-    return errors;
-  }
-  function validateEnrolleeMailingAddressAddressLine1(row) {
-    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_1;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeMailingAddressAddressLine2(row) {
-    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ADDRESS_LINE_2;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeMailingAddressCity(row) {
-    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_CITY;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeMailingAddressState(row) {
-    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_STATE;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeMailingAddressZipcode(row) {
-    const fieldName = FIELDS.ENROLLEE_MAILING_ADDRESS_ZIPCODE;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeResidentialAddressAddressLine1(row) {
-    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_1;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeResidentialAddressAddressLine2(row) {
-    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_2;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeResidentialAddressCity(row) {
-    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_CITY;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeResidentialAddressState(row) {
-    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_STATE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeResidentialAddressZipcode(row) {
-    const fieldName = FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ZIPCODE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
-  function validateEnrolleeChangeType(row) {
-    const fieldName = FIELDS.ENROLLEE_CHANGE_TYPE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    errors.push(...checkEnum(fieldName, row, ['CHANGE', 'ADDITION', 'CANCELLATION', 'TERMINATION', 'REINSTATEMENT']));
-    return errors;
-  }
-  function validateEnrolleeAdditionalMaintenanceReason(row) {
-    const fieldName = FIELDS.ENROLLEE_ADDITIONAL_MAINTENANCE_REASON;
-    const errors = [];
-    return errors;
-  }
-  function validateEnrolleeChangeEffectiveDate(row) {
-    const fieldName = FIELDS.ENROLLEE_CHANGE_EFFECTIVE_DATE;
-    const errors = [];
-    errors.push(...requiredField(fieldName, row));
-    return errors;
-  }
+  const VALIDATION_RULES = {
+    [FIELDS.BROKER_FIRST_NAME]: { maxLength: 50 },
+    [FIELDS.BROKER_MIDDLE_NAME]: { maxLength: 50 },
+    [FIELDS.BROKER_LAST_NAME]: { maxLength: 50 },
+    [FIELDS.BROKER_PREFIX]: { maxLength: 4 },
+    [FIELDS.BROKER_SUFFIX]: { maxLength: 4 },
+    [FIELDS.BROKER_PHONE_NUMBER]: { maxLength: 10 },
+    [FIELDS.BROKER_EMAIL]: { maxLength: 50 },
+    [FIELDS.BROKER_NPN]: { maxLength: 10 },
+    [FIELDS.SERVICING_AGENT_FIRST_NAME]: { maxLength: 50 },
+    [FIELDS.SERVICING_AGENT_MIDDLE_NAME]: { maxLength: 50 },
+    [FIELDS.SERVICING_AGENT_LAST_NAME]: { maxLength: 50 },
+    [FIELDS.SERVICING_AGENT_PREFIX]: { maxLength: 4 },
+    [FIELDS.SERVICING_AGENT_SUFFIX]: { maxLength: 4 },
+    [FIELDS.SERVICING_AGENT_PHONE_NUMBER]: { maxLength: 10 },
+    [FIELDS.SERVICING_AGENT_EMAIL]: { maxLength: 50 },
+    [FIELDS.SERVICING_AGENT_NPN]: { maxLength: 10 },
+    [FIELDS.PLAN_YEAR]: { required: true, maxLength: 4 },
+    [FIELDS.PLAN_HIOS_ID]: {
+      required: true,
+      regex: /^\d{5}[A-Za-z]{2}\d{7}-\d{2}$/
+    },
+    [FIELDS.PLAN_MONTHLY_PREMIUM]: {
+      required: true,
+      isNumberOrFloat: true,
+    },
+    [FIELDS.PAYMENT_ROUTING_NUMBER]: {
+      allNoneOrAllNotNone: [
+        FIELDS.PAYMENT_ROUTING_NUMBER,
+        FIELDS.PAYMENT_ACCOUNT_NUMBER,
+        FIELDS.PAYMENT_PAYER_NAME,
+        FIELDS.PAYMENT_ACCOUNT_TYPE,
+        FIELDS.PAYMENT_IS_NEW_PAYMENT_INSTRUMENT,
+      ],
+    },
+    [FIELDS.ENROLLMENT_RENEWAL_TYPE]: { enum: ['PASSIVE', 'ACTIVE'] },
+    [FIELDS.ENROLLMENT_EXTERNAL_POLICY_ID]: { required: true },
+    [FIELDS.ENROLLMENT_DATE_SIGNED]: { required: true },
+    [FIELDS.ENROLLMENT_QUALIFYING_EVENT]: {
+      required: (row) => !['CANCELLATION', 'TERMINATION'].includes(row[FIELDS.ENROLLEE_CHANGE_TYPE]),
+      enum: [
+        'ACTIVE_MILITARY_DUTY', 'ADOPTION', 'BECOMING_LAWFULLY_PRESENT', 'BIRTH', 'C1', 'COFR',
+        'COURT_ORDERED_CHILD_COVERAGE', 'COVID_19', 'DEATH_OF_CHILD', 'DOMESTIC_VIOLENCE', 'E1',
+        'EMPLOYER_INSURANCE_NO_LONGER_AFFORDABLE', 'EMPLOYER_INSURANCE_NO_LONGER_MEC',
+        'EMPLOYER_OPEN_ENROLLMENT', 'EX', 'FOSTER_CHILD', 'GAIN_A_DEPENDENT_THROUGH_COURT_ORDER',
+        'GAIN_A_DEPENDENT_THROUGH_MARRIAGE', 'GAIN_STATUS_AS_INDIAN', 'HRAS', 'L1', 'L2', 'L3',
+        'L5', 'L6', 'L7', 'M1', 'M2', 'NATURAL_DISASTER', 'NO_LONGER_ELIGIBLE_FOR_MEDICAID',
+        'NO_LONGER_ELIGIBLE_FOR_MEDI_CAL', 'PARTNER_CHANGES_EMPLOYMENT', 'PARTNER_DROPS_COVERAGE',
+        'PREGNANCY', 'PROV_NO_LONGER_COVERED', 'RELEASE_FROM_INCARCERATION', 'S1', 'SEPARATION',
+        'SPOUSE_DEATH', 'STUDENT_HEALTH_COVERAGE', 'PERM_MOVE', 'PREGNANCY_COVERAGE',
+        'MEDICARE_ENTITLEMENT', 'LOSS_OF_COVERAGE', 'GAIN_DEPENDENT', 'DEATH'
+      ],
+    },
+    [FIELDS.ENROLLMENT_QUALIFYING_EVENT_DATE]: {
+      required: (row) => row[FIELDS.ENROLLMENT_QUALIFYING_EVENT] !== undefined && row[FIELDS.ENROLLMENT_QUALIFYING_EVENT].trim() !== '',
+    },
+    [FIELDS.ENROLLEE_EXTERNAL_MEMBER_ID]: { required: true },
+    [FIELDS.ENROLLEE_FIRST_NAME]: { required: true },
+    [FIELDS.ENROLLEE_LAST_NAME]: { required: true },
+    [FIELDS.ENROLLEE_MARITAL_STATUS]: { enum: ['B', 'D', 'I', 'M', 'R', 'S', 'U', 'W', 'X'] },
+    [FIELDS.ENROLLEE_SEX]: { required: true, enum: ['MALE', 'FEMALE'] },
+    [FIELDS.ENROLLEE_DATE_OF_BIRTH]: { required: true },
+    [FIELDS.ENROLLEE_IS_TOBACCO_USER]: { required: true },
+    [FIELDS.ENROLLEE_RELATIONSHIP_TO_POLICY_HOLDER]: { required: true },
+    [FIELDS.ENROLLEE_IS_REQUESTING_COVERAGE]: { required: true },
+    [FIELDS.ENROLLEE_COVERAGE_START_DATE]: { required: true },
+    [FIELDS.ENROLLEE_COVERAGE_END_DATE]: {
+      required: (row) => ['CANCELLATION', 'TERMINATION'].includes(row[FIELDS.ENROLLEE_CHANGE_TYPE]),
+      mustBeNullIf: (row) => !['CANCELLATION', 'TERMINATION'].includes(row[FIELDS.ENROLLEE_CHANGE_TYPE]),
+    },
+    [FIELDS.ENROLLEE_LANGUAGE_PREFERENCE]: { enum: ['eng', 'spa', 'ara', 'chi', 'fre', 'cpf', 'deu', 'guj', 'hin', 'kor', 'pol', 'por', 'rus', 'tgl', 'urd', 'vie'] },
+    [FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ADDRESS_LINE_1]: { required: true },
+    [FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_CITY]: { required: true },
+    [FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_STATE]: { required: true },
+    [FIELDS.ENROLLEE_RESIDENTIAL_ADDRESS_ZIPCODE]: { required: true },
+    [FIELDS.ENROLLEE_ETHNICITY]: { enum: ['2135-2', '1002-5', '2029-7', '2056-0', '2034-7', '2036-2', '2086-7', '2039-6', '2040-4', '2079-2', '2080-0', '2047-9', '2106-3', '2028-9', '2500-7', '2131-1', ''] },
+    [FIELDS.ENROLLEE_CHANGE_TYPE]: { required: true, enum: ['CHANGE', 'ADDITION', 'CANCELLATION', 'TERMINATION', 'REINSTATEMENT'] },
+    [FIELDS.ENROLLEE_CHANGE_EFFECTIVE_DATE]: {
+      required: (row) => row[FIELDS.ENROLLEE_CHANGE_TYPE] === 'CHANGE',
+    },
+    };
 
-  function requiredField(fieldName, row) {
-    const errors = [];
-
-    if (!row.hasOwnProperty(fieldName) || !row[fieldName]) {
-      errors.push(`Missing or empty required field "${fieldName}"`);
-    }
-    return errors;
-  }
-
-  function characterLimit(fieldName, row, characterLimit) {
-    const errors = [];
-    if (isPresent(fieldName, row)) {
-      if (row[fieldName].length > characterLimit) {
-      errors.push(`Field ${fieldName} exceeds character limit of ${characterLimit}. Value: "${row[fieldName]}"`);
-      }
-    }
-    return errors;
-  }
-
-  function checkEnum(fieldName, row, allowedValues) {
-    const errors = [];
-    if (isPresent(fieldName, row)) {
-      if (!allowedValues.includes(row[fieldName])) {
-      errors.push(`Field ${fieldName} has an invalid value "${row[fieldName]}". Allowed values are: ${allowedValues.join(", ")}`);
-      }
-    }
-    return errors;
-  }
-
-  function isPresent(fieldName, row) {
-    return row.hasOwnProperty(fieldName) && row[fieldName] !== '';
-  }
-
-
-  const validators = [
-    validateBrokerFirstName,
-    validateBrokerMiddleName,
-    validateBrokerLastName,
-    validateBrokerPrefix,
-    validateBrokerSuffix,
-    validateBrokerPhoneNumber,
-    validateBrokerEmail,
-    validateBrokerNpn,
-    validatePlanYear,
-    validatePlanHiosId,
-    validatePlanMonthlyPremium,
-    validatePaymentRoutingNumber,
-    validatePaymentAccountNumber,
-    validatePaymentPayerName,
-    validatePaymentAccountType,
-    validatePaymentIsNewPaymentInstrument,
-    validateEnrollmentRenewalType,
-    validateEnrollmentExternalPolicyId,
-    validateEnrollmentExternalSubscriberId,
-    validateEnrollmentCancelOverlappingEligibility,
-    validateEnrollmentDateSigned,
-    validateEnrollmentQualifyingEvent,
-    validateEnrollmentQualifyingEventDate,
-    validateEnrollmentApplicationId,
-    validateEmployerEmployerName,
-    validateEmployerEmployerTin,
-    validateEnrolleeExternalMemberId,
-    validateEnrolleeIssuerMemberId,
-    validateEnrolleeFirstName,
-    validateEnrolleeMiddleName,
-    validateEnrolleeLastName,
-    validateEnrolleePrefix,
-    validateEnrolleeSuffix,
-    validateEnrolleePhone,
-    validateEnrolleeEmail,
-    validateEnrolleeSsn,
-    validateEnrolleeMaritalStatus,
-    validateEnrolleeSex,
-    validateEnrolleeDateOfBirth,
-    validateEnrolleeEthnicity,
-    validateEnrolleeIsTobaccoUser,
-    validateEnrolleeRelationshipToPolicyHolder,
-    validateEnrolleeIsRequestingCoverage,
-    validateEnrolleeCoverageStartDate,
-    validateEnrolleeCoverageEndDate,
-    validateEnrolleeLanguagePreference,
-    validateEnrolleeMailingAddressAddressLine1,
-    validateEnrolleeMailingAddressAddressLine2,
-    validateEnrolleeMailingAddressCity,
-    validateEnrolleeMailingAddressState,
-    validateEnrolleeMailingAddressZipcode,
-    validateEnrolleeResidentialAddressAddressLine1,
-    validateEnrolleeResidentialAddressAddressLine2,
-    validateEnrolleeResidentialAddressCity,
-    validateEnrolleeResidentialAddressState,
-    validateEnrolleeResidentialAddressZipcode,
-    validateEnrolleeChangeType,
-    validateEnrolleeAdditionalMaintenanceReason,
-    validateEnrolleeChangeEffectiveDate,
-  ]
-
-
-  function validateCSV(content, type) {
+    function validateField(fieldName, value, row) {
+      const rules = VALIDATION_RULES[fieldName];
       const errors = [];
 
-      const parsed = Papa.parse(content, {
-        header: true,
-        skipEmptyLines: true
-      });
-
-      if (parsed.errors.length > 0) {
-        parsed.errors.forEach(error => {
-          errors.push(`Parsing error: ${error.message}`);
-        });
-        return errors;
+      if (rules?.required) {
+        const isRequired = typeof rules.required === 'function' ? rules.required(row) : rules.required;
+        if (isRequired && (!value || value.trim() === '')) {
+          errors.push(`Missing or empty required field "${fieldName}"`);
+        }
       }
 
-      const rows = parsed.data;
-
-      // Validate headers
-      const headers = parsed.meta.fields;
-      const fieldValues = Object.values(FIELDS);
-      const missingHeaders = fieldValues.filter(field => !headers.includes(field));
-      if (missingHeaders.length > 0) {
-        errors.push(`Missing headers: ${missingHeaders.join(", ")}`);
+      if (rules?.mustBeNullIf) {
+        const mustBeNullCondition = typeof rules.mustBeNullIf === 'function' ? rules.mustBeNullIf(row) : rules.mustBeNullIf;
+        if (mustBeNullCondition && value !== null && value !== undefined && value.trim() !== '') {
+          errors.push(`Field "${fieldName}" must be null or empty due to condition.`);
+        }
       }
 
-      headers.forEach(header => {
-        if (!fieldValues.includes(header)) {
-          errors.push(`Unexpected header "${header}".`);
+      if (rules?.maxLength && value?.length > rules.maxLength) {
+        errors.push(`Field "${fieldName}" exceeds character limit of ${rules.maxLength}. Value: "${value}"`);
+      }
+
+      if (rules?.enum && value !== "" && !rules.enum.includes(value)) {
+        errors.push(`Field "${fieldName}" has an invalid value "${value}". Allowed values are: ${rules.enum.join(", ")}`);
+      }
+
+      if (rules?.isNumberOrFloat) {
+        if (isNaN(parseFloat(value)) || !isFinite(parseFloat(value))) {
+          errors.push(`Field "${fieldName}" has an invalid value "${value}". Expected a valid number or float.`);
         }
-      });
+      }
 
-      const csvRows = rows.map(row => {
-        return headers.reduce((obj, header) => {
-          obj[header] = row[header];
-          return obj;
-        }, {});
-      });
+      if (rules?.regex && !rules.regex.test(value)) {
+        errors.push(`Field "${fieldName}" has an invalid format "${value}". Expected format: ${rules.regex}`);
+      }
 
-      csvRows.forEach((row, index) => {
-        const rowErrors = [];
-        validators.forEach(validator => {
-          rowErrors.push(...validator(row));
-        });
-        if (rowErrors.length > 0) {
-          errors.push(`Row ${index + 1}:<ul>${rowErrors.map(err => `<li>${err}</li>`).join("")}</ul>`);
+      if (rules?.allNoneOrAllNotNone) {
+        const relatedFields = rules.allNoneOrAllNotNone;
+        const allValues = relatedFields.map(field => row[field]);
+        const allNone = allValues.every(val => val === null || val === undefined || val.trim() === '');
+        const allNotNone = allValues.every(val => val !== null && val !== undefined && val.trim() !== '');
+        if (!allNone && !allNotNone) {
+        errors.push(`Fields ${relatedFields.join(", ")} must be either all None or all not None.`);
         }
-      });
+      }
 
+      if (rules?.eitherOrRequired) {
+        const relatedFields = rules.eitherOrRequired;
+        const hasAtLeastOneValue = relatedFields.some(field => row[field] !== null && row[field] !== undefined && row[field].trim() !== '');
+        if (!hasAtLeastOneValue) {
+          errors.push(`At least one of the fields ${relatedFields.join(", ")} is required.`);
+        }
+      }
       return errors;
     }
 
-  // File input event listener
+  function validateRow(row) {
+    return Object.keys(row).flatMap(fieldName => validateField(fieldName, row[fieldName], row));
+  }
+
+  function validateCSV(content) {
+    const errors = [];
+    const parsed = Papa.parse(content, { header: true, skipEmptyLines: true });
+
+    if (parsed.errors.length > 0) {
+      errors.push(...parsed.errors.map(error => `Parsing error: ${error.message}`));
+      return errors;
+    }
+
+    const rows = parsed.data;
+    const headers = parsed.meta.fields;
+    const missingHeaders = Object.values(FIELDS).filter(field => !headers.includes(field));
+
+    if (missingHeaders.length > 0) {
+      errors.push(`Missing headers: ${missingHeaders.join(", ")}`);
+    }
+
+    rows.forEach((row, index) => {
+      const rowErrors = validateRow(row);
+      if (rowErrors.length > 0) {
+        errors.push(`Row ${index + 1}:<ul>${rowErrors.map(err => `<li>${err}</li>`).join("")}</ul>`);
+      }
+    });
+
+    return errors;
+  }
+
   document.getElementById("csvFileInput").addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = function (e) {
-        const content = e.target.result;
-        const errors = validateCSV(content);
+        const errors = validateCSV(e.target.result);
         displayResults(errors);
       };
       reader.readAsText(file);
     }
   });
 
-  // Button click event listener for pasted content
   document.getElementById("validateButton").addEventListener("click", function () {
     const content = document.getElementById("csvTextarea").value;
     const errors = validateCSV(content);
     displayResults(errors);
   });
 
-  // Display validation results
   function displayResults(errors) {
     const outputDiv = document.getElementById("output");
-    if (errors.length > 0) {
-      outputDiv.innerHTML = `<strong>Validation Errors:</strong><ul>${errors.map(err => `<li>${err}</li>`).join("")}</ul>`;
-      outputDiv.style.borderColor = "red";
-    } else {
-      outputDiv.innerHTML = "<strong>CSV is valid!</strong>";
-      outputDiv.style.borderColor = "green";
-    }
+    outputDiv.innerHTML = errors.length > 0
+      ? `<strong>Validation Errors:</strong><ul>${errors.map(err => `<li>${err}</li>`).join("")}</ul>`
+      : "<strong>CSV is valid!</strong>";
+    outputDiv.style.borderColor = errors.length > 0 ? "red" : "green";
   }
 </script>
