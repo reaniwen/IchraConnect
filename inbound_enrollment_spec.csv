@@ -1,0 +1,68 @@
+Field Name,DataType,Description,Format,Example,Length,Required
+broker.first_name,String,Broker First Name,,,50,N
+broker.middle_name,String,Broker Middle Name,,,50,N
+broker.last_name,String,Broker Last Name,,,50,N
+broker.prefix,String,Broker Prefix,,,4,N
+broker.suffix,String,Broker Suffix,,,4,N
+broker.phone_number,String,Broker’s phone number,Valid 10-digit Phone Number (No delimiters),5109027836,15,N
+broker.email,String,Broker’s email address,Valid Email Format,john@test.com,50,N
+broker.npn,String,Broker’s National Producer Number - required for enrollee attribution,Valid NPN,123530000,10,N
+servicing_agent.first_name,String,Servicing Agent First Name,,,50,N
+servicing_agent.middle_name,String,Servicing Agent Middle Name,,,50,N
+servicing_agent.last_name,String,Servicing Agent Last Name,,,50,N
+servicing_agent.prefix,String,Servicing Agent Prefix,,,4,N
+servicing_agent.suffix,String,Servicing Agent Suffix,,,4,N
+servicing_agent.phone_number,String,Servicing Agent’s phone number,Valid 10-digit Phone Number (No delimiters),5109027836,15,N
+servicing_agent.email,String,Servicing Agent’s email address,Valid Email Format,john@test.com,50,N
+servicing_agent.npn,String,Servicing Agent’s National Producer Number - required for enrollee attribution,Valid NPN,123530000,10,N
+plan.year,String,Plan Year,Valid plan year,2025,4,Y
+plan.hios_id,String,HIOS ID,14-digit HIOS ID code plus variant,50221NJ0040001-02,17,Y
+plan.monthly_premium,String,Plan Monthly Premium,Valid decimal value,999.99,20,Y
+payment.routing_number,Digit,Routing number,,21000021,,Y if other payment related fields are provided
+payment.account_number,Digit,Account number,,,,Y if other payment related fields are provided
+payment.payer_name,String,The name of payer,,,,Y if other payment related fields are provided
+payment.account_type,Enum,The account type of ACH,,CHECKING,,Y if other payment related fields are provided
+payment.is_new_payment_instrument,Boolean,True if this is new or updated payment instrument,,,,Y if other payment related fields are provided
+enrollment.renewal_type,Enum,Renewal Type,Valid enum value (ACTIVE/PASSIVE),,,N
+enrollment.external_policy_id,String,Unique identifier for the policy (coming from the partner),,,,Y
+enrollment.external_subscriber_id,String,,,,,N
+enrollment.cancel_overlapping_eligibility,Boolean,Term or cancel existing eligibility if it overlaps and prefer new one,Valid Boolean String,FALSE,,N
+enrollment.date_signed,String,Time when broker or consumer submitted their enrollment,ISO Format,2011-11-04 00:05:23.283+00:00,,Y
+enrollment.qualifying_event,Enum,Enrollment Qualifying Event,,,,Y if enrollee.change_type is not CANCELLATION or TERMINATION
+enrollment.qualifying_event_date,String,Enrollment Qualifying Event Date,YYYY-MM-DD,1996-01-01,,Y if qualifying_event provided
+enrollment.application_id,String,The ID of the application,,,,N
+employer.employer_name,String,The name of employer,,,,N
+employer.employer_tin,String,The tax number of employer,,,,N
+enrollee.external_member_id,String,Member ID defined by vendor,,,,Y
+enrollee.issuer_member_id,String,Member ID defined by issuer,,,,N
+enrollee.first_name,String,Enrollee First Name,,,,Y
+enrollee.middle_name,String,Enrollee Middle Name,,,,N
+enrollee.last_name,String,Enrollee Last Name,,,,Y
+enrollee.prefix,String,Enrollee Prefix,,,,N
+enrollee.suffix,String,Enrollee Suffix,,,,N
+enrollee.phone,String,Enrollee Phone Number,Valid 10-digit Phone Number (No delimiters),5109027836,,N
+enrollee.email,String,Enrollee Email,Valid Email Format,john@test.com,,N
+enrollee.ssn,String,Enrollee Social Security Number,Valid 9-digit SSN,123456789,,N
+enrollee.marital_status,Enum,Enrollee Marital Status,Valid enum value (See Marital Status Mapping),M,,N
+enrollee.sex,Enum,Enrollee Sex,Valid enum value (MALE/FEMALE),FEMALE,,Y
+enrollee.date_of_birth,String,Enrollee Date of Birth,YYYY-MM-DD,1996-01-01,,Y
+enrollee.ethnicity,Enum,Enrollee Ethnicity (See Ethnicity Code mapping),Valid enum value,2135-2,,N
+enrollee.is_tobacco_user,Boolean,Specifies if enrollee is a tobacco user,Valid Boolean String,TRUE,,Y
+enrollee.relationship_to_policy_holder,Enum,Enrollee’s relationship to policy holder (See Relationship Code Mapping),Valid enum value,15,,Y
+enrollee.is_requesting_coverage,Boolean,Specifies if enrollee is requesting coverage,Valid Boolean String,TRUE,,Y
+enrollee.coverage_start_date,String,Coverage Start Date for enrollee,YYYY-MM-DD,1996-01-01,,Y
+enrollee.coverage_end_date,String,Coverage End Date for enrollee,YYYY-MM-DD,1996-01-01,,Only include/required when change type is CANCELLATION or TERMINATION
+enrollee.language_preference,Enum,Enrollee Language Preference,Valid enum value (See Language Code mapping),spa,,N
+enrollee.mailing_address.address_line_1,String,Enrollee Mailing Address Line 1,,,,N
+enrollee.mailing_address.address_line_2,String,Enrollee Mailing Address Line 2,,,,N
+enrollee.mailing_address.city,String,Enrollee Mailing Address City,,,,N
+enrollee.mailing_address.state,String,Enrollee Mailing Address State,,,,N
+enrollee.mailing_address.zipcode,String,Enrollee Mailing Address Zipcode,,,,N
+enrollee.residential_address.address_line_1,String,Enrollee Residential Address Line 1,,,,Y
+enrollee.residential_address.address_line_2,String,Enrollee Residential Address Line 2,,,,N
+enrollee.residential_address.city,String,Enrollee Residential Address City,,,,Y
+enrollee.residential_address.state,String,Enrollee Residential Address State,,,,Y
+enrollee.residential_address.zipcode,String,Enrollee Residential Address Zipcode,,,,Y
+enrollee.change_type,Enum,Type of modification made to the enrollee’s policy status,,"CHANGE, ADDITION, CANCELLATION, TERMINATION, REINSTATEMENT",,Y
+enrollee.additional_maintenance_reason,String,Additional maintenance reason code for the policy status change.,,e.g. LEAVE_PLATFORM,,Y if enrollee.change_type is CHANGE
+enrollee.change_effective_date,String,Date at which change should take effect,YYYY-MM-DD,,,Y if enrollee.change_type is CHANGE
