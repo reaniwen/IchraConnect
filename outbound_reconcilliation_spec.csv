@@ -1,0 +1,28 @@
+Field Name,DataType,Description,Format,Example,Length,Required
+oscar_member_id,string,14-character Oscar ID,14-character Oscar ID,OSC12345678-01,14,y
+platform_member_id,string,Platform-specified member ID,vendor-specific,vendor-specific,,n
+name_first,string,Member's first name,First,Joe,,y
+name_last,string,Membr's last name,Last,Schmoe,,y
+ssn,string,9-character member tax id,9-character member tax id,123456789,9,n
+contract_id,string,Oscar internal contract_id UUID,UUID,,,y
+coverage_start,string,First day of coverage,YYYY-MM-DD,2024-01-01,10,y
+coverage_end,string,Last day of coverage,YYYY-MM-DD,2024-01-01,10,y
+exchange_status,enum (on/off),Indicates if a member is enrolled on-exchange or off-exchange,"ON, OFF",OFF,,y
+plan_state,string,US state in which member is enrolled.,2 digit state abbv.,NY,2,y
+effectuated,bool,Boolean indicating if a member has paid their binder payment and is therefore effectuated (TRUE) or uneffectuated (FALSE).,"TRUE, FALSE",TRUE,,y
+effectuation_date,string,"Date eligibility status became ""EFFECTUATED""",YYYY-MM-DD,2024-01-01,10,y
+policy_status,enum,Indicates the eligibility state of the member's health insurance policy.,"EFFECTUATED, UNEFFECTUATED, PRECOVERAGE_EFFECTUATED, GRACE_PERIOD, TERMINATED, CANCELLED, DELINQUENCY, POST_COVERAGE",EFFECTUATED,,y
+policy_status_reason,string,Status reason,See Supported Policy Status Reasons,Paid,,y
+month,string,The month that premium and eligibility status applies to,YYYY-MM-01,2024-01-01,10,y
+total_premium,string,Total monthly premium for policy (member + aptc),Valid decimal value,999.99,,y
+member_responsible,string,Member's monthly premium owed,Valid decimal value,999.99,,y
+aptc,string,"Aptc applied to policy, if applicable",Valid decimal value,999.99,,y
+balance,string,"Member's outstanding balance at time of file generation, including future 'UNPAID' charges",Valid decimal value,999.99,,y
+oldest_unpaid_due_date,string,Oldest unpaid due date,YYYY-MM-DD,2024-01-01,10,y
+past_due_balance,string,Sum of unpaid charges with a due date in the past,Valid decimal value,999.99,,y
+email,string,Member's primary email,email@email.com,joe.schmoe@gmail.com,,n
+address,string,Member's residential address,,"123 Main St, Apt 3",,y
+city,string,Member's residential city,,Anytown,,y
+state,string,"Member's residential state, 2 letter code",XX,NY,2,y
+zip,string,Member's residential 5-digit zip code,00000,12345,5,y
+policy_relation,enum,Member's policy relation,"Subscriber, Spouse, Child, Dependent, Unknown",Subscriber,,y

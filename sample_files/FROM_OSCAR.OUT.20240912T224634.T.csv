@@ -1,0 +1,4 @@
+enrollment.external_contract_id,enrollment.total_premium,enrollee.issuer_id,enrollee.external_member_id,enrollee.first_name,enrollee.last_name,enrollee.dob,enrollee.email,enrollee.coverage_start_date,enrollee.coverage_end_date,status,additional_maintenance_reason,oscar_internal_uuid
+70317,995.58,OSC7838962201,21059,Nick,Hackett,1995-09-22,bdbdopenenr@bb.local.com,2024-10-01,,EFFECTUATED,CONFIRM,e3fd7e8a14324fa08929a006f454e06f
+70317,995.58,OSC7838962202,21888,Rachel,Hackett,1995-05-10,,2024-10-01,,EFFECTUATED,CONFIRM,e3fd7e8a14324fa08929a006f454e06f
+70317,995.58,OSC7838962203,21889,Rick,Hackett,2003-08-01,,2024-10-01,,EFFECTUATED,CONFIRM,e3fd7e8a14324fa08929a006f454e06f

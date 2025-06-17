@@ -1,0 +1,68 @@
+---
+title: "Integrating with Oscar"
+---
+
+Oscar supports both the EDI and CSV integration standards. We expect ICHRA administrators to pick a standard and build out the integration with us.
+
+### Oscar Supported Integration Standards
+
+* [EDI Enrollment and Payment Data Integration](edi_implementation_guide.qmd)
+  * 834 Enrollment EDI  
+  * 820 Payment EDI  
+* [CSV Enrollment and Payment Data Integration](csv_implementation_guide.qmd)  
+  * CSV Reconciliation File & Processes
+
+## Standard Timeline {#standard-timeline}
+
+Timelines are based on Oscar standard ICHRA administrator integration as defined below. Any changes, updates, or deviations may incur additional time to launch. Timelines start when Oscar and platform agree to proceed with an integration.
+
+* 2-3 weeks: File spec & implementation alignment; security assessment; SFTP setup  
+* 2-3 weeks: Build & integration configuration  
+* 2-3 weeks: Data integration testing
+
+## Administrator Onboarding
+
+To set up an integration, Oscar requires the following from all administrator partners: 
+
+* Signature of an NDA and standard vendor and/or producer agreement with BAA  
+* Security assessment for SFTP setup, providing **one** of the following:  
+  * SOC 2 Type 2 assessment report conducted within the last 36 months  
+  * HITRUST certificate  
+  * ISO 27001 assessment report  
+  * Completed Oscar Vendor Security Assessment Questionnaire
+* SFTP setup
+
+## FAQs
+
+#### What types of integrations does Oscar support for ICHRA administrators?
+For off-exchange ICHRA enrollments, Oscar currently supports two main methods of integration for enrollment and payment data: 
+
+1. Dual-file EDI Integration  
+    * Enrollment: Daily batch 834 EDI \- inbound and outbound  
+        * TA1/999 Acknowledgement & Error response  
+        * CSV Reconciliation  
+    * Payment: Batch 820 EDI for payment remittance with ACH direct deposit  
+  For both the [enrollment 834 EDI](CMS_X12_834_Companion_Guide_v7.2.pdf){target="_blank"} and [820 EDI implementation](edi_implementation_guide.qmd), we use the CMS implementation standards, with a modification to the 834 EDI standard to include employer information in the 2100D employer loop.   
+    
+1. Combined File CSV Integration  
+    * Single combined enrollment & payment CSV file \- daily batch (Oscar Inbound)  
+        * Payment instrument details (bank account information) is passed to Oscar with the enrollment data and binder payments and auto-payments are automatically enabled.  
+* Oscar CSV Acknowledgement file \- daily (Oscar Outbound)  
+    * Oscar CSV Enrollment Status file (Oscar Outbound)
+
+Both implementations include error handling and both automated and manual reconciliation flows managed by our operations teams.
+
+#### Can I request changes to the integration specification?
+Yes. We are open to making changes to the integration specification to support your requirements. Reach out to us to discuss further.
+
+#### Does Oscar have a REST API I can use?
+We plan on launching an external enrollment or payment REST API for administrators and carriers to leverage soon\!
+
+#### What is the typical timeline for integration?
+Oscar works with each ICHRA administrator directly to identify their unique integration needs. This process can vary depending on the complexity of your system and the method of integration chosen. On average, it can take anywhere from a few weeks to a couple of months.
+
+#### Does Oscar accept credit or debit card information in the CSV enrollment file?
+Oscar accepts ACH (Automated Clearinghouse) bank account numbers in the combined CSV enrollment and payment files.
+
+#### How can I integrate my ICHRA administrator platform with Oscar?
+Thanks for your interest in ICHRA at Oscar\! Please reach out to [ichra@hioscar.com](mailto:ichra@hioscar.com) to set up an integration or ask any other questions about ICHRA Connect.

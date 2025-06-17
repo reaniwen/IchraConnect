@@ -1,0 +1,24 @@
+---
+title: "Language Mapping"
+---
+
+|ISO 639 Value|Description  |
+|-------------|-------------|
+|eng          |English      |
+|spa          |Spanish      |
+|ara          |Arabic       |
+|chi          |chinese      |
+|fre          |French       |
+|cpf          |French Creole|
+|deu          |German       |
+|guj          |Gujarati     |
+|hin          |Hindi        |
+|kor          |Korean       |
+|pol          |Polish       |
+|por          |Portuguese   |
+|rus          |Russian      |
+|tgl          |Tagalog      |
+|urd          |Urdu         |
+|vie          |Vietnamese   |
+|eng          |Other        |
+: {.striped}

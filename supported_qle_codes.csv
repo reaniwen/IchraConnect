@@ -1,0 +1,51 @@
+Supported QLE Codes,Description
+ACTIVE_MILITARY_DUTY,I experienced a loss of coverage due to returning from active military duty
+ADOPTION,My family adopted a child
+"
+BECOMING_LAWFULLY_PRESENT",I have become lawfully present
+BIRTH,My family had a baby
+C1,My previous health plan substantially violated a material provision of its contract and I can demonstrate it
+"
+COFR","Effective Jan 16th, I have been impacted by the Boulder fires or the COVID-19 Omicron variant. I would like to utilize CO's special enrollment period to enroll in coverage."
+COURT_ORDERED_CHILD_COVERAGE,I was mandated by a court order to provide health insurance for a child
+COVID_19,COVID-19: COVID-19 Public Health Emergency SEP.
+DEATH_OF_CHILD,My child passed away
+DOMESTIC_VIOLENCE,I was a victim of domestic abuse or spousal abandonment
+"
+E1","My enrollment or non-enrollment (or the enrollment of my spouse or child dependent) in another plan was unintentional, inadvertent or erroneous and was the result of the error, misrepresentation, or inaction of an officer, employee, or agent of a health plan"
+EMPLOYER_INSURANCE_NO_LONGER_AFFORDABLE,Insurance through my employer is no longer affordable
+EMPLOYER_INSURANCE_NO_LONGER_MEC,Insurance through my employer no longer meets the standards of minimum essential coverage
+EMPLOYER_OPEN_ENROLLMENT,I opted out of employer coverage during my employer’s open enrollment
+EX,"Misinformation, misrepresentation, misconduct, or inaction of someone working in an official capacity to help you enroll kept you from enrolling in a plan, enrolling in the right plan, or getting the premium tax credit or cost-sharing reduction you were eligible for"
+FOSTER_CHILD,I gained a dependent through foster care
+GAIN_A_DEPENDENT_THROUGH_COURT_ORDER,I gained a dependent because of a court order
+GAIN_A_DEPENDENT_THROUGH_MARRIAGE,I gained a dependent through marriage or domestic partnership
+GAIN_STATUS_AS_INDIAN,I have gained status as an American Indian
+HRAS,I (or my spouse or child dependent) have been offered premium assistance by an employer in the form of an Individual Coverage Health Reimbursement Arrangement (ICHRA) or Qualified Small Employer HRA (QSEHRA).
+L1,My employer stopped offering health insurance
+L2,"My health insurance coverage ended because I, or a family member, left a job that was providing health insurance"
+L3,My plan is being discontinued by my issuer
+L5,My contract holder aged out of my current plan
+L6,I aged out of my current plan
+L7,My COBRA coverage was terminated
+M1,I moved into oscar's service area from within the US.
+M2,I moved into oscar's service area from outside the US.
+NATURAL_DISASTER,I live or lived in an area impacted by a natural disaster and/or state of emergency
+NO_LONGER_ELIGIBLE_FOR_MEDICAID,I became ineligible for Medicaid or Child Health Plus
+NO_LONGER_ELIGIBLE_FOR_MEDI_CAL,I became ineligible for Medi-Cal
+PARTNER_CHANGES_EMPLOYMENT,My spouse or partner changed employment that resulted in a loss of eligibility under their employer’s plan
+PARTNER_DROPS_COVERAGE,My spouse or partner dropped coverage from their employer’s health plan during an open enrollment period that differs from oscar's open enrollment.
+PREGNANCY,I became pregnant and previously did not have health insurance
+PROV_NO_LONGER_COVERED,I was receiving services from a contracting provider under another health benefit plan and that provider ceased to participate in that plan
+RELEASE_FROM_INCARCERATION,I was released from incarceration
+S1,I (or my spouse or child dependent (for Child Health Plus)) am newly eligible or ineligible for a government tax subsidy or I (or my spouse or child dependent) have had a change in eligibility for cost-sharing reductions
+SEPARATION,"I was divorced or had an annulment, legal separation or end of domestic partnership"
+SPOUSE_DEATH,My spouse died
+STUDENT_HEALTH_COVERAGE,I experienced a loss of coverage because I became ineligible for student health coverage
+"PERM_MOVE
+",
+PREGNANCY_COVERAGE,
+MEDICARE_ENTITLEMENT,
+LOSS_OF_COVERAGE,
+GAIN_DEPENDENT,
+DEATH,Death in the family

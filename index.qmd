@@ -1,0 +1,59 @@
+---
+title: "Welcome to ICHRA Connect"
+---
+
+### ICHRA at Oscar
+
+At Oscar, our mission is to make a healthier life accessible and affordable for all. We believe that a larger individual market is the best solution for Americans and view ICHRA (Individual Coverage Health Reimbursement Arrangement) as the future of health benefits. Just like the 401k revolutionized retirement planning, ICHRA is poised to transform health benefits by putting the individual in control, while also giving employers reduced and predictable healthcare costs. Demand and awareness are growing, and Oscar is paving the way for the future of ICHRA.
+
+### Why ICHRA?
+
+ICHRA is a great option for both employers and employees, providing:
+
+* **Flexibility:** Employers can tailor contributions to different classes of employees, providing a customizable approach to health benefits.
+* **Affordability:** Employers have predictable costs by setting defined contribution amounts, avoiding the unpredictability of traditional group health insurance premiums.
+* **Choice:** Employees can choose individual health plans that best meet their schedules, locations, and health needs, enhancing satisfaction and coverage suitability.
+* **Portability:** Employees can keep their plan design, mid-year accumulations towards deductibles, and provider network, if and when they leave their employer.
+
+---
+
+### What is ICHRA Connect?
+
+ICHRA Connect is an open source, universal, company-agnostic integration specification designed to reduce friction, encourage faster growth of the ICHRA market, and allow ICHRA administrators to integrate seamlessly with carriers. Oscar’s goal is to prove the viability of administrator-to-carrier interoperability and set a standard for a functioning ICHRA marketplace.
+
+ICHRA Connect will streamline shopping, enrollment, billing, and other operational workflows to offer an ICHRA experience that rivals or surpasses traditional group plans. ICHRA Connect will standardize data reconciliation and eligibility updates, bringing ICHRA on par with group and on-exchange ACA experiences. Additionally, Oscar intends to establish shared data integration standards to enhance collaboration among ICHRA stakeholders and foster a more efficient market.
+
+### Our Singular Focus
+
+With ICHRA Connect, Oscar aims to create a shared technical infrastructure that enables carriers and administrators to work together to scale the ICHRA market.
+
+### How We’re Doing It
+
+Oscar is developing an open integration specification to streamline ICHRA workflows, including:
+
+* Shopping & Enrollment
+* Eligibility
+* Billing & Payment
+* Other operational workflows necessary to offer an ICHRA experience that is on par or better than the group plan experience
+
+Oscar understands that the landscape of health benefits, especially ICHRA, is constantly evolving. To stay ahead of these changes:
+
+* Oscar is developing specifications in collaboration with ICHRA administrators and other carriers through working groups.
+* Oscar’s standards will explicitly ensure that member data is easily reconcilable and that member eligibility status is as accurate as possible between vendors and carriers.
+* Oscar’s integration standards will continuously evolve to meet new challenges and opportunities.
+* Oscar plans to develop a RESTful API standard that will further streamline integrations, enhance interoperability, and provide a more seamless experience for all stakeholders involved in the ICHRA ecosystem.
+
+### Open Source
+The ICHRA Connect integration specification is open source and licensed under a commercially permissive [Apache 2.0 License](LICENSE). We welcome you to use the ICHRA Connect specification to power your data integration. You can also contribute bugs, feature, and improvements by joining our working group or filing an Issue in our Github repo. The source code for this website and the specifications can be found at [github.com/oscarhealth/IchraConnect](https://github.com/oscarhealth/IchraConnect)
+
+### How to Integrate with Oscar
+
+If you're interested in setting up an ICHRA integration with Oscar, please reach out to [ichra@hioscar.com](mailto:ichra@hioscar.com) for more information or [see our high-level overview and technical specifications](integrating_with_oscar.qmd) for ICHRA integrations.
+
+---
+
+<div style="border: 2px solid #0073e6; padding: 20px; border-radius: 10px; background-color: #f0f8ff; text-align: center;">
+  <h3>Adopt the ICHRA Connect Specification</h3>
+  <p>If you are a carrier interested in modifying or adopting the ICHRA Connect integration specifications, please reach out to join our working groups.</p>
+  <a href="mailto:ichra@hioscar.com" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: white; background-color: #0073e6; border-radius: 5px; text-decoration: none;">Contact Us</a>
+</div>

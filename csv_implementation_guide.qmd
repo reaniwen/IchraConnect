@@ -1,0 +1,92 @@
+---
+title: "CSV Implementation Guide"
+---
+
+ICHRA Connect also supports a CSV file-based data integrations in addition to the [EDI file-based data integration](edi_implementation_guide.qmd).
+
+## Integration Summary {#integration-file-summary}
+
+The integration between a carrier and the administrator includes four CSV data files. All file directions are in relation to carrier:
+
+* Inbound Enrollment File: Combined Payment & Enrollment
+* Outbound Ack File: Enrollment file parsing acknowledgment
+* Outbound Enrollment File: Enrollment confirmation
+* Outbound Reconciliation: Billing & Eligibility reconciliation
+
+![](ICHRA_CSV_Integration_Flow.png)
+
+## Combined Enrollment & Payment Spec
+The ICHRA Platform administrator sends the carrier member enrollment information and payment information in a single combined enrollment & payment CSV file (Inbound Enrollment File). Carrier ingests and enrolls members from this file as they would with a standard enrollment integration.
+
+Payment information sent in this file includes one Automated Clearing House (ACH) account number per member (payment instrument). We do not accept credit card or debit card numbers as payment instruments.
+
+At the time of enrollment, carrier enables Autopay for each enrolled member, withdraws members’ initial binder payments, and effectuates them. Members must affirmatively confirm that the employer will be making payments on their behalf as part of the administrator enrollment flow.
+
+After autopay is enabled, carrier will automatically draft:
+
+* Binder payments: before state regulatory deadlines, which may be as early as the enrollment date.
+* Full outstanding balance: members may be drafted one or more times per month to ensure balance is paid by the premium due date. Exact auto-draft dates will be selected by carrier and the administrator.
+
+### ICHRA Group / Employer Information
+
+Administrator will pass Employer Name and Employer TIN on the inbound enrollment files.
+
+### ICHRA Administrator Disenrollments (“Soft terms”)
+
+If an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier's ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.
+
+To let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE\_PLATFORM on an inbound enrollment transaction.
+
+### Refunds {#refunds}
+
+Eligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.
+
+### Reconciliation {#reconciliation}
+
+We use a weekly reconciliation file to ensure eligibility and billing data is aligned between carrier and the administrator in order to avoid disruptions to member coverage or experiences; for example, a mid-month increase to members' premiums that could result in declined transactions at time of auto-pay.
+
+The reconciliation file is a full change file that contains a snapshot of all plan year YTD membership, including cancelled and termed members, plus a 3 month prior-year lookback.
+
+Each enrolled member will have one record per month enrolled with the corresponding monthly premium amount for that month.
+
+![](ICHRA_CSV_Payment_Flow.png)
+
+### File Details {#file-details}
+
+#### Inbound Enrollment File {#inbound-enrollment-file}
+
+- Direction: Carrier inbound/administrator outbound
+- File type: CSV
+- File spec: [Inbound Enrollment Spec](inbound_enrollment_spec.qmd)
+- Cadence: Daily
+- Naming convention: FROM\_ADMIN\_NAME.EMT.YYYYMMDDThhmmss.P.csv
+- Delta file or full file: Delta
+- File transfer type: SFTP
+- Sample file: [here](sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv){target="_blank"}
+
+#### Outbound Enrollment Ack File {#outbound-ack-file}
+
+- Direction: Carrier outbound/administrator inbound
+- File type: CSV
+- File spec: [Outbound Enrollment Ack File Spec](outbound_enrollment_spec.qmd)
+- Cadence: Daily
+- Naming convention: TO\_ADMIN\_NAME.ACK.YYYYMMDDThhmmss.P.csv
+- Sample file: [here](sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv){target="_blank"}
+
+#### Outbound Enrollment File {#outbound-enrollment-file}
+
+- File type: CSV
+- File spec: [Outbound Enrollment File](file_specifications.qmd)
+- Cadence: Daily
+- Naming convention: FROM\_CARRIER.OUT.YYYYMMDDThhmmss.P.csv
+- Delta file or full file: Delta
+- Sample file: [here](sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv){target="_blank"}
+
+#### Outbound Reconciliation File {#outbound-reconciliation-file}
+
+- File type: CSV
+- File spec: [Outbound Reconciliation File](outbound_reconcilliation_spec.qmd)
+- Cadence: Weekly
+- Full or Delta: Full snapshot of plan year, with 3 month look back to previous year
+- Naming Convention: FROM\_CARRIER\_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv
+- Sample file: [here](sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv){target="_blank"}

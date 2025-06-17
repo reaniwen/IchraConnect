@@ -1,0 +1,36 @@
+ASC X12 Value,Description
+01,Spouse
+03,Parent
+04,Grandparent
+05,Grandchild
+06,Aunt/Uncle
+07,Nephew/Niece
+08,First Cousin
+09,Adopted Child
+10,Foster Child
+11,Daughter-in-law/Son-in-law
+12,Brother-in-law/Sister-in-law
+13,Mother-in-law/Father-in-law
+14,Sibling
+15,Ward
+16,Step-parent
+17,Stepson/Stepdaughter
+18,Self
+19,Son/Daughter
+19,Child of Domestic Partner
+23,Sponsored Dependent
+24,"Dependent of a Minor
+Dependent"
+25,Former Spouse
+26,Guardian
+31,Court-Appointed Guardian
+38,Collateral Dependent
+53,Domestic Partner
+60,Annuitant
+D2,Trustee
+G8,Unrelated
+G8,Parent's Domestic Partner
+G8,Tax Filer
+G8,Tax Dependent
+G8,Other
+G9,Other Relative
