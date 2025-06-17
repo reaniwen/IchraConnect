@@ -116,8 +116,8 @@ execute:
     ENROLLEE_RESIDENTIAL_ADDRESS_STATE: 'enrollee.residential_address.state',
     ENROLLEE_RESIDENTIAL_ADDRESS_ZIPCODE: 'enrollee.residential_address.zipcode',
     ENROLLEE_CHANGE_TYPE: 'enrollee.change_type',
-    ENROLLEE_ADDITIONAL_MAINTENANCE_REASON: 'enrollee.additional_maintenance_reason',
     ENROLLEE_CHANGE_EFFECTIVE_DATE: 'enrollee.change_effective_date',
+    ENROLLEE_ADDITIONAL_MAINTENANCE_REASON: 'enrollee.additional_maintenance_reason',
   };
 
   const VALIDATION_RULES = {
