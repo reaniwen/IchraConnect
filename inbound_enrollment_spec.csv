@@ -64,5 +64,5 @@ enrollee.residential_address.city,String,Enrollee Residential Address City,,,,Y
 enrollee.residential_address.state,String,Enrollee Residential Address State,,,,Y
 enrollee.residential_address.zipcode,String,Enrollee Residential Address Zipcode,,,,Y
 enrollee.change_type,Enum,Type of modification made to the enrollee’s policy status,,"CHANGE, ADDITION, CANCELLATION, TERMINATION, REINSTATEMENT",,Y
-enrollee.additional_maintenance_reason,String,Additional maintenance reason code for the policy status change.,,e.g. LEAVE_PLATFORM,,Y if enrollee.change_type is CHANGE
 enrollee.change_effective_date,String,Date at which change should take effect,YYYY-MM-DD,,,Y if enrollee.change_type is CHANGE
+enrollee.additional_maintenance_reason,String,Additional maintenance reason code for the policy status change.,,e.g. LEAVE_PLATFORM,,Y if enrollee.change_type is CHANGE
