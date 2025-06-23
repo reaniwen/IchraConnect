@@ -1,0 +1,221 @@
+---
+title: "Test Case Guide"
+toc: false
+execute:
+  echo: false
+---
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+```
+The below examples correspond to the test cases OSCAR uses while on-boarding a new vendor to ICHRA
+
+## Test Case 1
+
+1. Vendor creates initial enrollment transaction
+- [download](test_cases/one_one.csv){target="_blank"}
+```{python}
+with open('test_cases/one_one.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+
+2. Vendor creates CHANGE transaction with ADD for spouse with new values for total premium
+- [download](test_cases/one_two.csv){target="_blank"}
+```{python}
+with open('test_cases/one_two.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+
+## Test Case 2
+
+1. Initial enrollment file with Subscriber and Dependent (Child) enrolling into Policy A.
+- [download](test_cases/two_one.csv){target="_blank"}
+```{python}
+with open('test_cases/two_one.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+2. Change transaction with cancellation for child with new values for total premium.
+- [download](test_cases/two_two.csv){target="_blank"}
+```{python}
+with open('test_cases/two_two.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+3. Change transaction to add child to Policy A with the original coverage start date with new values for total premium.
+- [download](test_cases/two_three.csv){target="_blank"}
+```{python}
+with open('test_cases/two_three.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+4. Change transaction to cancel the entire existing policy (Policy A).
+- [download](test_cases/two_four.csv){target="_blank"}
+```{python}
+with open('test_cases/two_four.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+5. Reinstatement transaction for the entire existing policy (Policy A).
+- [download](test_cases/two_five.csv){target="_blank"}
+```{python}
+with open('test_cases/two_five.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+6. Soft termination for the entire existing policy (Policy A).
+- [download](test_cases/two_six.csv){target="_blank"}
+```{python}
+with open('test_cases/two_six.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+
+## Test Case 3
+1. Initial enrollment file where 3 subscribers enroll into a policy
+- [download](test_cases/three_one.csv){target="_blank"}
+```{python}
+with open('test_cases/three_one.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+2. Change transaction to add child dependent with BIRTH QLE and new values for total premium.
+- [download](test_cases/three_two.csv){target="_blank"}
+```{python}
+with open('test_cases/three_two.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+3. Change transaction to terminate the dependent from the existing policy (Policy A)
+- [download](test_cases/three_three.csv){target="_blank"}
+```{python}
+with open('test_cases/three_three.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+4. Reinstatement transaction to add dependent back to the existing policy (Policy A)
+- [download](test_cases/three_four.csv){target="_blank"}
+```{python}
+with open('test_cases/three_four.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+5. Soft termination for the entire existing policy (Policy A).
+- [download](test_cases/three_five.csv){target="_blank"}
+```{python}
+with open('test_cases/three_five.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+
+## Test Case 4
+1. Initial enrollment for 2 members into a Policy A
+- [download](test_cases/four_one.csv){target="_blank"}
+```{python}
+with open('test_cases/four_one.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+2. Change transaction with subscriber address change.
+- [download](test_cases/four_two.csv){target="_blank"}
+```{python}
+with open('test_cases/four_two.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+3. Change transaction with subscriber dob change and new premium.
+- [download](test_cases/four_three.csv){target="_blank"}
+```{python}
+with open('test_cases/four_three.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+4. Change transaction with policy change, new premium and QLE.
+- [download](test_cases/four_four.csv){target="_blank"}
+```{python}
+with open('test_cases/four_four.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+5. Change transaction to remove one dependent and update new premium and QLE
+- [download](test_cases/four_five.csv){target="_blank"}
+```{python}
+with open('test_cases/four_five.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```

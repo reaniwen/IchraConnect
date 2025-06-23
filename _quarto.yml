@@ -26,48 +26,54 @@ website:
             target: _blank
       - section: "**EDI**"
         contents:
-          - text: "EDI Implementation Guide"
+          - text: "Implementation Guide"
             href: edi_implementation_guide.qmd
+          - section: "Sample File Downloads"
+            contents:
+              - text: Inbound 834 EDI
+                href: sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi
+                target: _blank
+              - text: Outbound 834 EDI
+                href: sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi
+                target: _blank
+              - text: Inbound 820 EDI
+                href: sample_files/EDI.820.D20241114.T082645.P.edi
+                target: _blank
       - section: "**CSV**"
         contents:
-          - text: "CSV Implementation Guide"
+          - text: "Implementation Guide"
             href: csv_implementation_guide.qmd
-          - inbound_enrollment_spec.qmd
-          - outbound_enrollment_ack_spec.qmd
-          - outbound_enrollment_spec.qmd
-          - outbound_reconcilliation_spec.qmd
-          - section: "**Other Specs**"
+          - section: "File Specifications"
             contents:
-              - file_specifications.qmd
-              - relationship_code_mapping.qmd
-              - ethnicity_code_mapping.qmd
-              - language_mapping.qmd
-              - marital_status_mapping.qmd
-              - supported_qle_codes.qmd
-              - additional_maintenance_reasons.qmd
-      - section: "**Sample File Downloads**"
+              - file_spec.qmd
+              - inbound_enrollment_spec.qmd
+              - outbound_enrollment_ack_spec.qmd
+              - outbound_enrollment_spec.qmd
+              - outbound_reconcilliation_spec.qmd
+          - text: "Test Cases and Downloads"
+            href: test_cases_guide.qmd
+          - section: "Additional Sample Downloads"
+            contents:
+              - text: Inbound Enrollment CSV
+                href: sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv
+                target: _blank
+              - text: Outbound Enrollment Ack CSV
+                href: sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv
+                target: _blank
+              - text: Outbound Enrollment CSV
+                href: sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv
+                target: _blank
+              - text: Reconcilation CSV
+                href: sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv
+                target: _blank
+      - section: "**Field Specs**"
         contents:
-          - text: Inbound 834 EDI
-            href: sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi
-            target: _blank
-          - text: Outbound 834 EDI
-            href: sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi
-            target: _blank
-          - text: Inbound 820 EDI
-            href: sample_files/EDI.820.D20241114.T082645.P.edi
-            target: _blank
-          - text: Inbound Enrollment CSV
-            href: sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv
-            target: _blank
-          - text: Outbound Enrollment Ack CSV
-            href: sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv
-            target: _blank
-          - text: Outbound Enrollment CSV
-            href: sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv
-            target: _blank
-          - text: Reconcilation CSV
-            href: sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv
-            target: _blank
+          - relationship_code_mapping.qmd
+          - ethnicity_code_mapping.qmd
+          - language_mapping.qmd
+          - marital_status_mapping.qmd
+          - supported_qle_codes.qmd
+          - additional_maintenance_reasons.qmd
       - section: "**File Validators**"
         contents:
           - csv_validator.qmd
