@@ -2,7 +2,7 @@
 title: "CSV Implementation Guide"
 ---
 
-ICHRA Connect also supports a CSV file-based data integrations in addition to the [EDI file-based data integration](edi_implementation_guide.qmd).
+ICHRA Connect also supports a CSV file-based data integrations in addition to the [EDI file-based data integration](../edi_implementation_guide.qmd).
 
 ## Integration Summary {#integration-file-summary}
 
@@ -57,7 +57,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 
 - Direction: Carrier inbound/administrator outbound
 - File type: CSV
-- File spec: [Inbound Enrollment Spec](inbound_enrollment_spec.qmd)
+- File spec: [Inbound Enrollment Spec](file_spec/inbound_enrollment_spec.qmd)
 - Cadence: Daily
 - Naming convention: FROM\_ADMIN\_NAME.EMT.YYYYMMDDThhmmss.P.csv
 - Delta file or full file: Delta
@@ -68,7 +68,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 
 - Direction: Carrier outbound/administrator inbound
 - File type: CSV
-- File spec: [Outbound Enrollment Ack File Spec](outbound_enrollment_spec.qmd)
+- File spec: [Outbound Enrollment Ack File Spec](file_spec/outbound_enrollment_spec.qmd)
 - Cadence: Daily
 - Naming convention: TO\_ADMIN\_NAME.ACK.YYYYMMDDThhmmss.P.csv
 - Sample file: [here](sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv){target="_blank"}
@@ -76,7 +76,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 #### Outbound Enrollment File {#outbound-enrollment-file}
 
 - File type: CSV
-- File spec: [Outbound Enrollment File](file_specifications.qmd)
+- File spec: [Outbound Enrollment File](file_spec/file_spec.qmd)
 - Cadence: Daily
 - Naming convention: FROM\_CARRIER.OUT.YYYYMMDDThhmmss.P.csv
 - Delta file or full file: Delta
@@ -85,7 +85,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 #### Outbound Reconciliation File {#outbound-reconciliation-file}
 
 - File type: CSV
-- File spec: [Outbound Reconciliation File](outbound_reconcilliation_spec.qmd)
+- File spec: [Outbound Reconciliation File](file_spec/outbound_reconcilliation_spec.qmd)
 - Cadence: Weekly
 - Full or Delta: Full snapshot of plan year, with 3 month look back to previous year
 - Naming Convention: FROM\_CARRIER\_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv
