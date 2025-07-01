@@ -1,21 +1,26 @@
 ---
 title: "CSV Implementation Guide"
+toc: false
+execute:
+  echo: false
 ---
 
-ICHRA Connect also supports a CSV file-based data integrations in addition to the [EDI file-based data integration](../edi_implementation_guide.qmd).
+# Introduction {#introduction}
+
+ICHRA Connect also supports a CSV file-based data integrations in addition to the [EDI file-based data integration](../edi_implementation_guide.qmd). This includes bi-directional data transfers for net new enrollments as well as other enrollment types, including terminations, cancellations, reinstatements and updates.
 
 ## Integration Summary {#integration-file-summary}
 
 The integration between a carrier and the administrator includes four CSV data files. All file directions are in relation to carrier:
 
 * Inbound Enrollment File: Combined Payment & Enrollment
-* Outbound Ack File: Enrollment file parsing acknowledgment
+* Outbound Ack File: Enrollment file acknowledgment
 * Outbound Enrollment File: Enrollment confirmation
 * Outbound Reconciliation: Billing & Eligibility reconciliation
 
 ![](ICHRA_CSV_Integration_Flow.png)
 
-## Combined Enrollment & Payment Spec
+### Combined Enrollment & Payment Spec.
 The ICHRA Platform administrator sends the carrier member enrollment information and payment information in a single combined enrollment & payment CSV file (Inbound Enrollment File). Carrier ingests and enrolls members from this file as they would with a standard enrollment integration.
 
 Payment information sent in this file includes one Automated Clearing House (ACH) account number per member (payment instrument). We do not accept credit card or debit card numbers as payment instruments.
@@ -27,19 +32,17 @@ After autopay is enabled, carrier will automatically draft:
 * Binder payments: before state regulatory deadlines, which may be as early as the enrollment date.
 * Full outstanding balance: members may be drafted one or more times per month to ensure balance is paid by the premium due date. Exact auto-draft dates will be selected by carrier and the administrator.
 
-### ICHRA Group / Employer Information
+More detailed specifications could be found in [inbound spec page](file_spec/inbound_enrollment_spec.qmd).
 
-Administrator will pass Employer Name and Employer TIN on the inbound enrollment files.
+### Enrollment file acknowledgment Spec.
+Enrollment file acknowledgements verify whether enrollments and payment information were successfully received, or if problems were encountered. As such, the issuer will provide acknowledgement file for each inbound file received.
 
-### ICHRA Administrator Disenrollments (“Soft terms”)
+For more information on the acknowledgements sent by issuer, see [acknowledge spec page](file_spec/outbound_enrollment_ack_spec.qmd).
 
-If an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier's ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.
+### Enrollment confirmation file Spec.
+Enrollment confirmation files will be generated when enrollments were successfully effectuated by the carrier. These files provide confirmation for each enrollment processed, including details about the IDs that administrator could utilize to match the original enrollment, coverage effective dates, basic demographic information, status, etc. The administrator uses these files to ensure that enrollments have been successfully completed and to address any discrepancies.
 
-To let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE\_PLATFORM on an inbound enrollment transaction.
-
-### Refunds {#refunds}
-
-Eligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.
+For more information on the enrollment confirmation files sent by the carrier, see [enrollment confirmation spec page](file_spec/outbound_enrollment_spec.qmd).
 
 ### Reconciliation {#reconciliation}
 
@@ -49,9 +52,411 @@ The reconciliation file is a full change file that contains a snapshot of all pl
 
 Each enrolled member will have one record per month enrolled with the corresponding monthly premium amount for that month.
 
+# Detailed Implementation Specifications
+
+The sections that follow provide the instructions on how to implement enrollment and payment CSV specification for ICHRA platforms. Administrator will find several examples of potential enrollment transactions along with specific instructions for each.
+
+Each section includes tables that specify the requirements for inbound enrollment. This implementation guidance highlights the key fields that must be changed, but does not imply these are the only fields required to send an enrollment. For the full table of columns, please refer to the csv specification.
+
+Administrators can update the status of an ICHRA policy by submitting an initial enrollment, cancellation/termination, reinstatement and several policy maintenance updates.
+
+## Key Fields Descriptions {#key-fields-descriptions}
+
+Below are descriptions of key fields that are commonly used across the CSV files for ICHRA integrations:
+
+**enrollee.issuer_member_id**: The member ID assigned by issuer. issuer will generate a member ID when enrolling a new member. This ID will be sent back to the platform in the outbound confirmation file. Platforms need to utilize this ID within future enrollment transactions for this member.
+
+**enrollee.external_member_id**: The member ID assigned by the platform. Platforms need to keep it constant.
+
+**enrollment.external_policy_id**: The unique ID for the policy assigned by the platform. It's suggested that platforms should assign a new external_policy_id if the plan changes or plan year changes.
+
+**enrollee.change_effective_date**: the date when the intended change takes effect.
+
+
+## Enrollment Types
+In this section, we will explain how the file looks like in different enrollment types
+
+### Enrollment Type: Initial Enrollment
+
+**Use case**: Enroll a new member/family
+
+**Instructions**: Typically, the Initial Enrollment transaction is the first transaction to be sent for a member. It is created after an applicant has been determined to be eligible and they have selected a Qualified Health Plan (QHP)
+
+When members enroll in a new policy or add a dependent to an existing policy, regardless of whether the member is new or existing, the vendor sends "ADDITION" as the change type for all new enrollees.
+
+**Example**
+Table 1. Initial Enrollment
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/initial_enrollment.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+# Display the DataFrame as a table
+display(HTML(df.to_html(index=False).replace("\\n","<br>")))
+```
+
+### Enrollment Type: Change Enrollment
+
+When any active member needs to change information including demographic information, plan, mailing address, residential address, coverage start date, platforms can send an enrollment with change type of CHANGE for the member that contains any change. Platforms should not use enrollment with change type of CHANGE to send coverage end date change, that must be sent with change type as CANCELLATION/TERMINATION.
+
+Unless otherwise specified, all the following change cases are assumed to occur after the initial enrollment. To minimize misunderstandings between removing and changing data, the platform should continue to send all data for fields that have not been altered.
+
+#### Change Type: Demographic Change
+
+**Use case**: Edit demographic information for an existing member
+Instructions: The platform sends Oscar a CHANGE enrollment. In the enrollment, the platform needs to include all the members' information under the policy. If there is any change for a member, use change type of CHANGE for this member, otherwise, please use NO_OP.
+
+In the example below, the subscriber changed their ethnicity, but there is no change for the dependent. In this case, subscriber’s change type would be CHANGE since there are changes involved, and dependents’s change type would be NO_OP since no change is made and no operation is required.
+
+**Example**
+Subscriber found that their demographic information (In this example, the ethnicity) is incorrect and needs to be updated.
+
+Table 2. Demographic change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_demographic.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if (row.name == 2 and index in df.columns[:2]) or (row.name == 7 and index in df.columns) or (row.name == 8 and index in df.columns[:3]):
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Change Type: Policy Change
+
+**Use Case**: Switch policy for an existing member
+
+**Instructions**: The platform will utilize a CHANGE enrollment transaction when a member switches policies mid-year due to a qualifying life event.
+
+**Example**
+
+In this case, the members are changing their plan effective 2025-05-01, meaning the change will take effect on 2025-05-01.
+
+Table 3. Policy change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_policy.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [1, 8, 9]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Change Type: Address Change
+
+**Use Case**: Update the address of an existing member
+
+**Instructions**: Platforms send a CHANGE change_type enrollment for residential or mailing address updates.
+
+**Example**
+
+In this case, the members’ new address would go into effect as of May 1, 2025 as indicated by the change_effective_date.
+
+Table 4. Address change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_policy.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [5, 6, 7]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Change Type: Add Dependent
+
+**Use Case**: Add a new dependent to an existing subscriber’s policy
+
+**Instructions**: use CHANGE change_type for the subscriber and ADDITION for the new dependent. Platforms should send all information for the covered members whether or not there is a change for those members. If there is a change for a member, use change type of CHANGE for this member; otherwise, use NO_OP.
+
+**Example**
+
+Table 5. Add dependent change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_add_dependent.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name == 6 or index == df.columns[-1]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Change Type: Remove Dependent
+
+**Use Case**: To remove a dependent from an existing policy
+
+**Instructions**: use the change_type CANCELLATION or TERMINATION. If the coverage end date is equal to coverage start date, it will be categorized as CANCELLATION; otherwise, use TERMINATION. The platform needs to send the information for all covered members, regardless of whether there is any change for these members. If there is any change for a member, use change type of CHANGE for this member; otherwise, use NO_OP.
+
+Since the financial amount for the subscriber will change if members want to remove the dependent, the change type of subscriber should be CHANGE.
+
+**Example**:
+
+Table 6. Remove dependent change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_remove_dependent.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name == 6 or (row.name == 4 and index == df.columns[-1]):
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Change Type: Leave platform
+
+**Use case**: If an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g. through loss of a job), they still may retain their carrier’s ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.
+
+For administrator platforms, this is especially important to implement to avoid having premium payments withdrawn or failed autopay runs for employees and employers who are no longer using your platform.
+
+**Instructions**: To let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE_PLATFORM on an inbound enrollment transaction.
+
+**Example**:
+
+Table 7. Leave platform change
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/change_leave_plat.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [6, 7, 8]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+### Enrollment Type: Cancel/Term
+
+#### Cancellation (“Cancel”)
+
+**Use Case**: Terminate a policy before coverage has begun (i.e. coverage start date is in the future)
+Instructions: A cancellation will result in coverage being cancelled for all members on the policy, but only the subscriber's information needs to be sent. To cancel a member’s policy, the change type for the subscriber must be set to CANCELLATION.
+
+Please note that the coverage end date will be the same as the coverage start date for cancellation.
+**Example**:
+
+Table 8. Cancellations
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/cancellation.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [4, 6]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+#### Termination (“Terminate”)
+
+**Use Case**: Terminate a policy after coverage has begun (i.e. coverage end date is after coverage start date)
+Instructions: To terminate a member’s policy, the change type for the subscriber must be set to TERMINATION. The platform only needs to send the subscriber's information.
+
+Please note that the coverage end date will not be the same as the coverage start date for termination.
+
+**Example**:
+
+Table 9. Terminations
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/termination.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [4, 6]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+### Enrollment Transaction Type: Reinstatement
+
+**Use case**: recover a cancelled/terminated policy with the original policy information and coverage start date.
+
+**Instructions**:
+
+The change type for the subscriber must be set to REINSTATEMENT, and a transaction must be sent for all members on the policy who should be reinstated
+
+If the members update their information during the reinstatement procedure, the platform needs to send another change enrollment to include the updated information.
+
+**Example**:
+
+Table 10. Reinstatements
+
+```{python}
+import pandas as pd
+from io import StringIO
+from IPython.display import display, HTML
+with open('guidance_tables/reinstatement.csv', 'r') as file:
+    csv_data = file.read()
+# Read the CSV data
+pd.set_option('display.max_colwidth', None)
+df = pd.read_csv(StringIO(csv_data), sep=',', index_col=None, keep_default_na=False, header=0)
+
+# Apply custom styling for specific cells
+def highlight_cells(row):
+    styles = []
+    for index, value in row.items():
+        if row.name in [6]:
+            styles.append('background-color: rgb(180,205,205);')
+        else:
+            styles.append('')
+    return styles
+
+styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
+
+# Display the styled DataFrame as a table
+display(HTML(styled_df.to_html()))
+```
+
+
+# Appx {#appx}
+
+## Refunds {#refunds}
+
+Eligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.
+
 ![](ICHRA_CSV_Payment_Flow.png)
 
-### File Details {#file-details}
+## File Details {#file-details}
 
 #### Inbound Enrollment File {#inbound-enrollment-file}
 
