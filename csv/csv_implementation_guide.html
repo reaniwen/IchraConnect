@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>CSV Implementation Guide – ICHRA Connect</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../OscarLogoTransparent.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TT9QQLNB0E"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../OscarLogoTransparent.png" alt="Oscar Health" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ICHRA Connect</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.hioscar.com/" target="_blank"> 
+<span class="menu-text">Oscar</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../csv/csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="../csv/csv_implementation_guide.html">Implementation Guide</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Getting Started</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to ICHRA Connect</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../integrating_with_oscar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Integrating with Oscar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="https://www.hioscar.com/ichra" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Oscar ICHRA for Employers</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>EDI</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../edi_implementation_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementation Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Sample File Downloads</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Inbound 834 EDI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Outbound 834 EDI</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sample_files/EDI.820.D20241114.T082645.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Inbound 820 EDI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text"><strong>CSV</strong></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/csv_implementation_guide.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Implementation Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">File Specifications</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/file_spec/file_spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">File Spec</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/file_spec/inbound_enrollment_spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inbound Enrollment Spec</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/file_spec/outbound_enrollment_ack_spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outbound Enrollment Ack Spec</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/file_spec/outbound_enrollment_spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outbound Enrollment Spec</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/file_spec/outbound_reconcilliation_spec.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Outbound Reconciliation Spec</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/test_cases_guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Test Cases and Downloads</span></a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Additional Sample Downloads</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Inbound Enrollment CSV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Outbound Enrollment Ack CSV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Outbound Enrollment CSV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv/sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv" class="sidebar-item-text sidebar-link" target="_blank">
+ <span class="menu-text">Reconcilation CSV</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>Field Specs</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../relationship_code_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Relationship Code Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ethnicity_code_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ethnicity Code Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../language_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Language Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../marital_status_mapping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marital Status Mapping</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../supported_qle_codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Supported QLE Codes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../additional_maintenance_reasons.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Supported Additional Maintenance Reasons</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text"><strong>File Validators</strong></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../csv_validator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CSV Validator</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../rest_api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>Coming Soon: REST API</strong></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../csv/csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="../csv/csv_implementation_guide.html">Implementation Guide</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">CSV Implementation Guide</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>ICHRA Connect also supports a CSV file-based data integrations in addition to the <a href="../edi_implementation_guide.html">EDI file-based data integration</a>. This includes bi-directional data transfers for net new enrollments as well as other enrollment types, including terminations, cancellations, reinstatements and updates.</p>
+<section id="integration-file-summary" class="level2">
+<h2 class="anchored" data-anchor-id="integration-file-summary">Integration Summary</h2>
+<p>The integration between a carrier and the administrator includes four CSV data files. All file directions are in relation to carrier:</p>
+<ul>
+<li>Inbound Enrollment File: Combined Payment &amp; Enrollment</li>
+<li>Outbound Ack File: Enrollment file acknowledgment</li>
+<li>Outbound Enrollment File: Enrollment confirmation</li>
+<li>Outbound Reconciliation: Billing &amp; Eligibility reconciliation</li>
+</ul>
+<p><img src="ICHRA_CSV_Integration_Flow.png" class="img-fluid"></p>
+<section id="combined-enrollment-payment-spec." class="level3">
+<h3 class="anchored" data-anchor-id="combined-enrollment-payment-spec.">Combined Enrollment &amp; Payment Spec.</h3>
+<p>The ICHRA Platform administrator sends the carrier member enrollment information and payment information in a single combined enrollment &amp; payment CSV file (Inbound Enrollment File). Carrier ingests and enrolls members from this file as they would with a standard enrollment integration.</p>
+<p>Payment information sent in this file includes one Automated Clearing House (ACH) account number per member (payment instrument). We do not accept credit card or debit card numbers as payment instruments.</p>
+<p>At the time of enrollment, carrier enables Autopay for each enrolled member, withdraws members’ initial binder payments, and effectuates them. Members must affirmatively confirm that the employer will be making payments on their behalf as part of the administrator enrollment flow.</p>
+<p>After autopay is enabled, carrier will automatically draft:</p>
+<ul>
+<li>Binder payments: before state regulatory deadlines, which may be as early as the enrollment date.</li>
+<li>Full outstanding balance: members may be drafted one or more times per month to ensure balance is paid by the premium due date. Exact auto-draft dates will be selected by carrier and the administrator.</li>
+</ul>
+<p>More detailed specifications could be found in <a href="../csv/file_spec/inbound_enrollment_spec.html">inbound spec page</a>.</p>
+</section>
+<section id="enrollment-file-acknowledgment-spec." class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-file-acknowledgment-spec.">Enrollment file acknowledgment Spec.</h3>
+<p>Enrollment file acknowledgements verify whether enrollments and payment information were successfully received, or if problems were encountered. As such, the issuer will provide acknowledgement file for each inbound file received.</p>
+<p>For more information on the acknowledgements sent by issuer, see <a href="../csv/file_spec/outbound_enrollment_ack_spec.html">acknowledge spec page</a>.</p>
+</section>
+<section id="enrollment-confirmation-file-spec." class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-confirmation-file-spec.">Enrollment confirmation file Spec.</h3>
+<p>Enrollment confirmation files will be generated when enrollments were successfully effectuated by the carrier. These files provide confirmation for each enrollment processed, including details about the IDs that administrator could utilize to match the original enrollment, coverage effective dates, basic demographic information, status, etc. The administrator uses these files to ensure that enrollments have been successfully completed and to address any discrepancies.</p>
+<p>For more information on the enrollment confirmation files sent by the carrier, see <a href="../csv/file_spec/outbound_enrollment_spec.html">enrollment confirmation spec page</a>.</p>
+</section>
+<section id="reconciliation" class="level3">
+<h3 class="anchored" data-anchor-id="reconciliation">Reconciliation</h3>
+<p>We use a weekly reconciliation file to ensure eligibility and billing data is aligned between carrier and the administrator in order to avoid disruptions to member coverage or experiences; for example, a mid-month increase to members’ premiums that could result in declined transactions at time of auto-pay.</p>
+<p>The reconciliation file is a full change file that contains a snapshot of all plan year YTD membership, including cancelled and termed members, plus a 3 month prior-year lookback.</p>
+<p>Each enrolled member will have one record per month enrolled with the corresponding monthly premium amount for that month.</p>
+</section>
+</section>
+</section>
+<section id="detailed-implementation-specifications" class="level1">
+<h1>Detailed Implementation Specifications</h1>
+<p>The sections that follow provide the instructions on how to implement enrollment and payment CSV specification for ICHRA platforms. Administrator will find several examples of potential enrollment transactions along with specific instructions for each.</p>
+<p>Each section includes tables that specify the requirements for inbound enrollment. This implementation guidance highlights the key fields that must be changed, but does not imply these are the only fields required to send an enrollment. For the full table of columns, please refer to the csv specification.</p>
+<p>Administrators can update the status of an ICHRA policy by submitting an initial enrollment, cancellation/termination, reinstatement and several policy maintenance updates.</p>
+<section id="key-fields-descriptions" class="level2">
+<h2 class="anchored" data-anchor-id="key-fields-descriptions">Key Fields Descriptions</h2>
+<p>Below are descriptions of key fields that are commonly used across the CSV files for ICHRA integrations:</p>
+<p><strong>enrollee.issuer_member_id</strong>: The member ID assigned by issuer. issuer will generate a member ID when enrolling a new member. This ID will be sent back to the platform in the outbound confirmation file. Platforms need to utilize this ID within future enrollment transactions for this member.</p>
+<p><strong>enrollee.external_member_id</strong>: The member ID assigned by the platform. Platforms need to keep it constant.</p>
+<p><strong>enrollment.external_policy_id</strong>: The unique ID for the policy assigned by the platform. It’s suggested that platforms should assign a new external_policy_id if the plan changes or plan year changes.</p>
+<p><strong>enrollee.change_effective_date</strong>: the date when the intended change takes effect.</p>
+</section>
+<section id="enrollment-types" class="level2">
+<h2 class="anchored" data-anchor-id="enrollment-types">Enrollment Types</h2>
+<p>In this section, we will explain how the file looks like in different enrollment types</p>
+<section id="enrollment-type-initial-enrollment" class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-type-initial-enrollment">Enrollment Type: Initial Enrollment</h3>
+<p><strong>Use case</strong>: Enroll a new member/family</p>
+<p><strong>Instructions</strong>: Typically, the Initial Enrollment transaction is the first transaction to be sent for a member. It is created after an applicant has been determined to be eligible and they have selected a Qualified Health Plan (QHP)</p>
+<p>When members enroll in a new policy or add a dependent to an existing policy, regardless of whether the member is new or existing, the vendor sends “ADDITION” as the change type for all new enrollees.</p>
+<p><strong>Example</strong> Table 1. Initial Enrollment</p>
+<div id="185d24ae" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Field</th>
+<th data-quarto-table-cell-role="th">member1</th>
+<th data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>plan.hios_id</td>
+<td>12345NY100001</td>
+<td>12345NY100001</td>
+</tr>
+<tr class="even">
+<td>enrollment.external_policy_id</td>
+<td>plat_policy_ID_1</td>
+<td>plat_policy_ID_1</td>
+</tr>
+<tr class="odd">
+<td>enrollee.first_name</td>
+<td>Joe</td>
+<td>Jane</td>
+</tr>
+<tr class="even">
+<td>enrollee.ethnicity</td>
+<td>2135-1</td>
+<td>2135-1</td>
+</tr>
+<tr class="odd">
+<td>enrollee.relationship_to_policy_holder</td>
+<td>18 (subscriber)</td>
+<td>01 (spouse)</td>
+</tr>
+<tr class="even">
+<td>enrollee.coverage_start_date</td>
+<td>2025-03-01</td>
+<td>2025-03-01</td>
+</tr>
+<tr class="odd">
+<td>enrollee.coverage_end_date</td>
+<td>(leave blank)</td>
+<td>(leave blank)</td>
+</tr>
+<tr class="even">
+<td>enrollee.mailing_address.address_line_1</td>
+<td>123 first st</td>
+<td>123 first st</td>
+</tr>
+<tr class="odd">
+<td>enrollee.change_type</td>
+<td>ADDITION</td>
+<td>ADDITION</td>
+</tr>
+<tr class="even">
+<td>enrollee.change_effective_date</td>
+<td>(leave blank)</td>
+<td>(leave blank)</td>
+</tr>
+<tr class="odd">
+<td>enrollee.addtional_maintenance_reason</td>
+<td>(leave blank)</td>
+<td>(leave blank)</td>
+</tr>
+<tr class="even">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="enrollment-type-change-enrollment" class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-type-change-enrollment">Enrollment Type: Change Enrollment</h3>
+<p>When any active member needs to change information including demographic information, plan, mailing address, residential address, coverage start date, platforms can send an enrollment with change type of CHANGE for the member that contains any change. Platforms should not use enrollment with change type of CHANGE to send coverage end date change, that must be sent with change type as CANCELLATION/TERMINATION.</p>
+<p>Unless otherwise specified, all the following change cases are assumed to occur after the initial enrollment. To minimize misunderstandings between removing and changing data, the platform should continue to send all data for fields that have not been altered.</p>
+<section id="change-type-demographic-change" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-demographic-change">Change Type: Demographic Change</h4>
+<p><strong>Use case</strong>: Edit demographic information for an existing member Instructions: The platform sends Oscar a CHANGE enrollment. In the enrollment, the platform needs to include all the members’ information under the policy. If there is any change for a member, use change type of CHANGE for this member, otherwise, please use NO_OP.</p>
+<p>In the example below, the subscriber changed their ethnicity, but there is no change for the dependent. In this case, subscriber’s change type would be CHANGE since there are changes involved, and dependents’s change type would be NO_OP since no change is made and no operation is required.</p>
+<p><strong>Example</strong> Subscriber found that their demographic information (In this example, the ethnicity) is incorrect and needs to be updated.</p>
+<p>Table 2. Demographic change</p>
+<div id="cf1f5c50" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_53641_row2_col0, #T_53641_row2_col1, #T_53641_row7_col0, #T_53641_row7_col1, #T_53641_row7_col2, #T_53641_row8_col0, #T_53641_row8_col1, #T_53641_row8_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_53641" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_53641_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_53641_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_53641_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_53641_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_53641_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_53641_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_53641_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_53641_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_53641_row1_col2" class="data row1 col2">Jane</td>
+</tr>
+<tr class="odd">
+<td id="T_53641_row2_col0" class="data row2 col0">enrollee.ethnicity</td>
+<td id="T_53641_row2_col1" class="data row2 col1">2135-2</td>
+<td id="T_53641_row2_col2" class="data row2 col2">2135-1</td>
+</tr>
+<tr class="even">
+<td id="T_53641_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_53641_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_53641_row3_col2" class="data row3 col2">01 (spouse)</td>
+</tr>
+<tr class="odd">
+<td id="T_53641_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_53641_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_53641_row4_col2" class="data row4 col2">2025-03-01</td>
+</tr>
+<tr class="even">
+<td id="T_53641_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_53641_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_53641_row5_col2" class="data row5 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_53641_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_53641_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_53641_row6_col2" class="data row6 col2">123 first st</td>
+</tr>
+<tr class="even">
+<td id="T_53641_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_53641_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_53641_row7_col2" class="data row7 col2">NO_OP</td>
+</tr>
+<tr class="odd">
+<td id="T_53641_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_53641_row8_col1" class="data row8 col1">2025-03-01</td>
+<td id="T_53641_row8_col2" class="data row8 col2">(leave blank)</td>
+</tr>
+<tr class="even">
+<td id="T_53641_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_53641_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_53641_row9_col2" class="data row9 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_53641_row10_col0" class="data row10 col0">…</td>
+<td id="T_53641_row10_col1" class="data row10 col1">…</td>
+<td id="T_53641_row10_col2" class="data row10 col2">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="change-type-policy-change" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-policy-change">Change Type: Policy Change</h4>
+<p><strong>Use Case</strong>: Switch policy for an existing member</p>
+<p><strong>Instructions</strong>: The platform will utilize a CHANGE enrollment transaction when a member switches policies mid-year due to a qualifying life event.</p>
+<p><strong>Example</strong></p>
+<p>In this case, the members are changing their plan effective 2025-05-01, meaning the change will take effect on 2025-05-01.</p>
+<p>Table 3. Policy change</p>
+<div id="4a2b536b" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_96376_row1_col0, #T_96376_row1_col1, #T_96376_row1_col2, #T_96376_row8_col0, #T_96376_row8_col1, #T_96376_row8_col2, #T_96376_row9_col0, #T_96376_row9_col1, #T_96376_row9_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_96376" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_96376_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_96376_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_96376_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_96376_row0_col0" class="data row0 col0">plan.hios_id</td>
+<td id="T_96376_row0_col1" class="data row0 col1">12345NY100022</td>
+<td id="T_96376_row0_col2" class="data row0 col2">12345NY100022</td>
+</tr>
+<tr class="even">
+<td id="T_96376_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
+<td id="T_96376_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
+<td id="T_96376_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="odd">
+<td id="T_96376_row2_col0" class="data row2 col0">enrollee.first_name</td>
+<td id="T_96376_row2_col1" class="data row2 col1">Joe</td>
+<td id="T_96376_row2_col2" class="data row2 col2">Jane</td>
+</tr>
+<tr class="even">
+<td id="T_96376_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_96376_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_96376_row3_col2" class="data row3 col2">01 (spouse)</td>
+</tr>
+<tr class="odd">
+<td id="T_96376_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_96376_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_96376_row4_col2" class="data row4 col2">2025-03-01</td>
+</tr>
+<tr class="even">
+<td id="T_96376_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_96376_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_96376_row5_col2" class="data row5 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_96376_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_96376_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_96376_row6_col2" class="data row6 col2">123 first st</td>
+</tr>
+<tr class="even">
+<td id="T_96376_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_96376_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_96376_row7_col2" class="data row7 col2">CHANGE</td>
+</tr>
+<tr class="odd">
+<td id="T_96376_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_96376_row8_col1" class="data row8 col1">2025-05-01</td>
+<td id="T_96376_row8_col2" class="data row8 col2">2025-05-01</td>
+</tr>
+<tr class="even">
+<td id="T_96376_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_96376_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_96376_row9_col2" class="data row9 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_96376_row10_col0" class="data row10 col0">…</td>
+<td id="T_96376_row10_col1" class="data row10 col1">…</td>
+<td id="T_96376_row10_col2" class="data row10 col2">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="change-type-address-change" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-address-change">Change Type: Address Change</h4>
+<p><strong>Use Case</strong>: Update the address of an existing member</p>
+<p><strong>Instructions</strong>: Platforms send a CHANGE change_type enrollment for residential or mailing address updates.</p>
+<p><strong>Example</strong></p>
+<p>In this case, the members’ new address would go into effect as of May 1, 2025 as indicated by the change_effective_date.</p>
+<p>Table 4. Address change</p>
+<div id="53a1a4d2" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_22188_row5_col0, #T_22188_row5_col1, #T_22188_row5_col2, #T_22188_row6_col0, #T_22188_row6_col1, #T_22188_row6_col2, #T_22188_row7_col0, #T_22188_row7_col1, #T_22188_row7_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_22188" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_22188_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_22188_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_22188_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_22188_row0_col0" class="data row0 col0">plan.hios_id</td>
+<td id="T_22188_row0_col1" class="data row0 col1">12345NY100022</td>
+<td id="T_22188_row0_col2" class="data row0 col2">12345NY100022</td>
+</tr>
+<tr class="even">
+<td id="T_22188_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
+<td id="T_22188_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
+<td id="T_22188_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="odd">
+<td id="T_22188_row2_col0" class="data row2 col0">enrollee.first_name</td>
+<td id="T_22188_row2_col1" class="data row2 col1">Joe</td>
+<td id="T_22188_row2_col2" class="data row2 col2">Jane</td>
+</tr>
+<tr class="even">
+<td id="T_22188_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_22188_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_22188_row3_col2" class="data row3 col2">01 (spouse)</td>
+</tr>
+<tr class="odd">
+<td id="T_22188_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_22188_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_22188_row4_col2" class="data row4 col2">2025-03-01</td>
+</tr>
+<tr class="even">
+<td id="T_22188_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_22188_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_22188_row5_col2" class="data row5 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_22188_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_22188_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_22188_row6_col2" class="data row6 col2">123 first st</td>
+</tr>
+<tr class="even">
+<td id="T_22188_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_22188_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_22188_row7_col2" class="data row7 col2">CHANGE</td>
+</tr>
+<tr class="odd">
+<td id="T_22188_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_22188_row8_col1" class="data row8 col1">2025-05-01</td>
+<td id="T_22188_row8_col2" class="data row8 col2">2025-05-01</td>
+</tr>
+<tr class="even">
+<td id="T_22188_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_22188_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_22188_row9_col2" class="data row9 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_22188_row10_col0" class="data row10 col0">…</td>
+<td id="T_22188_row10_col1" class="data row10 col1">…</td>
+<td id="T_22188_row10_col2" class="data row10 col2">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="change-type-add-dependent" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-add-dependent">Change Type: Add Dependent</h4>
+<p><strong>Use Case</strong>: Add a new dependent to an existing subscriber’s policy</p>
+<p><strong>Instructions</strong>: use CHANGE change_type for the subscriber and ADDITION for the new dependent. Platforms should send all information for the covered members whether or not there is a change for those members. If there is a change for a member, use change type of CHANGE for this member; otherwise, use NO_OP.</p>
+<p><strong>Example</strong></p>
+<p>Table 5. Add dependent change</p>
+<div id="41b85cf1" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_b3f44_row0_col3, #T_b3f44_row1_col3, #T_b3f44_row2_col3, #T_b3f44_row3_col3, #T_b3f44_row4_col3, #T_b3f44_row5_col3, #T_b3f44_row6_col0, #T_b3f44_row6_col1, #T_b3f44_row6_col2, #T_b3f44_row6_col3, #T_b3f44_row7_col3, #T_b3f44_row8_col3 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_b3f44" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_b3f44_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_b3f44_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_b3f44_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_b3f44_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">member3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_b3f44_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_b3f44_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_b3f44_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_b3f44_row0_col3" class="data row0 col3">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_b3f44_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_b3f44_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_b3f44_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_b3f44_row1_col3" class="data row1 col3">Jack</td>
+</tr>
+<tr class="odd">
+<td id="T_b3f44_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_b3f44_row2_col1" class="data row2 col1">18(subscriber)</td>
+<td id="T_b3f44_row2_col2" class="data row2 col2">01(spouse)</td>
+<td id="T_b3f44_row2_col3" class="data row2 col3">19(child)</td>
+</tr>
+<tr class="even">
+<td id="T_b3f44_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_b3f44_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_b3f44_row3_col2" class="data row3 col2">2025-03-01</td>
+<td id="T_b3f44_row3_col3" class="data row3 col3">2025-05-01</td>
+</tr>
+<tr class="odd">
+<td id="T_b3f44_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_b3f44_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_b3f44_row4_col2" class="data row4 col2">(leave blank)</td>
+<td id="T_b3f44_row4_col3" class="data row4 col3">(leave blank)</td>
+</tr>
+<tr class="even">
+<td id="T_b3f44_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_b3f44_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_b3f44_row5_col2" class="data row5 col2">123 first st</td>
+<td id="T_b3f44_row5_col3" class="data row5 col3">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_b3f44_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_b3f44_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_b3f44_row6_col2" class="data row6 col2">NO_OP</td>
+<td id="T_b3f44_row6_col3" class="data row6 col3">ADDITION</td>
+</tr>
+<tr class="even">
+<td id="T_b3f44_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_b3f44_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_b3f44_row7_col2" class="data row7 col2">(leave blank)</td>
+<td id="T_b3f44_row7_col3" class="data row7 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_b3f44_row8_col0" class="data row8 col0">…</td>
+<td id="T_b3f44_row8_col1" class="data row8 col1">…</td>
+<td id="T_b3f44_row8_col2" class="data row8 col2">…</td>
+<td id="T_b3f44_row8_col3" class="data row8 col3">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="change-type-remove-dependent" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-remove-dependent">Change Type: Remove Dependent</h4>
+<p><strong>Use Case</strong>: To remove a dependent from an existing policy</p>
+<p><strong>Instructions</strong>: use the change_type CANCELLATION or TERMINATION. If the coverage end date is equal to coverage start date, it will be categorized as CANCELLATION; otherwise, use TERMINATION. The platform needs to send the information for all covered members, regardless of whether there is any change for these members. If there is any change for a member, use change type of CHANGE for this member; otherwise, use NO_OP.</p>
+<p>Since the financial amount for the subscriber will change if members want to remove the dependent, the change type of subscriber should be CHANGE.</p>
+<p><strong>Example</strong>:</p>
+<p>Table 6. Remove dependent change</p>
+<div id="662a935d" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_9a7cd_row4_col2, #T_9a7cd_row6_col0, #T_9a7cd_row6_col1, #T_9a7cd_row6_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_9a7cd" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_9a7cd_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_9a7cd_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_9a7cd_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_9a7cd_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_9a7cd_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_9a7cd_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_9a7cd_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_9a7cd_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_9a7cd_row1_col2" class="data row1 col2">Jane</td>
+</tr>
+<tr class="odd">
+<td id="T_9a7cd_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_9a7cd_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_9a7cd_row2_col2" class="data row2 col2">01 (spouse)</td>
+</tr>
+<tr class="even">
+<td id="T_9a7cd_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_9a7cd_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_9a7cd_row3_col2" class="data row3 col2">2025-03-01</td>
+</tr>
+<tr class="odd">
+<td id="T_9a7cd_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_9a7cd_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_9a7cd_row4_col2" class="data row4 col2">2025-03-01</td>
+</tr>
+<tr class="even">
+<td id="T_9a7cd_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_9a7cd_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_9a7cd_row5_col2" class="data row5 col2">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_9a7cd_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_9a7cd_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_9a7cd_row6_col2" class="data row6 col2">CANCELLATION</td>
+</tr>
+<tr class="even">
+<td id="T_9a7cd_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_9a7cd_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_9a7cd_row7_col2" class="data row7 col2">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_9a7cd_row8_col0" class="data row8 col0">…</td>
+<td id="T_9a7cd_row8_col1" class="data row8 col1">…</td>
+<td id="T_9a7cd_row8_col2" class="data row8 col2">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="change-type-leave-platform" class="level4">
+<h4 class="anchored" data-anchor-id="change-type-leave-platform">Change Type: Leave platform</h4>
+<p><strong>Use case</strong>: If an employer decides to switch ICHRA platform administrators or an employee loses their ICHRA benefits (e.g.&nbsp;through loss of a job), they still may retain their carrier’s ACA IFP coverage as a non-ICHRA member and pay for their coverage out of pocket.</p>
+<p>For administrator platforms, this is especially important to implement to avoid having premium payments withdrawn or failed autopay runs for employees and employers who are no longer using your platform.</p>
+<p><strong>Instructions</strong>: To let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE_PLATFORM on an inbound enrollment transaction.</p>
+<p><strong>Example</strong>:</p>
+<p>Table 7. Leave platform change</p>
+<div id="807f11b2" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_ff4e0_row6_col0, #T_ff4e0_row6_col1, #T_ff4e0_row6_col2, #T_ff4e0_row7_col0, #T_ff4e0_row7_col1, #T_ff4e0_row7_col2, #T_ff4e0_row8_col0, #T_ff4e0_row8_col1, #T_ff4e0_row8_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_ff4e0" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_ff4e0_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_ff4e0_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_ff4e0_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_ff4e0_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_ff4e0_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_ff4e0_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_ff4e0_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_ff4e0_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_ff4e0_row1_col2" class="data row1 col2">Jane</td>
+</tr>
+<tr class="odd">
+<td id="T_ff4e0_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_ff4e0_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_ff4e0_row2_col2" class="data row2 col2">01 (spouse)</td>
+</tr>
+<tr class="even">
+<td id="T_ff4e0_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_ff4e0_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_ff4e0_row3_col2" class="data row3 col2">2025-03-01</td>
+</tr>
+<tr class="odd">
+<td id="T_ff4e0_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_ff4e0_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_ff4e0_row4_col2" class="data row4 col2">(leave blank)</td>
+</tr>
+<tr class="even">
+<td id="T_ff4e0_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_ff4e0_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_ff4e0_row5_col2" class="data row5 col2">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_ff4e0_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_ff4e0_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_ff4e0_row6_col2" class="data row6 col2">CHANGE</td>
+</tr>
+<tr class="even">
+<td id="T_ff4e0_row7_col0" class="data row7 col0">enrollee.change_effective_date</td>
+<td id="T_ff4e0_row7_col1" class="data row7 col1">2025-08-15</td>
+<td id="T_ff4e0_row7_col2" class="data row7 col2">2025-08-15</td>
+</tr>
+<tr class="odd">
+<td id="T_ff4e0_row8_col0" class="data row8 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_ff4e0_row8_col1" class="data row8 col1">LEAVE_PLATFORM</td>
+<td id="T_ff4e0_row8_col2" class="data row8 col2">LEAVE_PLATFOR</td>
+</tr>
+<tr class="even">
+<td id="T_ff4e0_row9_col0" class="data row9 col0">…</td>
+<td id="T_ff4e0_row9_col1" class="data row9 col1">…</td>
+<td id="T_ff4e0_row9_col2" class="data row9 col2">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="enrollment-type-cancelterm" class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-type-cancelterm">Enrollment Type: Cancel/Term</h3>
+<section id="cancellation-cancel" class="level4">
+<h4 class="anchored" data-anchor-id="cancellation-cancel">Cancellation (“Cancel”)</h4>
+<p><strong>Use Case</strong>: Terminate a policy before coverage has begun (i.e.&nbsp;coverage start date is in the future) Instructions: A cancellation will result in coverage being cancelled for all members on the policy, but only the subscriber’s information needs to be sent. To cancel a member’s policy, the change type for the subscriber must be set to CANCELLATION.</p>
+<p>Please note that the coverage end date will be the same as the coverage start date for cancellation. <strong>Example</strong>:</p>
+<p>Table 8. Cancellations</p>
+<div id="d507194a" class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_1d718_row4_col0, #T_1d718_row4_col1, #T_1d718_row6_col0, #T_1d718_row6_col1 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_1d718" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_1d718_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_1d718_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_1d718_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_1d718_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_1d718_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_1d718_row1_col1" class="data row1 col1">Joe</td>
+</tr>
+<tr class="odd">
+<td id="T_1d718_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_1d718_row2_col1" class="data row2 col1">18 (subscriber)</td>
+</tr>
+<tr class="even">
+<td id="T_1d718_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_1d718_row3_col1" class="data row3 col1">2025-03-01</td>
+</tr>
+<tr class="odd">
+<td id="T_1d718_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_1d718_row4_col1" class="data row4 col1">2025-03-01</td>
+</tr>
+<tr class="even">
+<td id="T_1d718_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_1d718_row5_col1" class="data row5 col1">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_1d718_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_1d718_row6_col1" class="data row6 col1">CANCELLATION</td>
+</tr>
+<tr class="even">
+<td id="T_1d718_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_1d718_row7_col1" class="data row7 col1">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_1d718_row8_col0" class="data row8 col0">…</td>
+<td id="T_1d718_row8_col1" class="data row8 col1">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="termination-terminate" class="level4">
+<h4 class="anchored" data-anchor-id="termination-terminate">Termination (“Terminate”)</h4>
+<p><strong>Use Case</strong>: Terminate a policy after coverage has begun (i.e.&nbsp;coverage end date is after coverage start date) Instructions: To terminate a member’s policy, the change type for the subscriber must be set to TERMINATION. The platform only needs to send the subscriber’s information.</p>
+<p>Please note that the coverage end date will not be the same as the coverage start date for termination.</p>
+<p><strong>Example</strong>:</p>
+<p>Table 9. Terminations</p>
+<div id="a47d798c" class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_378c3_row4_col0, #T_378c3_row4_col1, #T_378c3_row6_col0, #T_378c3_row6_col1 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_378c3" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_378c3_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_378c3_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_378c3_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_378c3_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_378c3_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_378c3_row1_col1" class="data row1 col1">Joe</td>
+</tr>
+<tr class="odd">
+<td id="T_378c3_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_378c3_row2_col1" class="data row2 col1">18 (subscriber)</td>
+</tr>
+<tr class="even">
+<td id="T_378c3_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_378c3_row3_col1" class="data row3 col1">2025-03-01</td>
+</tr>
+<tr class="odd">
+<td id="T_378c3_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_378c3_row4_col1" class="data row4 col1">2025-10-15</td>
+</tr>
+<tr class="even">
+<td id="T_378c3_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_378c3_row5_col1" class="data row5 col1">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_378c3_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_378c3_row6_col1" class="data row6 col1">TERMINATION</td>
+</tr>
+<tr class="even">
+<td id="T_378c3_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_378c3_row7_col1" class="data row7 col1">(leave blank)</td>
+</tr>
+<tr class="odd">
+<td id="T_378c3_row8_col0" class="data row8 col0">…</td>
+<td id="T_378c3_row8_col1" class="data row8 col1">…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+<section id="enrollment-transaction-type-reinstatement" class="level3">
+<h3 class="anchored" data-anchor-id="enrollment-transaction-type-reinstatement">Enrollment Transaction Type: Reinstatement</h3>
+<p><strong>Use case</strong>: recover a cancelled/terminated policy with the original policy information and coverage start date.</p>
+<p><strong>Instructions</strong>:</p>
+<p>The change type for the subscriber must be set to REINSTATEMENT, and a transaction must be sent for all members on the policy who should be reinstated</p>
+<p>If the members update their information during the reinstatement procedure, the platform needs to send another change enrollment to include the updated information.</p>
+<p><strong>Example</strong>:</p>
+<p>Table 10. Reinstatements</p>
+<div id="0073faaf" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<style type="text/css">
+#T_6a6ef_row6_col0, #T_6a6ef_row6_col1, #T_6a6ef_row6_col2 {
+  background-color: rgb(180,205,205);
+}
+</style>
+
+<table id="T_6a6ef" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<thead>
+<tr class="header">
+<th id="T_6a6ef_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_6a6ef_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_6a6ef_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_6a6ef_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_6a6ef_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_6a6ef_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+</tr>
+<tr class="even">
+<td id="T_6a6ef_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_6a6ef_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_6a6ef_row1_col2" class="data row1 col2">Jane</td>
+</tr>
+<tr class="odd">
+<td id="T_6a6ef_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_6a6ef_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_6a6ef_row2_col2" class="data row2 col2">01 (spouse)</td>
+</tr>
+<tr class="even">
+<td id="T_6a6ef_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_6a6ef_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_6a6ef_row3_col2" class="data row3 col2">2025-03-01</td>
+</tr>
+<tr class="odd">
+<td id="T_6a6ef_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_6a6ef_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_6a6ef_row4_col2" class="data row4 col2">(leave blank)</td>
+</tr>
+<tr class="even">
+<td id="T_6a6ef_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_6a6ef_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_6a6ef_row5_col2" class="data row5 col2">123 first st</td>
+</tr>
+<tr class="odd">
+<td id="T_6a6ef_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_6a6ef_row6_col1" class="data row6 col1">REINSTATEMENT</td>
+<td id="T_6a6ef_row6_col2" class="data row6 col2">REINSTATEMENT</td>
+</tr>
+<tr class="even">
+<td id="T_6a6ef_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_6a6ef_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_6a6ef_row7_col2" class="data row7 col2">(leave blank)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="appx" class="level1">
+<h1>Appx</h1>
+<section id="refunds" class="level2">
+<h2 class="anchored" data-anchor-id="refunds">Refunds</h2>
+<p>Eligibility changes resulting in premium changes, negative or positive, will be handled as usual for IFP members: adjustments will be made to future amounts owed, and if not sufficient, carrier will be able to facilitate refunds directly to members.</p>
+<p><img src="ICHRA_CSV_Payment_Flow.png" class="img-fluid"></p>
+</section>
+<section id="file-details" class="level2">
+<h2 class="anchored" data-anchor-id="file-details">File Details</h2>
+<section id="inbound-enrollment-file" class="level4">
+<h4 class="anchored" data-anchor-id="inbound-enrollment-file">Inbound Enrollment File</h4>
+<ul>
+<li>Direction: Carrier inbound/administrator outbound</li>
+<li>File type: CSV</li>
+<li>File spec: <a href="../csv/file_spec/inbound_enrollment_spec.html">Inbound Enrollment Spec</a></li>
+<li>Cadence: Daily</li>
+<li>Naming convention: FROM_ADMIN_NAME.EMT.YYYYMMDDThhmmss.P.csv</li>
+<li>Delta file or full file: Delta</li>
+<li>File transfer type: SFTP</li>
+<li>Sample file: <a href="sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv" target="_blank">here</a></li>
+</ul>
+</section>
+<section id="outbound-ack-file" class="level4">
+<h4 class="anchored" data-anchor-id="outbound-ack-file">Outbound Enrollment Ack File</h4>
+<ul>
+<li>Direction: Carrier outbound/administrator inbound</li>
+<li>File type: CSV</li>
+<li>File spec: <a href="../csv/file_spec/outbound_enrollment_spec.html">Outbound Enrollment Ack File Spec</a></li>
+<li>Cadence: Daily</li>
+<li>Naming convention: TO_ADMIN_NAME.ACK.YYYYMMDDThhmmss.P.csv</li>
+<li>Sample file: <a href="sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv" target="_blank">here</a></li>
+</ul>
+</section>
+<section id="outbound-enrollment-file" class="level4">
+<h4 class="anchored" data-anchor-id="outbound-enrollment-file">Outbound Enrollment File</h4>
+<ul>
+<li>File type: CSV</li>
+<li>File spec: <a href="../csv/file_spec/file_spec.html">Outbound Enrollment File</a></li>
+<li>Cadence: Daily</li>
+<li>Naming convention: FROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv</li>
+<li>Delta file or full file: Delta</li>
+<li>Sample file: <a href="sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv" target="_blank">here</a></li>
+</ul>
+</section>
+<section id="outbound-reconciliation-file" class="level4">
+<h4 class="anchored" data-anchor-id="outbound-reconciliation-file">Outbound Reconciliation File</h4>
+<ul>
+<li>File type: CSV</li>
+<li>File spec: <a href="../csv/file_spec/outbound_reconcilliation_spec.html">Outbound Reconciliation File</a></li>
+<li>Cadence: Weekly</li>
+<li>Full or Delta: Full snapshot of plan year, with 3 month look back to previous year</li>
+<li>Naming Convention: FROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv</li>
+<li>Sample file: <a href="sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv" target="_blank">here</a></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../license.html">
+<p>© 2024 Oscar Management Corporation, Licensed under the Apache License, version 2.0</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.hioscar.com/legal/terms">
+<p>Terms of Service</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.hioscar.com/legal/privacy">
+<p>Privacy Policy</p>
+</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.hioscar.com/privacy-request">
+<p>Do Not Sell My Information</p>
+</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

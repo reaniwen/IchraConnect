@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Outbound Enrollment Spec – ICHRA Connect</title>
+<title>File Spec – ICHRA Connect</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./OscarLogoTransparent.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../OscarLogoTransparent.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,12 +76,9 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
@@ -91,10 +88,10 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./OscarLogoTransparent.png" alt="Oscar Health" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../OscarLogoTransparent.png" alt="Oscar Health" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ICHRA Connect</span>
     </a>
   </div>
@@ -119,7 +116,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_spec.html">File Specifications</a></li><li class="breadcrumb-item"><a href="./outbound_enrollment_spec.html">Outbound Enrollment Spec</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../csv/csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="../../csv/file_spec/file_spec.html">File Specifications</a></li><li class="breadcrumb-item"><a href="../../csv/file_spec/file_spec.html">File Spec</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -142,13 +139,13 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to ICHRA Connect</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./integrating_with_oscar.html" class="sidebar-item-text sidebar-link">
+  <a href="../../integrating_with_oscar.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Integrating with Oscar</span></a>
   </div>
 </li>
@@ -171,7 +168,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./edi_implementation_guide.html" class="sidebar-item-text sidebar-link">
+  <a href="../../edi_implementation_guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Implementation Guide</span></a>
   </div>
 </li>
@@ -186,19 +183,19 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../sample_files/FROM_VENDOR.I834.D20241114.T125545.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Inbound 834 EDI</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../sample_files/TO_VENDOR.I834.D20241114.T113452.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Outbound 834 EDI</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/EDI.820.D20241114.T082645.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../sample_files/EDI.820.D20241114.T082645.P.edi" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Inbound 820 EDI</span></a>
   </div>
 </li>
@@ -217,7 +214,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./csv_implementation_guide.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/csv_implementation_guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Implementation Guide</span></a>
   </div>
 </li>
@@ -232,31 +229,31 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./file_spec.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/file_spec/file_spec.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">File Spec</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./inbound_enrollment_spec.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/file_spec/inbound_enrollment_spec.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Inbound Enrollment Spec</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./outbound_enrollment_ack_spec.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/file_spec/outbound_enrollment_ack_spec.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Outbound Enrollment Ack Spec</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./outbound_enrollment_spec.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../csv/file_spec/outbound_enrollment_spec.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Outbound Enrollment Spec</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./outbound_reconcilliation_spec.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/file_spec/outbound_reconcilliation_spec.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Outbound Reconciliation Spec</span></a>
   </div>
 </li>
@@ -264,7 +261,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./test_cases_guide.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv/test_cases_guide.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Test Cases and Downloads</span></a>
   </div>
 </li>
@@ -279,25 +276,25 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../csv/sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Inbound Enrollment CSV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../csv/sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Outbound Enrollment Ack CSV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../csv/sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Outbound Enrollment CSV</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv" class="sidebar-item-text sidebar-link" target="_blank">
+  <a href="../../csv/sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv" class="sidebar-item-text sidebar-link" target="_blank">
  <span class="menu-text">Reconcilation CSV</span></a>
   </div>
 </li>
@@ -316,37 +313,37 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./relationship_code_mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../relationship_code_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Relationship Code Mapping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ethnicity_code_mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../ethnicity_code_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ethnicity Code Mapping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./language_mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../language_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Language Mapping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./marital_status_mapping.html" class="sidebar-item-text sidebar-link">
+  <a href="../../marital_status_mapping.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Marital Status Mapping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./supported_qle_codes.html" class="sidebar-item-text sidebar-link">
+  <a href="../../supported_qle_codes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Supported QLE Codes</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./additional_maintenance_reasons.html" class="sidebar-item-text sidebar-link">
+  <a href="../../additional_maintenance_reasons.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Supported Additional Maintenance Reasons</span></a>
   </div>
 </li>
@@ -363,7 +360,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./csv_validator.html" class="sidebar-item-text sidebar-link">
+  <a href="../../csv_validator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CSV Validator</span></a>
   </div>
 </li>
@@ -371,7 +368,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./rest_api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../rest_api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><strong>Coming Soon: REST API</strong></span></a>
   </div>
 </li>
@@ -386,9 +383,9 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="./file_spec.html">File Specifications</a></li><li class="breadcrumb-item"><a href="./outbound_enrollment_spec.html">Outbound Enrollment Spec</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../csv/csv_implementation_guide.html"><strong>CSV</strong></a></li><li class="breadcrumb-item"><a href="../../csv/file_spec/file_spec.html">File Specifications</a></li><li class="breadcrumb-item"><a href="../../csv/file_spec/file_spec.html">File Spec</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Outbound Enrollment Spec</h1>
+<h1 class="title">File Spec</h1>
 </div>
 
 
@@ -405,149 +402,46 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 </header>
 
 
-<div id="64f1d227" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-display">
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">Field Name</th>
-<th data-quarto-table-cell-role="th">Data Type</th>
-<th data-quarto-table-cell-role="th">Description</th>
-<th data-quarto-table-cell-role="th">Format</th>
-<th data-quarto-table-cell-role="th">Example</th>
-<th data-quarto-table-cell-role="th">Required</th>
-</tr>
-</thead>
+<table class="table-striped caption-top table">
 <tbody>
 <tr class="odd">
-<td>enrollment.external_contract_id</td>
-<td>str</td>
-<td>The policy ID issued by vendor</td>
-<td>Vendor-specific</td>
-<td>Vendor-specific</td>
-<td>N</td>
+<td>Format</td>
+<td>CSV</td>
 </tr>
 <tr class="even">
-<td>enrollment.application_id</td>
-<td>str</td>
-<td>The application ID issued by vendor</td>
-<td>Vendor-specific</td>
-<td>Vendor-specific</td>
-<td>N</td>
+<td>Max File Size</td>
+<td>10000 rows</td>
 </tr>
 <tr class="odd">
-<td>enrollment.total_premium</td>
-<td>str</td>
-<td>The total monthly premium for the contract</td>
-<td>Valid decimal value</td>
-<td>999.99</td>
-<td>Y</td>
+<td>Inbound File Name</td>
+<td>FROM_VENDOR_NAME.EMT.YYYYMMDDThhmmss.P.csv</td>
 </tr>
 <tr class="even">
-<td>enrollee.issuer_id</td>
-<td>str</td>
-<td>The member ID issued by issuer</td>
-<td>OSC#########-0#</td>
-<td>OSC123456789-01</td>
-<td>Y</td>
+<td>Ack File Name</td>
+<td>TO_VENDOR_NAME.ACK.YYYYMMDDThhmmss.P.csv</td>
 </tr>
 <tr class="odd">
-<td>enrollee.external_member_id</td>
-<td>str</td>
-<td>The member ID issued by vendor</td>
-<td>Vendor-specific</td>
-<td>Vendor-specific</td>
-<td>N</td>
+<td>Outbound File Name</td>
+<td>FROM_CARRIER.OUT.YYYYMMDDThhmmss.P.csv</td>
 </tr>
 <tr class="even">
-<td>enrollee.first_name</td>
-<td>str</td>
-<td>Member's first name</td>
-<td>FIRST</td>
-<td>JOE</td>
-<td>Y</td>
+<td>Recon File Name</td>
+<td>FROM_CARRIER_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv</td>
 </tr>
 <tr class="odd">
-<td>enrollee.last_name</td>
-<td>str</td>
-<td>Member's last name</td>
-<td>LAST</td>
-<td>DOE</td>
-<td>Y</td>
+<td>Delivery Location</td>
+<td>TBD</td>
 </tr>
 <tr class="even">
-<td>enrollee.dob</td>
-<td>str</td>
-<td>Member's date of birth</td>
-<td>YYYY-MM-DD</td>
-<td>1990-01-01</td>
-<td>Y</td>
+<td>Delivery Schedule</td>
+<td>TBD</td>
 </tr>
 <tr class="odd">
-<td>enrollee.email</td>
-<td>str</td>
-<td>Member's email address</td>
-<td>Valid Email Format</td>
-<td>joe.doe@gmail.com</td>
-<td>Y</td>
-</tr>
-<tr class="even">
-<td>enrollee.coverage_start_date</td>
-<td>date</td>
-<td>Member's policy coverage start date</td>
-<td>YYYY-MM-DD</td>
-<td>2024-01-01</td>
-<td>Y</td>
-</tr>
-<tr class="odd">
-<td>enrollee.coverage_end_date</td>
-<td>date</td>
-<td>Member's policy coverage end date</td>
-<td>YYYY-MM-DD</td>
-<td>2024-11-01</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>status</td>
-<td>enum</td>
-<td>The current status of member.<br>
-Available statuses:<br>
-EFFECTUATED<br>
-CANCELLED<br>
-TERMINATED<br>
-REINSTATED</td>
-<td>STATUS</td>
-<td>TERMINATED</td>
-<td>Y</td>
-</tr>
-<tr class="odd">
-<td>additional_maintenance_reason</td>
-<td>str</td>
-<td>Reason for change to eligibility status</td>
-<td>REASON</td>
-<td>NOT_PAID</td>
-<td>N</td>
-</tr>
-<tr class="even">
-<td>oscar_internal_uuid</td>
-<td>str</td>
-<td>UUID for Oscar internal use only.</td>
-<td></td>
-<td>4a94a4f321484b71a2e2e7bafd2e4273</td>
-<td>N</td>
+<td>Notes</td>
+<td>Please include header as the first line</td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 
 
 
@@ -981,7 +875,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="./license.html">
+    <a class="nav-link" href="../../license.html">
 <p>© 2024 Oscar Management Corporation, Licensed under the Apache License, version 2.0</p>
 </a>
   </li>  
