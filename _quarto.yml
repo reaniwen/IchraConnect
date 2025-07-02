@@ -78,7 +78,10 @@ website:
         contents:
           - csv_validator.qmd
       - text: "**Coming Soon: REST API**"
-        href: rest_api.qmd
+        href: api/rest_api.qmd
+        contents:
+          - text: memberships
+            href: api/memberships.qmd
 
   page-footer:
     center:
