@@ -42,29 +42,29 @@ website:
       - section: "**CSV**"
         contents:
           - text: "Implementation Guide"
-            href: csv_implementation_guide.qmd
+            href: csv/csv_implementation_guide.qmd
           - section: "File Specifications"
             contents:
-              - file_spec.qmd
-              - inbound_enrollment_spec.qmd
-              - outbound_enrollment_ack_spec.qmd
-              - outbound_enrollment_spec.qmd
-              - outbound_reconcilliation_spec.qmd
+              - csv/file_spec/file_spec.qmd
+              - csv/file_spec/inbound_enrollment_spec.qmd
+              - csv/file_spec/outbound_enrollment_ack_spec.qmd
+              - csv/file_spec/outbound_enrollment_spec.qmd
+              - csv/file_spec/outbound_reconcilliation_spec.qmd
           - text: "Test Cases and Downloads"
-            href: test_cases_guide.qmd
+            href: csv/test_cases_guide.qmd
           - section: "Additional Sample Downloads"
             contents:
               - text: Inbound Enrollment CSV
-                href: sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv
+                href: csv/sample_files/FROM_VENDOR.EMT.20240923T104016.T.csv
                 target: _blank
               - text: Outbound Enrollment Ack CSV
-                href: sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv
+                href: csv/sample_files/FROM_OSCAR.ACK.20240912T020212.T.csv
                 target: _blank
               - text: Outbound Enrollment CSV
-                href: sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv
+                href: csv/sample_files/FROM_OSCAR.OUT.20240912T224634.T.csv
                 target: _blank
               - text: Reconcilation CSV
-                href: sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv
+                href: csv/sample_files/FROM_OSCAR_SNAPSHOT.OUT.20241015T190751.P.csv
                 target: _blank
       - section: "**Field Specs**"
         contents:

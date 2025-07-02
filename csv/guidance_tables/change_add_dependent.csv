@@ -1,0 +1,10 @@
+Field, member1, member2, member3
+enrollment.external_policy_id, plat_policy_ID_1, plat_policy_ID_1, plat_policy_ID_1
+enrollee.first_name, Joe, Jane, Jack
+enrollee.relationship_to_policy_holder, 18(subscriber), 01(spouse), 19(child)
+enrollee.coverage_start_date, 2025-03-01, 2025-03-01, 2025-05-01
+enrollee.coverage_end_date, (leave blank), (leave blank), (leave blank)
+enrollee.mailing_address.address_line_1, 123 first st, 123 first st, 123 first st
+enrollee.change_type, CHANGE, NO_OP, ADDITION
+enrollee.addtional_maintenance_reason, (leave blank), (leave blank),
+…, …, …, …
