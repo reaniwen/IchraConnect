@@ -7,5 +7,5 @@ enrollee.coverage_end_date, (leave blank), (leave blank)
 enrollee.mailing_address.address_line_1, 123 first st, 123 first st
 enrollee.change_type, CHANGE, CHANGE
 enrollee.change_effective_date, 2025-08-15, 2025-08-15
-enrollee.addtional_maintenance_reason, LEAVE_PLATFORM, LEAVE_PLATFOR
- …, …, …
+enrollee.addtional_maintenance_reason, LEAVE_PLATFORM, LEAVE_PLATFORM
+…, …, …

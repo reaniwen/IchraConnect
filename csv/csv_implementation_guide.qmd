@@ -1,6 +1,5 @@
 ---
 title: "CSV Implementation Guide"
-toc: false
 execute:
   echo: false
 ---
@@ -68,7 +67,7 @@ Below are descriptions of key fields that are commonly used across the CSV files
 
 **enrollee.external_member_id**: The member ID assigned by the platform. Platforms need to keep it constant.
 
-**enrollment.external_policy_id**: The unique ID for the policy assigned by the platform. It's suggested that platforms should assign a new external_policy_id if the plan changes or plan year changes.
+**enrollment.external_policy_id**: The unique ID for the policy assigned by the platform.
 
 **enrollee.change_effective_date**: the date when the intended change takes effect.
 
@@ -332,7 +331,7 @@ styled_df = df.style.apply(highlight_cells, axis=1).hide(axis="index")
 display(HTML(styled_df.to_html()))
 ```
 
-### Enrollment Type: Cancel/Term
+### Enrollment Type: Cancellation/Termination
 
 #### Cancellation (“Cancel”)
 
@@ -340,6 +339,7 @@ display(HTML(styled_df.to_html()))
 Instructions: A cancellation will result in coverage being cancelled for all members on the policy, but only the subscriber's information needs to be sent. To cancel a member’s policy, the change type for the subscriber must be set to CANCELLATION.
 
 Please note that the coverage end date will be the same as the coverage start date for cancellation.
+
 **Example**:
 
 Table 8. Cancellations
