@@ -105,3 +105,6 @@ format:
     toc: true
     page-layout: full
     linkcolor: "#4f50f6"
+
+resources:
+  - api/*.json
