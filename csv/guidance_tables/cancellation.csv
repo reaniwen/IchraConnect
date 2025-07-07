@@ -1,0 +1,10 @@
+Field, member1
+enrollment.external_policy_id, plat_policy_ID_1
+enrollee.first_name, Joe
+enrollee.relationship_to_policy_holder, 18 (subscriber)
+enrollee.coverage_start_date, 2025-03-01
+enrollee.coverage_end_date, 2025-03-01
+enrollee.mailing_address.address_line_1, 123 first st
+enrollee.change_type, CANCELLATION
+enrollee.addtional_maintenance_reason, (leave blank)
+…, …
