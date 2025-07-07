@@ -77,11 +77,14 @@ website:
       - section: "**File Validators**"
         contents:
           - csv_validator.qmd
-      - text: "**Coming Soon: REST API**"
-        href: api/rest_api.qmd
+      - section: "**Coming Soon: REST API**"
         contents:
-          - text: memberships
-            href: api/memberships.qmd
+          - text: overview
+            href: api/rest_api.qmd
+          - section: endpoints
+            contents:
+              - text: memberships
+                href: api/memberships.qmd
 
   page-footer:
     center:
