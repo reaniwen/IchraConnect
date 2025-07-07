@@ -31,7 +31,7 @@
   <script>
     window.onload = () => {
       window.ui = SwaggerUIBundle({
-        url: 'memberships.json',
+        url: 'memberships.yaml',
         dom_id: '#swagger-ui',
       });
     };

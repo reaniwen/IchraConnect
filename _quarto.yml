@@ -107,4 +107,4 @@ format:
     linkcolor: "#4f50f6"
 
 resources:
-  - api/*.json
+  - api/*.yaml
