@@ -378,21 +378,44 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
           </a> 
       </div>
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../api/rest_api.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">overview</span></a>
-  </div>
-</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
- <span class="menu-text">endpoints</span></a>
+            <a href="../api/rest_api.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/get_start.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/authentication.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Authentication</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../api/usage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Usage</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">Endpoints</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../api/memberships.html" class="sidebar-item-text sidebar-link">
@@ -529,7 +552,7 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p><strong>Instructions</strong>: Typically, the Initial Enrollment transaction is the first transaction to be sent for a member. It is created after an applicant has been determined to be eligible and they have selected a Qualified Health Plan (QHP)</p>
 <p>When members enroll in a new policy or add a dependent to an existing policy, regardless of whether the member is new or existing, the vendor sends “ADDITION” as the change type for all new enrollees.</p>
 <p><strong>Example</strong> Table 1. Initial Enrollment</p>
-<div id="db01a1bc" class="cell" data-execution_count="1">
+<div id="10878694" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
@@ -615,77 +638,77 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p>In the example below, the subscriber changed their ethnicity, but there is no change for the dependent. In this case, subscriber’s change type would be CHANGE since there are changes involved, and dependents’s change type would be NO_OP since no change is made and no operation is required.</p>
 <p><strong>Example</strong> Subscriber found that their demographic information (In this example, the ethnicity) is incorrect and needs to be updated.</p>
 <p>Table 2. Demographic change</p>
-<div id="5b7ccc98" class="cell" data-execution_count="2">
+<div id="3f0f8060" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_8dd9b_row2_col0, #T_8dd9b_row2_col1, #T_8dd9b_row7_col0, #T_8dd9b_row7_col1, #T_8dd9b_row7_col2, #T_8dd9b_row8_col0, #T_8dd9b_row8_col1, #T_8dd9b_row8_col2 {
+#T_5a72b_row2_col0, #T_5a72b_row2_col1, #T_5a72b_row7_col0, #T_5a72b_row7_col1, #T_5a72b_row7_col2, #T_5a72b_row8_col0, #T_5a72b_row8_col1, #T_5a72b_row8_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_8dd9b" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_5a72b" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_8dd9b_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_8dd9b_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_8dd9b_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_5a72b_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_5a72b_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_5a72b_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_8dd9b_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_8dd9b_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
-<td id="T_8dd9b_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_5a72b_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_5a72b_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_5a72b_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_8dd9b_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_8dd9b_row1_col1" class="data row1 col1">Joe</td>
-<td id="T_8dd9b_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_5a72b_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_5a72b_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_5a72b_row1_col2" class="data row1 col2">Jane</td>
 </tr>
 <tr class="odd">
-<td id="T_8dd9b_row2_col0" class="data row2 col0">enrollee.ethnicity</td>
-<td id="T_8dd9b_row2_col1" class="data row2 col1">2135-2</td>
-<td id="T_8dd9b_row2_col2" class="data row2 col2">2135-1</td>
+<td id="T_5a72b_row2_col0" class="data row2 col0">enrollee.ethnicity</td>
+<td id="T_5a72b_row2_col1" class="data row2 col1">2135-2</td>
+<td id="T_5a72b_row2_col2" class="data row2 col2">2135-1</td>
 </tr>
 <tr class="even">
-<td id="T_8dd9b_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_8dd9b_row3_col1" class="data row3 col1">18 (subscriber)</td>
-<td id="T_8dd9b_row3_col2" class="data row3 col2">01 (spouse)</td>
+<td id="T_5a72b_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_5a72b_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_5a72b_row3_col2" class="data row3 col2">01 (spouse)</td>
 </tr>
 <tr class="odd">
-<td id="T_8dd9b_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
-<td id="T_8dd9b_row4_col1" class="data row4 col1">2025-03-01</td>
-<td id="T_8dd9b_row4_col2" class="data row4 col2">2025-03-01</td>
+<td id="T_5a72b_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_5a72b_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_5a72b_row4_col2" class="data row4 col2">2025-03-01</td>
 </tr>
 <tr class="even">
-<td id="T_8dd9b_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
-<td id="T_8dd9b_row5_col1" class="data row5 col1">(leave blank)</td>
-<td id="T_8dd9b_row5_col2" class="data row5 col2">(leave blank)</td>
+<td id="T_5a72b_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_5a72b_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_5a72b_row5_col2" class="data row5 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_8dd9b_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_8dd9b_row6_col1" class="data row6 col1">123 first st</td>
-<td id="T_8dd9b_row6_col2" class="data row6 col2">123 first st</td>
+<td id="T_5a72b_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_5a72b_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_5a72b_row6_col2" class="data row6 col2">123 first st</td>
 </tr>
 <tr class="even">
-<td id="T_8dd9b_row7_col0" class="data row7 col0">enrollee.change_type</td>
-<td id="T_8dd9b_row7_col1" class="data row7 col1">CHANGE</td>
-<td id="T_8dd9b_row7_col2" class="data row7 col2">NO_OP</td>
+<td id="T_5a72b_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_5a72b_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_5a72b_row7_col2" class="data row7 col2">NO_OP</td>
 </tr>
 <tr class="odd">
-<td id="T_8dd9b_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
-<td id="T_8dd9b_row8_col1" class="data row8 col1">2025-03-01</td>
-<td id="T_8dd9b_row8_col2" class="data row8 col2">(leave blank)</td>
+<td id="T_5a72b_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_5a72b_row8_col1" class="data row8 col1">2025-03-01</td>
+<td id="T_5a72b_row8_col2" class="data row8 col2">(leave blank)</td>
 </tr>
 <tr class="even">
-<td id="T_8dd9b_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_8dd9b_row9_col1" class="data row9 col1">(leave blank)</td>
-<td id="T_8dd9b_row9_col2" class="data row9 col2">(leave blank)</td>
+<td id="T_5a72b_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_5a72b_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_5a72b_row9_col2" class="data row9 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_8dd9b_row10_col0" class="data row10 col0">…</td>
-<td id="T_8dd9b_row10_col1" class="data row10 col1">…</td>
-<td id="T_8dd9b_row10_col2" class="data row10 col2">…</td>
+<td id="T_5a72b_row10_col0" class="data row10 col0">…</td>
+<td id="T_5a72b_row10_col1" class="data row10 col1">…</td>
+<td id="T_5a72b_row10_col2" class="data row10 col2">…</td>
 </tr>
 </tbody>
 </table>
@@ -699,77 +722,77 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p><strong>Example</strong></p>
 <p>In this case, the members are changing their plan effective 2025-05-01, meaning the change will take effect on 2025-05-01.</p>
 <p>Table 3. Policy change</p>
-<div id="221833a3" class="cell" data-execution_count="3">
+<div id="9be296f2" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_6a065_row1_col0, #T_6a065_row1_col1, #T_6a065_row1_col2, #T_6a065_row8_col0, #T_6a065_row8_col1, #T_6a065_row8_col2, #T_6a065_row9_col0, #T_6a065_row9_col1, #T_6a065_row9_col2 {
+#T_05ad6_row1_col0, #T_05ad6_row1_col1, #T_05ad6_row1_col2, #T_05ad6_row8_col0, #T_05ad6_row8_col1, #T_05ad6_row8_col2, #T_05ad6_row9_col0, #T_05ad6_row9_col1, #T_05ad6_row9_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_6a065" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_05ad6" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_6a065_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_6a065_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_6a065_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_05ad6_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_05ad6_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_05ad6_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_6a065_row0_col0" class="data row0 col0">plan.hios_id</td>
-<td id="T_6a065_row0_col1" class="data row0 col1">12345NY100022</td>
-<td id="T_6a065_row0_col2" class="data row0 col2">12345NY100022</td>
+<td id="T_05ad6_row0_col0" class="data row0 col0">plan.hios_id</td>
+<td id="T_05ad6_row0_col1" class="data row0 col1">12345NY100022</td>
+<td id="T_05ad6_row0_col2" class="data row0 col2">12345NY100022</td>
 </tr>
 <tr class="even">
-<td id="T_6a065_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
-<td id="T_6a065_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
-<td id="T_6a065_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
+<td id="T_05ad6_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
+<td id="T_05ad6_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
+<td id="T_05ad6_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="odd">
-<td id="T_6a065_row2_col0" class="data row2 col0">enrollee.first_name</td>
-<td id="T_6a065_row2_col1" class="data row2 col1">Joe</td>
-<td id="T_6a065_row2_col2" class="data row2 col2">Jane</td>
+<td id="T_05ad6_row2_col0" class="data row2 col0">enrollee.first_name</td>
+<td id="T_05ad6_row2_col1" class="data row2 col1">Joe</td>
+<td id="T_05ad6_row2_col2" class="data row2 col2">Jane</td>
 </tr>
 <tr class="even">
-<td id="T_6a065_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_6a065_row3_col1" class="data row3 col1">18 (subscriber)</td>
-<td id="T_6a065_row3_col2" class="data row3 col2">01 (spouse)</td>
+<td id="T_05ad6_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_05ad6_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_05ad6_row3_col2" class="data row3 col2">01 (spouse)</td>
 </tr>
 <tr class="odd">
-<td id="T_6a065_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
-<td id="T_6a065_row4_col1" class="data row4 col1">2025-03-01</td>
-<td id="T_6a065_row4_col2" class="data row4 col2">2025-03-01</td>
+<td id="T_05ad6_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_05ad6_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_05ad6_row4_col2" class="data row4 col2">2025-03-01</td>
 </tr>
 <tr class="even">
-<td id="T_6a065_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
-<td id="T_6a065_row5_col1" class="data row5 col1">(leave blank)</td>
-<td id="T_6a065_row5_col2" class="data row5 col2">(leave blank)</td>
+<td id="T_05ad6_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_05ad6_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_05ad6_row5_col2" class="data row5 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_6a065_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_6a065_row6_col1" class="data row6 col1">123 first st</td>
-<td id="T_6a065_row6_col2" class="data row6 col2">123 first st</td>
+<td id="T_05ad6_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_05ad6_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_05ad6_row6_col2" class="data row6 col2">123 first st</td>
 </tr>
 <tr class="even">
-<td id="T_6a065_row7_col0" class="data row7 col0">enrollee.change_type</td>
-<td id="T_6a065_row7_col1" class="data row7 col1">CHANGE</td>
-<td id="T_6a065_row7_col2" class="data row7 col2">CHANGE</td>
+<td id="T_05ad6_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_05ad6_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_05ad6_row7_col2" class="data row7 col2">CHANGE</td>
 </tr>
 <tr class="odd">
-<td id="T_6a065_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
-<td id="T_6a065_row8_col1" class="data row8 col1">2025-05-01</td>
-<td id="T_6a065_row8_col2" class="data row8 col2">2025-05-01</td>
+<td id="T_05ad6_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_05ad6_row8_col1" class="data row8 col1">2025-05-01</td>
+<td id="T_05ad6_row8_col2" class="data row8 col2">2025-05-01</td>
 </tr>
 <tr class="even">
-<td id="T_6a065_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_6a065_row9_col1" class="data row9 col1">(leave blank)</td>
-<td id="T_6a065_row9_col2" class="data row9 col2">(leave blank)</td>
+<td id="T_05ad6_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_05ad6_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_05ad6_row9_col2" class="data row9 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_6a065_row10_col0" class="data row10 col0">…</td>
-<td id="T_6a065_row10_col1" class="data row10 col1">…</td>
-<td id="T_6a065_row10_col2" class="data row10 col2">…</td>
+<td id="T_05ad6_row10_col0" class="data row10 col0">…</td>
+<td id="T_05ad6_row10_col1" class="data row10 col1">…</td>
+<td id="T_05ad6_row10_col2" class="data row10 col2">…</td>
 </tr>
 </tbody>
 </table>
@@ -783,77 +806,77 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p><strong>Example</strong></p>
 <p>In this case, the members’ new address would go into effect as of May 1, 2025 as indicated by the change_effective_date.</p>
 <p>Table 4. Address change</p>
-<div id="ca72764e" class="cell" data-execution_count="4">
+<div id="2d7acbd6" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_25056_row5_col0, #T_25056_row5_col1, #T_25056_row5_col2, #T_25056_row6_col0, #T_25056_row6_col1, #T_25056_row6_col2, #T_25056_row7_col0, #T_25056_row7_col1, #T_25056_row7_col2 {
+#T_3ce4e_row5_col0, #T_3ce4e_row5_col1, #T_3ce4e_row5_col2, #T_3ce4e_row6_col0, #T_3ce4e_row6_col1, #T_3ce4e_row6_col2, #T_3ce4e_row7_col0, #T_3ce4e_row7_col1, #T_3ce4e_row7_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_25056" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_3ce4e" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_25056_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_25056_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_25056_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_3ce4e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_3ce4e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_3ce4e_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_25056_row0_col0" class="data row0 col0">plan.hios_id</td>
-<td id="T_25056_row0_col1" class="data row0 col1">12345NY100022</td>
-<td id="T_25056_row0_col2" class="data row0 col2">12345NY100022</td>
+<td id="T_3ce4e_row0_col0" class="data row0 col0">plan.hios_id</td>
+<td id="T_3ce4e_row0_col1" class="data row0 col1">12345NY100022</td>
+<td id="T_3ce4e_row0_col2" class="data row0 col2">12345NY100022</td>
 </tr>
 <tr class="even">
-<td id="T_25056_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
-<td id="T_25056_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
-<td id="T_25056_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
+<td id="T_3ce4e_row1_col0" class="data row1 col0">enrollment.external_policy_id</td>
+<td id="T_3ce4e_row1_col1" class="data row1 col1">plat_policy_ID_1</td>
+<td id="T_3ce4e_row1_col2" class="data row1 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="odd">
-<td id="T_25056_row2_col0" class="data row2 col0">enrollee.first_name</td>
-<td id="T_25056_row2_col1" class="data row2 col1">Joe</td>
-<td id="T_25056_row2_col2" class="data row2 col2">Jane</td>
+<td id="T_3ce4e_row2_col0" class="data row2 col0">enrollee.first_name</td>
+<td id="T_3ce4e_row2_col1" class="data row2 col1">Joe</td>
+<td id="T_3ce4e_row2_col2" class="data row2 col2">Jane</td>
 </tr>
 <tr class="even">
-<td id="T_25056_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_25056_row3_col1" class="data row3 col1">18 (subscriber)</td>
-<td id="T_25056_row3_col2" class="data row3 col2">01 (spouse)</td>
+<td id="T_3ce4e_row3_col0" class="data row3 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_3ce4e_row3_col1" class="data row3 col1">18 (subscriber)</td>
+<td id="T_3ce4e_row3_col2" class="data row3 col2">01 (spouse)</td>
 </tr>
 <tr class="odd">
-<td id="T_25056_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
-<td id="T_25056_row4_col1" class="data row4 col1">2025-03-01</td>
-<td id="T_25056_row4_col2" class="data row4 col2">2025-03-01</td>
+<td id="T_3ce4e_row4_col0" class="data row4 col0">enrollee.coverage_start_date</td>
+<td id="T_3ce4e_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_3ce4e_row4_col2" class="data row4 col2">2025-03-01</td>
 </tr>
 <tr class="even">
-<td id="T_25056_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
-<td id="T_25056_row5_col1" class="data row5 col1">(leave blank)</td>
-<td id="T_25056_row5_col2" class="data row5 col2">(leave blank)</td>
+<td id="T_3ce4e_row5_col0" class="data row5 col0">enrollee.coverage_end_date</td>
+<td id="T_3ce4e_row5_col1" class="data row5 col1">(leave blank)</td>
+<td id="T_3ce4e_row5_col2" class="data row5 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_25056_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_25056_row6_col1" class="data row6 col1">123 first st</td>
-<td id="T_25056_row6_col2" class="data row6 col2">123 first st</td>
+<td id="T_3ce4e_row6_col0" class="data row6 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_3ce4e_row6_col1" class="data row6 col1">123 first st</td>
+<td id="T_3ce4e_row6_col2" class="data row6 col2">123 first st</td>
 </tr>
 <tr class="even">
-<td id="T_25056_row7_col0" class="data row7 col0">enrollee.change_type</td>
-<td id="T_25056_row7_col1" class="data row7 col1">CHANGE</td>
-<td id="T_25056_row7_col2" class="data row7 col2">CHANGE</td>
+<td id="T_3ce4e_row7_col0" class="data row7 col0">enrollee.change_type</td>
+<td id="T_3ce4e_row7_col1" class="data row7 col1">CHANGE</td>
+<td id="T_3ce4e_row7_col2" class="data row7 col2">CHANGE</td>
 </tr>
 <tr class="odd">
-<td id="T_25056_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
-<td id="T_25056_row8_col1" class="data row8 col1">2025-05-01</td>
-<td id="T_25056_row8_col2" class="data row8 col2">2025-05-01</td>
+<td id="T_3ce4e_row8_col0" class="data row8 col0">enrollee.change_effective_date</td>
+<td id="T_3ce4e_row8_col1" class="data row8 col1">2025-05-01</td>
+<td id="T_3ce4e_row8_col2" class="data row8 col2">2025-05-01</td>
 </tr>
 <tr class="even">
-<td id="T_25056_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_25056_row9_col1" class="data row9 col1">(leave blank)</td>
-<td id="T_25056_row9_col2" class="data row9 col2">(leave blank)</td>
+<td id="T_3ce4e_row9_col0" class="data row9 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_3ce4e_row9_col1" class="data row9 col1">(leave blank)</td>
+<td id="T_3ce4e_row9_col2" class="data row9 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_25056_row10_col0" class="data row10 col0">…</td>
-<td id="T_25056_row10_col1" class="data row10 col1">…</td>
-<td id="T_25056_row10_col2" class="data row10 col2">…</td>
+<td id="T_3ce4e_row10_col0" class="data row10 col0">…</td>
+<td id="T_3ce4e_row10_col1" class="data row10 col1">…</td>
+<td id="T_3ce4e_row10_col2" class="data row10 col2">…</td>
 </tr>
 </tbody>
 </table>
@@ -866,77 +889,77 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p><strong>Instructions</strong>: use CHANGE change_type for the subscriber and ADDITION for the new dependent. Platforms should send all information for the covered members whether or not there is a change for those members. If there is a change for a member, use change type of CHANGE for this member; otherwise, use NO_OP.</p>
 <p><strong>Example</strong></p>
 <p>Table 5. Add dependent change</p>
-<div id="4f378064" class="cell" data-execution_count="5">
+<div id="9b400137" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_ab0fb_row0_col3, #T_ab0fb_row1_col3, #T_ab0fb_row2_col3, #T_ab0fb_row3_col3, #T_ab0fb_row4_col3, #T_ab0fb_row5_col3, #T_ab0fb_row6_col0, #T_ab0fb_row6_col1, #T_ab0fb_row6_col2, #T_ab0fb_row6_col3, #T_ab0fb_row7_col3, #T_ab0fb_row8_col3 {
+#T_48f11_row0_col3, #T_48f11_row1_col3, #T_48f11_row2_col3, #T_48f11_row3_col3, #T_48f11_row4_col3, #T_48f11_row5_col3, #T_48f11_row6_col0, #T_48f11_row6_col1, #T_48f11_row6_col2, #T_48f11_row6_col3, #T_48f11_row7_col3, #T_48f11_row8_col3 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_ab0fb" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_48f11" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_ab0fb_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_ab0fb_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_ab0fb_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
-<th id="T_ab0fb_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">member3</th>
+<th id="T_48f11_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_48f11_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_48f11_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_48f11_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">member3</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_ab0fb_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_ab0fb_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
-<td id="T_ab0fb_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
-<td id="T_ab0fb_row0_col3" class="data row0 col3">plat_policy_ID_1</td>
+<td id="T_48f11_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_48f11_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_48f11_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_48f11_row0_col3" class="data row0 col3">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_ab0fb_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_ab0fb_row1_col1" class="data row1 col1">Joe</td>
-<td id="T_ab0fb_row1_col2" class="data row1 col2">Jane</td>
-<td id="T_ab0fb_row1_col3" class="data row1 col3">Jack</td>
+<td id="T_48f11_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_48f11_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_48f11_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_48f11_row1_col3" class="data row1 col3">Jack</td>
 </tr>
 <tr class="odd">
-<td id="T_ab0fb_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_ab0fb_row2_col1" class="data row2 col1">18 (subscriber)</td>
-<td id="T_ab0fb_row2_col2" class="data row2 col2">01 (spouse)</td>
-<td id="T_ab0fb_row2_col3" class="data row2 col3">19 (child)</td>
+<td id="T_48f11_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_48f11_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_48f11_row2_col2" class="data row2 col2">01 (spouse)</td>
+<td id="T_48f11_row2_col3" class="data row2 col3">19 (child)</td>
 </tr>
 <tr class="even">
-<td id="T_ab0fb_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_ab0fb_row3_col1" class="data row3 col1">2025-03-01</td>
-<td id="T_ab0fb_row3_col2" class="data row3 col2">2025-03-01</td>
-<td id="T_ab0fb_row3_col3" class="data row3 col3">2025-05-01</td>
+<td id="T_48f11_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_48f11_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_48f11_row3_col2" class="data row3 col2">2025-03-01</td>
+<td id="T_48f11_row3_col3" class="data row3 col3">2025-05-01</td>
 </tr>
 <tr class="odd">
-<td id="T_ab0fb_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_ab0fb_row4_col1" class="data row4 col1">(leave blank)</td>
-<td id="T_ab0fb_row4_col2" class="data row4 col2">(leave blank)</td>
-<td id="T_ab0fb_row4_col3" class="data row4 col3">(leave blank)</td>
+<td id="T_48f11_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_48f11_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_48f11_row4_col2" class="data row4 col2">(leave blank)</td>
+<td id="T_48f11_row4_col3" class="data row4 col3">(leave blank)</td>
 </tr>
 <tr class="even">
-<td id="T_ab0fb_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_ab0fb_row5_col1" class="data row5 col1">123 first st</td>
-<td id="T_ab0fb_row5_col2" class="data row5 col2">123 first st</td>
-<td id="T_ab0fb_row5_col3" class="data row5 col3">123 first st</td>
+<td id="T_48f11_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_48f11_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_48f11_row5_col2" class="data row5 col2">123 first st</td>
+<td id="T_48f11_row5_col3" class="data row5 col3">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_ab0fb_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_ab0fb_row6_col1" class="data row6 col1">CHANGE</td>
-<td id="T_ab0fb_row6_col2" class="data row6 col2">NO_OP</td>
-<td id="T_ab0fb_row6_col3" class="data row6 col3">ADDITION</td>
+<td id="T_48f11_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_48f11_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_48f11_row6_col2" class="data row6 col2">NO_OP</td>
+<td id="T_48f11_row6_col3" class="data row6 col3">ADDITION</td>
 </tr>
 <tr class="even">
-<td id="T_ab0fb_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_ab0fb_row7_col1" class="data row7 col1">(leave blank)</td>
-<td id="T_ab0fb_row7_col2" class="data row7 col2">(leave blank)</td>
-<td id="T_ab0fb_row7_col3" class="data row7 col3"></td>
+<td id="T_48f11_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_48f11_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_48f11_row7_col2" class="data row7 col2">(leave blank)</td>
+<td id="T_48f11_row7_col3" class="data row7 col3"></td>
 </tr>
 <tr class="odd">
-<td id="T_ab0fb_row8_col0" class="data row8 col0">…</td>
-<td id="T_ab0fb_row8_col1" class="data row8 col1">…</td>
-<td id="T_ab0fb_row8_col2" class="data row8 col2">…</td>
-<td id="T_ab0fb_row8_col3" class="data row8 col3">…</td>
+<td id="T_48f11_row8_col0" class="data row8 col0">…</td>
+<td id="T_48f11_row8_col1" class="data row8 col1">…</td>
+<td id="T_48f11_row8_col2" class="data row8 col2">…</td>
+<td id="T_48f11_row8_col3" class="data row8 col3">…</td>
 </tr>
 </tbody>
 </table>
@@ -950,67 +973,67 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p>Since the financial amount for the subscriber will change if members want to remove the dependent, the change type of subscriber should be CHANGE.</p>
 <p><strong>Example</strong>:</p>
 <p>Table 6. Remove dependent change</p>
-<div id="e409f143" class="cell" data-execution_count="6">
+<div id="13b0cba5" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_ef194_row4_col2, #T_ef194_row6_col0, #T_ef194_row6_col1, #T_ef194_row6_col2 {
+#T_0a78e_row4_col2, #T_0a78e_row6_col0, #T_0a78e_row6_col1, #T_0a78e_row6_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_ef194" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_0a78e" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_ef194_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_ef194_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_ef194_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_0a78e_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_0a78e_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_0a78e_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_ef194_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_ef194_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
-<td id="T_ef194_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_0a78e_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_0a78e_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_0a78e_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_ef194_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_ef194_row1_col1" class="data row1 col1">Joe</td>
-<td id="T_ef194_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_0a78e_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_0a78e_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_0a78e_row1_col2" class="data row1 col2">Jane</td>
 </tr>
 <tr class="odd">
-<td id="T_ef194_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_ef194_row2_col1" class="data row2 col1">18 (subscriber)</td>
-<td id="T_ef194_row2_col2" class="data row2 col2">01 (spouse)</td>
+<td id="T_0a78e_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_0a78e_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_0a78e_row2_col2" class="data row2 col2">01 (spouse)</td>
 </tr>
 <tr class="even">
-<td id="T_ef194_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_ef194_row3_col1" class="data row3 col1">2025-03-01</td>
-<td id="T_ef194_row3_col2" class="data row3 col2">2025-03-01</td>
+<td id="T_0a78e_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_0a78e_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_0a78e_row3_col2" class="data row3 col2">2025-03-01</td>
 </tr>
 <tr class="odd">
-<td id="T_ef194_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_ef194_row4_col1" class="data row4 col1">(leave blank)</td>
-<td id="T_ef194_row4_col2" class="data row4 col2">2025-03-01</td>
+<td id="T_0a78e_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_0a78e_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_0a78e_row4_col2" class="data row4 col2">2025-03-01</td>
 </tr>
 <tr class="even">
-<td id="T_ef194_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_ef194_row5_col1" class="data row5 col1">123 first st</td>
-<td id="T_ef194_row5_col2" class="data row5 col2">123 first st</td>
+<td id="T_0a78e_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_0a78e_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_0a78e_row5_col2" class="data row5 col2">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_ef194_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_ef194_row6_col1" class="data row6 col1">CHANGE</td>
-<td id="T_ef194_row6_col2" class="data row6 col2">CANCELLATION</td>
+<td id="T_0a78e_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_0a78e_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_0a78e_row6_col2" class="data row6 col2">CANCELLATION</td>
 </tr>
 <tr class="even">
-<td id="T_ef194_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_ef194_row7_col1" class="data row7 col1">(leave blank)</td>
-<td id="T_ef194_row7_col2" class="data row7 col2">(leave blank)</td>
+<td id="T_0a78e_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_0a78e_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_0a78e_row7_col2" class="data row7 col2">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_ef194_row8_col0" class="data row8 col0">…</td>
-<td id="T_ef194_row8_col1" class="data row8 col1">…</td>
-<td id="T_ef194_row8_col2" class="data row8 col2">…</td>
+<td id="T_0a78e_row8_col0" class="data row8 col0">…</td>
+<td id="T_0a78e_row8_col1" class="data row8 col1">…</td>
+<td id="T_0a78e_row8_col2" class="data row8 col2">…</td>
 </tr>
 </tbody>
 </table>
@@ -1024,72 +1047,72 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p><strong>Instructions</strong>: To let the carrier know when a member is no longer enrolled through the administrator platform but has not terminated their coverage, the administrator will send a CHANGE type enrollment transaction with maintenance reason code LEAVE_PLATFORM on an inbound enrollment transaction.</p>
 <p><strong>Example</strong>:</p>
 <p>Table 7. Leave platform change</p>
-<div id="daf1b2ba" class="cell" data-execution_count="7">
+<div id="af509027" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_c2457_row6_col0, #T_c2457_row6_col1, #T_c2457_row6_col2, #T_c2457_row7_col0, #T_c2457_row7_col1, #T_c2457_row7_col2, #T_c2457_row8_col0, #T_c2457_row8_col1, #T_c2457_row8_col2 {
+#T_da482_row6_col0, #T_da482_row6_col1, #T_da482_row6_col2, #T_da482_row7_col0, #T_da482_row7_col1, #T_da482_row7_col2, #T_da482_row8_col0, #T_da482_row8_col1, #T_da482_row8_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_c2457" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_da482" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_c2457_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_c2457_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_c2457_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_da482_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_da482_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_da482_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_c2457_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_c2457_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
-<td id="T_c2457_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_da482_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_da482_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_da482_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_c2457_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_c2457_row1_col1" class="data row1 col1">Joe</td>
-<td id="T_c2457_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_da482_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_da482_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_da482_row1_col2" class="data row1 col2">Jane</td>
 </tr>
 <tr class="odd">
-<td id="T_c2457_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_c2457_row2_col1" class="data row2 col1">18 (subscriber)</td>
-<td id="T_c2457_row2_col2" class="data row2 col2">01 (spouse)</td>
+<td id="T_da482_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_da482_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_da482_row2_col2" class="data row2 col2">01 (spouse)</td>
 </tr>
 <tr class="even">
-<td id="T_c2457_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_c2457_row3_col1" class="data row3 col1">2025-03-01</td>
-<td id="T_c2457_row3_col2" class="data row3 col2">2025-03-01</td>
+<td id="T_da482_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_da482_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_da482_row3_col2" class="data row3 col2">2025-03-01</td>
 </tr>
 <tr class="odd">
-<td id="T_c2457_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_c2457_row4_col1" class="data row4 col1">(leave blank)</td>
-<td id="T_c2457_row4_col2" class="data row4 col2">(leave blank)</td>
+<td id="T_da482_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_da482_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_da482_row4_col2" class="data row4 col2">(leave blank)</td>
 </tr>
 <tr class="even">
-<td id="T_c2457_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_c2457_row5_col1" class="data row5 col1">123 first st</td>
-<td id="T_c2457_row5_col2" class="data row5 col2">123 first st</td>
+<td id="T_da482_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_da482_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_da482_row5_col2" class="data row5 col2">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_c2457_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_c2457_row6_col1" class="data row6 col1">CHANGE</td>
-<td id="T_c2457_row6_col2" class="data row6 col2">CHANGE</td>
+<td id="T_da482_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_da482_row6_col1" class="data row6 col1">CHANGE</td>
+<td id="T_da482_row6_col2" class="data row6 col2">CHANGE</td>
 </tr>
 <tr class="even">
-<td id="T_c2457_row7_col0" class="data row7 col0">enrollee.change_effective_date</td>
-<td id="T_c2457_row7_col1" class="data row7 col1">2025-08-15</td>
-<td id="T_c2457_row7_col2" class="data row7 col2">2025-08-15</td>
+<td id="T_da482_row7_col0" class="data row7 col0">enrollee.change_effective_date</td>
+<td id="T_da482_row7_col1" class="data row7 col1">2025-08-15</td>
+<td id="T_da482_row7_col2" class="data row7 col2">2025-08-15</td>
 </tr>
 <tr class="odd">
-<td id="T_c2457_row8_col0" class="data row8 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_c2457_row8_col1" class="data row8 col1">LEAVE_PLATFORM</td>
-<td id="T_c2457_row8_col2" class="data row8 col2">LEAVE_PLATFORM</td>
+<td id="T_da482_row8_col0" class="data row8 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_da482_row8_col1" class="data row8 col1">LEAVE_PLATFORM</td>
+<td id="T_da482_row8_col2" class="data row8 col2">LEAVE_PLATFORM</td>
 </tr>
 <tr class="even">
-<td id="T_c2457_row9_col0" class="data row9 col0">…</td>
-<td id="T_c2457_row9_col1" class="data row9 col1">…</td>
-<td id="T_c2457_row9_col2" class="data row9 col2">…</td>
+<td id="T_da482_row9_col0" class="data row9 col0">…</td>
+<td id="T_da482_row9_col1" class="data row9 col1">…</td>
+<td id="T_da482_row9_col2" class="data row9 col2">…</td>
 </tr>
 </tbody>
 </table>
@@ -1105,57 +1128,57 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p>Please note that the coverage end date will be the same as the coverage start date for cancellation.</p>
 <p><strong>Example</strong>:</p>
 <p>Table 8. Cancellations</p>
-<div id="76f833be" class="cell" data-execution_count="8">
+<div id="56cb384b" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_b58ac_row4_col0, #T_b58ac_row4_col1, #T_b58ac_row6_col0, #T_b58ac_row6_col1 {
+#T_a5dfe_row4_col0, #T_a5dfe_row4_col1, #T_a5dfe_row6_col0, #T_a5dfe_row6_col1 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_b58ac" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_a5dfe" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_b58ac_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_b58ac_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_a5dfe_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_a5dfe_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_b58ac_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_b58ac_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_a5dfe_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_a5dfe_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_b58ac_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_b58ac_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_a5dfe_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_a5dfe_row1_col1" class="data row1 col1">Joe</td>
 </tr>
 <tr class="odd">
-<td id="T_b58ac_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_b58ac_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_a5dfe_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_a5dfe_row2_col1" class="data row2 col1">18 (subscriber)</td>
 </tr>
 <tr class="even">
-<td id="T_b58ac_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_b58ac_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_a5dfe_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_a5dfe_row3_col1" class="data row3 col1">2025-03-01</td>
 </tr>
 <tr class="odd">
-<td id="T_b58ac_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_b58ac_row4_col1" class="data row4 col1">2025-03-01</td>
+<td id="T_a5dfe_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_a5dfe_row4_col1" class="data row4 col1">2025-03-01</td>
 </tr>
 <tr class="even">
-<td id="T_b58ac_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_b58ac_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_a5dfe_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_a5dfe_row5_col1" class="data row5 col1">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_b58ac_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_b58ac_row6_col1" class="data row6 col1">CANCELLATION</td>
+<td id="T_a5dfe_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_a5dfe_row6_col1" class="data row6 col1">CANCELLATION</td>
 </tr>
 <tr class="even">
-<td id="T_b58ac_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_b58ac_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_a5dfe_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_a5dfe_row7_col1" class="data row7 col1">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_b58ac_row8_col0" class="data row8 col0">…</td>
-<td id="T_b58ac_row8_col1" class="data row8 col1">…</td>
+<td id="T_a5dfe_row8_col0" class="data row8 col0">…</td>
+<td id="T_a5dfe_row8_col1" class="data row8 col1">…</td>
 </tr>
 </tbody>
 </table>
@@ -1168,57 +1191,57 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p>Please note that the coverage end date will not be the same as the coverage start date for termination.</p>
 <p><strong>Example</strong>:</p>
 <p>Table 9. Terminations</p>
-<div id="a7ce0c8e" class="cell" data-execution_count="9">
+<div id="6b70446c" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_c833d_row4_col0, #T_c833d_row4_col1, #T_c833d_row6_col0, #T_c833d_row6_col1 {
+#T_128c5_row4_col0, #T_128c5_row4_col1, #T_128c5_row6_col0, #T_128c5_row6_col1 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_c833d" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_128c5" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_c833d_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_c833d_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_128c5_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_128c5_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_c833d_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_c833d_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_128c5_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_128c5_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_c833d_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_c833d_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_128c5_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_128c5_row1_col1" class="data row1 col1">Joe</td>
 </tr>
 <tr class="odd">
-<td id="T_c833d_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_c833d_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_128c5_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_128c5_row2_col1" class="data row2 col1">18 (subscriber)</td>
 </tr>
 <tr class="even">
-<td id="T_c833d_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_c833d_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_128c5_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_128c5_row3_col1" class="data row3 col1">2025-03-01</td>
 </tr>
 <tr class="odd">
-<td id="T_c833d_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_c833d_row4_col1" class="data row4 col1">2025-10-15</td>
+<td id="T_128c5_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_128c5_row4_col1" class="data row4 col1">2025-10-15</td>
 </tr>
 <tr class="even">
-<td id="T_c833d_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_c833d_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_128c5_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_128c5_row5_col1" class="data row5 col1">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_c833d_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_c833d_row6_col1" class="data row6 col1">TERMINATION</td>
+<td id="T_128c5_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_128c5_row6_col1" class="data row6 col1">TERMINATION</td>
 </tr>
 <tr class="even">
-<td id="T_c833d_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_c833d_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_128c5_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_128c5_row7_col1" class="data row7 col1">(leave blank)</td>
 </tr>
 <tr class="odd">
-<td id="T_c833d_row8_col0" class="data row8 col0">…</td>
-<td id="T_c833d_row8_col1" class="data row8 col1">…</td>
+<td id="T_128c5_row8_col0" class="data row8 col0">…</td>
+<td id="T_128c5_row8_col1" class="data row8 col1">…</td>
 </tr>
 </tbody>
 </table>
@@ -1234,62 +1257,62 @@ gtag('config', 'G-TT9QQLNB0E', { 'anonymize_ip': true});
 <p>If the members update their information during the reinstatement procedure, the platform needs to send another change enrollment to include the updated information.</p>
 <p><strong>Example</strong>:</p>
 <p>Table 10. Reinstatements</p>
-<div id="63bf99ae" class="cell" data-execution_count="10">
+<div id="7be4ec9c" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <style type="text/css">
-#T_2e5a4_row6_col0, #T_2e5a4_row6_col1, #T_2e5a4_row6_col2 {
+#T_5288a_row6_col0, #T_5288a_row6_col1, #T_5288a_row6_col2 {
   background-color: rgb(180,205,205);
 }
 </style>
 
-<table id="T_2e5a4" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table id="T_5288a" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <thead>
 <tr class="header">
-<th id="T_2e5a4_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
-<th id="T_2e5a4_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
-<th id="T_2e5a4_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
+<th id="T_5288a_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">Field</th>
+<th id="T_5288a_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">member1</th>
+<th id="T_5288a_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">member2</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td id="T_2e5a4_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
-<td id="T_2e5a4_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
-<td id="T_2e5a4_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
+<td id="T_5288a_row0_col0" class="data row0 col0">enrollment.external_policy_id</td>
+<td id="T_5288a_row0_col1" class="data row0 col1">plat_policy_ID_1</td>
+<td id="T_5288a_row0_col2" class="data row0 col2">plat_policy_ID_1</td>
 </tr>
 <tr class="even">
-<td id="T_2e5a4_row1_col0" class="data row1 col0">enrollee.first_name</td>
-<td id="T_2e5a4_row1_col1" class="data row1 col1">Joe</td>
-<td id="T_2e5a4_row1_col2" class="data row1 col2">Jane</td>
+<td id="T_5288a_row1_col0" class="data row1 col0">enrollee.first_name</td>
+<td id="T_5288a_row1_col1" class="data row1 col1">Joe</td>
+<td id="T_5288a_row1_col2" class="data row1 col2">Jane</td>
 </tr>
 <tr class="odd">
-<td id="T_2e5a4_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
-<td id="T_2e5a4_row2_col1" class="data row2 col1">18 (subscriber)</td>
-<td id="T_2e5a4_row2_col2" class="data row2 col2">01 (spouse)</td>
+<td id="T_5288a_row2_col0" class="data row2 col0">enrollee.relationship_to_policy_holder</td>
+<td id="T_5288a_row2_col1" class="data row2 col1">18 (subscriber)</td>
+<td id="T_5288a_row2_col2" class="data row2 col2">01 (spouse)</td>
 </tr>
 <tr class="even">
-<td id="T_2e5a4_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
-<td id="T_2e5a4_row3_col1" class="data row3 col1">2025-03-01</td>
-<td id="T_2e5a4_row3_col2" class="data row3 col2">2025-03-01</td>
+<td id="T_5288a_row3_col0" class="data row3 col0">enrollee.coverage_start_date</td>
+<td id="T_5288a_row3_col1" class="data row3 col1">2025-03-01</td>
+<td id="T_5288a_row3_col2" class="data row3 col2">2025-03-01</td>
 </tr>
 <tr class="odd">
-<td id="T_2e5a4_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
-<td id="T_2e5a4_row4_col1" class="data row4 col1">(leave blank)</td>
-<td id="T_2e5a4_row4_col2" class="data row4 col2">(leave blank)</td>
+<td id="T_5288a_row4_col0" class="data row4 col0">enrollee.coverage_end_date</td>
+<td id="T_5288a_row4_col1" class="data row4 col1">(leave blank)</td>
+<td id="T_5288a_row4_col2" class="data row4 col2">(leave blank)</td>
 </tr>
 <tr class="even">
-<td id="T_2e5a4_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
-<td id="T_2e5a4_row5_col1" class="data row5 col1">123 first st</td>
-<td id="T_2e5a4_row5_col2" class="data row5 col2">123 first st</td>
+<td id="T_5288a_row5_col0" class="data row5 col0">enrollee.mailing_address.address_line_1</td>
+<td id="T_5288a_row5_col1" class="data row5 col1">123 first st</td>
+<td id="T_5288a_row5_col2" class="data row5 col2">123 first st</td>
 </tr>
 <tr class="odd">
-<td id="T_2e5a4_row6_col0" class="data row6 col0">enrollee.change_type</td>
-<td id="T_2e5a4_row6_col1" class="data row6 col1">REINSTATEMENT</td>
-<td id="T_2e5a4_row6_col2" class="data row6 col2">REINSTATEMENT</td>
+<td id="T_5288a_row6_col0" class="data row6 col0">enrollee.change_type</td>
+<td id="T_5288a_row6_col1" class="data row6 col1">REINSTATEMENT</td>
+<td id="T_5288a_row6_col2" class="data row6 col2">REINSTATEMENT</td>
 </tr>
 <tr class="even">
-<td id="T_2e5a4_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
-<td id="T_2e5a4_row7_col1" class="data row7 col1">(leave blank)</td>
-<td id="T_2e5a4_row7_col2" class="data row7 col2">(leave blank)</td>
+<td id="T_5288a_row7_col0" class="data row7 col0">enrollee.addtional_maintenance_reason</td>
+<td id="T_5288a_row7_col1" class="data row7 col1">(leave blank)</td>
+<td id="T_5288a_row7_col2" class="data row7 col2">(leave blank)</td>
 </tr>
 </tbody>
 </table>

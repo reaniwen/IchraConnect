@@ -167,31 +167,7 @@
     "crumbs": [
       "Oscar",
       "**Coming Soon: REST API**",
-      "overview"
-    ]
-  },
-  {
-    "objectID": "language_mapping.html",
-    "href": "language_mapping.html",
-    "title": "Language Mapping",
-    "section": "",
-    "text": "ISO 639 Value\nDescription\n\n\n\n\neng\nEnglish\n\n\nspa\nSpanish\n\n\nara\nArabic\n\n\nchi\nchinese\n\n\nfre\nFrench\n\n\ncpf\nFrench Creole\n\n\ndeu\nGerman\n\n\nguj\nGujarati\n\n\nhin\nHindi\n\n\nkor\nKorean\n\n\npol\nPolish\n\n\npor\nPortuguese\n\n\nrus\nRussian\n\n\ntgl\nTagalog\n\n\nurd\nUrdu\n\n\nvie\nVietnamese\n\n\neng\nOther",
-    "crumbs": [
-      "Oscar",
-      "**Field Specs**",
-      "Language Mapping"
-    ]
-  },
-  {
-    "objectID": "csv_validator.html",
-    "href": "csv_validator.html",
-    "title": "CSV Validator",
-    "section": "",
-    "text": "Upload a CSV file\n\n\n\nOr Paste CSV Content\n\n\n\nValidate CSV",
-    "crumbs": [
-      "Oscar",
-      "**File Validators**",
-      "CSV Validator"
+      "Overview"
     ]
   },
   {
@@ -264,6 +240,43 @@
       "Oscar",
       "**EDI**",
       "Implementation Guide"
+    ]
+  },
+  {
+    "objectID": "csv_validator.html",
+    "href": "csv_validator.html",
+    "title": "CSV Validator",
+    "section": "",
+    "text": "Upload a CSV file\n\n\n\nOr Paste CSV Content\n\n\n\nValidate CSV",
+    "crumbs": [
+      "Oscar",
+      "**File Validators**",
+      "CSV Validator"
+    ]
+  },
+  {
+    "objectID": "language_mapping.html",
+    "href": "language_mapping.html",
+    "title": "Language Mapping",
+    "section": "",
+    "text": "ISO 639 Value\nDescription\n\n\n\n\neng\nEnglish\n\n\nspa\nSpanish\n\n\nara\nArabic\n\n\nchi\nchinese\n\n\nfre\nFrench\n\n\ncpf\nFrench Creole\n\n\ndeu\nGerman\n\n\nguj\nGujarati\n\n\nhin\nHindi\n\n\nkor\nKorean\n\n\npol\nPolish\n\n\npor\nPortuguese\n\n\nrus\nRussian\n\n\ntgl\nTagalog\n\n\nurd\nUrdu\n\n\nvie\nVietnamese\n\n\neng\nOther",
+    "crumbs": [
+      "Oscar",
+      "**Field Specs**",
+      "Language Mapping"
+    ]
+  },
+  {
+    "objectID": "api/get_start.html",
+    "href": "api/get_start.html",
+    "title": "Get Start with ICHRA Connect API",
+    "section": "",
+    "text": "The ICHRA Connect API uses a REST interface over http to create and view objects. For a complete reference of API endpoints, visit the API Reference section of these docs,\ncurl -X POST [path]/ichra_api/[method] --header \"Content-Type: application/json\" -d '{JSON payload}'",
+    "crumbs": [
+      "Oscar",
+      "**Coming Soon: REST API**",
+      "Overview",
+      "Getting Started"
     ]
   },
   {
