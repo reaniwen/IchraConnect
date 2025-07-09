@@ -1,0 +1,14 @@
+---
+title: "Get Start with ICHRA Connect API"
+format:
+    html:
+        code-block-bg: false
+        code-block-border-left: true
+code-fold: true
+---
+The ICHRA Connect API uses a REST interface over http to create and view objects. For a complete reference of API endpoints, visit the API Reference section of these docs,
+
+
+```{.bash}
+curl -X POST [path]/ichra_api/[method] --header "Content-Type: application/json" -d '{JSON payload}'
+```

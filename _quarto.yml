@@ -79,9 +79,16 @@ website:
           - csv_validator.qmd
       - section: "**Coming Soon: REST API**"
         contents:
-          - text: overview
+          - section: Overview
+            contents:
+              - text: "Getting Started"
+                href: api/get_start.qmd
+              - text: "Authentication"
+                href: api/authentication.qmd
+              - text: "Usage"
+                href: api/usage.qmd
             href: api/rest_api.qmd
-          - section: endpoints
+          - section: Endpoints
             contents:
               - text: memberships
                 href: api/memberships.qmd
