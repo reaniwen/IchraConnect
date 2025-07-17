@@ -34,7 +34,7 @@ enrollment.application_id,String,The ID of the application,,,,N
 employer.employer_name,String,The name of employer,,,,N
 employer.employer_tin,String,The tax number of employer,,,,N
 enrollee.external_member_id,String,Member ID defined by vendor,,,,Y
-enrollee.issuer_member_id,String,Member ID defined by issuer,,,,N
+enrollee.issuer_member_id,String,Member ID defined by issuer,,,,Y if enrollee.change_type is CHANGE
 enrollee.first_name,String,Enrollee First Name,,,,Y
 enrollee.middle_name,String,Enrollee Middle Name,,,,N
 enrollee.last_name,String,Enrollee Last Name,,,,Y
