@@ -76,7 +76,7 @@ Each enrolled member will have one record per month enrolled with the correspond
 #### Outbound Reconciliation CSV {#outbound-reconciliation-csv}
 
 - File type: CSV
-- File spec: [Outbound Reconciliation Spec](outbound_reconcilliation_spec.qmd)
+- File spec: [Outbound Reconciliation Spec](csv/file_spec/outbound_reconcilliation_spec.qmd)
 - Cadence: Weekly
 - Full or Delta: Full snapshot of plan year, with 3 month look back to previous year
 - Naming Convention: FROM\_CARRIER\_SNAPSHOT.OUT.YYYYMMDDThhmmss.P.csv
